@@ -26,7 +26,7 @@ const NavigationDrawer = DrawerNavigator(
     Settings: { screen: SettingsScreen }
   },
   {
-    initialRouteName: "My Foresee",
+    initialRouteName: "Home",
     contentComponent: props => <DrawerContent {...props} />
   }
 );

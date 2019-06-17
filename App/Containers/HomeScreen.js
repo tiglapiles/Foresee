@@ -32,23 +32,12 @@ class HomeScreen extends Component {
   render() {
     return (
       <Container>
-        <Header searchBar rounded>
-          {/* <Left> */}
-          {/*   <Button */}
-          {/*     transparent */}
-          {/*     onPress={() => this.props.navigation.navigate("DrawerOpen")} */}
-          {/*   > */}
-          {/*     <Icon name="menu" /> */}
-          {/*   </Button> */}
-          {/* </Left> */}
-          {/* <Body> */}
-          {/*   <Title>HomeScreen</Title> */}
-          {/* </Body> */}
-          {/* <Right> */}
-          {/*   <Icon name="ios-camera" /> */}
-          {/* </Right> */}
+        <Header searchBar rounded transparent>
           <Item>
-            <Icon name="ios-menu" />
+            <Icon
+              name="menu"
+              onPress={() => this.props.navigation.navigate("DrawerOpen")}
+            />
             <Input placeholder="Search" />
             <Icon name="ios-camera" />
           </Item>
