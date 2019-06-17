@@ -1,9 +1,9 @@
 import React from "react";
 import { DrawerNavigator } from "react-navigation";
+import FeedsScreen from "../Containers/FeedsScreen";
+import ForeseeScreen from "../Containers/ForeseeScreen";
+import HomeScreen from "../Containers/HomeScreen";
 import MessengerScreen from "../Containers/MessengerScreen";
-import ProductList from "../Containers/ProductList";
-import ListviewExample from "../Containers/ListviewExample";
-import CardExample from "../Containers/CardExample";
 import DrawerContent from "../Containers/DrawerContent";
 import MyScreen from "../Containers/MyScreen.js";
 import CurrencyScreen from "../Containers/CurrencyScreen.js";
@@ -15,10 +15,10 @@ import styles from "./Styles/NavigationStyles";
 
 const NavigationDrawer = DrawerNavigator(
   {
-    Home: { screen: ProductList },
-    Feeds: { screen: CardExample },
+    Home: { screen: HomeScreen },
+    Feeds: { screen: FeedsScreen },
     Messenger: { screen: MessengerScreen },
-    "My Foresee": { screen: ListviewExample },
+    "My Foresee": { screen: ForeseeScreen },
     "My Favorites": { screen: MyScreen },
     "Scan QR Code": { screen: ScanScreen },
     "Currency Converter": { screen: CurrencyScreen },

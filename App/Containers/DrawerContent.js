@@ -10,7 +10,6 @@ import {
   Left,
   Body
 } from "native-base";
-
 import styles from "./Styles/DrawerContentStyles";
 import { Images } from "../Themes";
 const itemIcon = {

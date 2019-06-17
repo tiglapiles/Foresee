@@ -10,7 +10,9 @@ import {
   Button,
   Text,
   Title,
-  Icon
+  Icon,
+  Footer,
+  FooterTab
 } from "native-base";
 import { connect } from "react-redux";
 import BottomFooter from "../Components/BottomFooter.js";
@@ -18,9 +20,9 @@ import BottomFooter from "../Components/BottomFooter.js";
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
-import styles from "./Styles/MessengerScreenStyle";
+import styles from "./Styles/FeedsScreenStyle";
 
-class MessengerScreen extends Component {
+class FeedsScreen extends Component {
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
@@ -32,23 +34,23 @@ class MessengerScreen extends Component {
       <Container>
         <Header>
           <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            >
-              <Icon name="menu" />
-            </Button>
+            {/* <Button */}
+            {/*   transparent */}
+            {/*   onPress={() => this.props.navigation.navigate("DrawerOpen")} */}
+            {/* > */}
+            {/*   <Icon name="menu" /> */}
+            {/* </Button> */}
           </Left>
           <Body>
-            <Title>Messenger</Title>
+            <Title>Feeds</Title>
           </Body>
           <Right>
-            <Icon name="ios-search" />
+            <Icon name="heart" />
           </Right>
         </Header>
 
         <Content padder>
-          <Text>MessengerScreen Content</Text>
+          <Text>FeedsScreen Content</Text>
         </Content>
 
         <BottomFooter {...this.props} />
@@ -68,4 +70,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MessengerScreen);
+)(FeedsScreen);

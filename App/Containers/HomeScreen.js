@@ -10,7 +10,9 @@ import {
   Button,
   Text,
   Title,
-  Icon
+  Icon,
+  Item,
+  Input
 } from "native-base";
 import { connect } from "react-redux";
 import BottomFooter from "../Components/BottomFooter.js";
@@ -18,9 +20,9 @@ import BottomFooter from "../Components/BottomFooter.js";
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
-import styles from "./Styles/MessengerScreenStyle";
+import styles from "./Styles/HomeScreenStyle";
 
-class MessengerScreen extends Component {
+class HomeScreen extends Component {
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
@@ -30,25 +32,30 @@ class MessengerScreen extends Component {
   render() {
     return (
       <Container>
-        <Header>
-          <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            >
-              <Icon name="menu" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Messenger</Title>
-          </Body>
-          <Right>
-            <Icon name="ios-search" />
-          </Right>
+        <Header searchBar rounded>
+          {/* <Left> */}
+          {/*   <Button */}
+          {/*     transparent */}
+          {/*     onPress={() => this.props.navigation.navigate("DrawerOpen")} */}
+          {/*   > */}
+          {/*     <Icon name="menu" /> */}
+          {/*   </Button> */}
+          {/* </Left> */}
+          {/* <Body> */}
+          {/*   <Title>HomeScreen</Title> */}
+          {/* </Body> */}
+          {/* <Right> */}
+          {/*   <Icon name="ios-camera" /> */}
+          {/* </Right> */}
+          <Item>
+            <Icon name="ios-menu" />
+            <Input placeholder="Search" />
+            <Icon name="ios-camera" />
+          </Item>
         </Header>
 
         <Content padder>
-          <Text>MessengerScreen Content</Text>
+          <Text>HomeScreen Content</Text>
         </Content>
 
         <BottomFooter {...this.props} />
@@ -68,4 +75,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MessengerScreen);
+)(HomeScreen);

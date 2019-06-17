@@ -8,15 +8,15 @@ import LaunchScreen from "../Containers/LaunchScreen";
 import NavigationDrawer from "./NavigationDrawer";
 
 const PrimaryNav = StackNavigator(
-	{
-		Login: { screen: Login },
-		LaunchScreen: { screen: LaunchScreen },
-		NavigationDrawer: { screen: NavigationDrawer },
-	},
-	{
-		initialRouteName: "Login",
-		headerMode: "none",
-	}
+  {
+    Login: { screen: Login },
+    LaunchScreen: { screen: LaunchScreen },
+    NavigationDrawer: { screen: NavigationDrawer }
+  },
+  {
+    initialRouteName: "Login",
+    headerMode: "none"
+  }
 );
 
 export default PrimaryNav;

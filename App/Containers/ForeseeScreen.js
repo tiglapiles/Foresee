@@ -18,15 +18,16 @@ import BottomFooter from "../Components/BottomFooter.js";
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
-import styles from "./Styles/MessengerScreenStyle";
+import styles from "./Styles/ForeseeScreenStyle";
 
-class MessengerScreen extends Component {
+class ForeseeScreen extends Component {
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
       return true;
     });
   }
+
   render() {
     return (
       <Container>
@@ -39,16 +40,14 @@ class MessengerScreen extends Component {
               <Icon name="menu" />
             </Button>
           </Left>
-          <Body>
-            <Title>Messenger</Title>
-          </Body>
-          <Right>
-            <Icon name="ios-search" />
-          </Right>
+          {/* <Body> */}
+          {/*   <Title>ForeseeScreen</Title> */}
+          {/* </Body> */}
+          <Right />
         </Header>
 
         <Content padder>
-          <Text>MessengerScreen Content</Text>
+          <Text>ForeseeScreen Content</Text>
         </Content>
 
         <BottomFooter {...this.props} />
@@ -68,4 +67,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MessengerScreen);
+)(ForeseeScreen);
