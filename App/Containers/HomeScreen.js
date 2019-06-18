@@ -13,7 +13,9 @@ import {
   Icon,
   Item,
   Input,
-  View
+  View,
+  Card,
+  CardItem
 } from "native-base";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
@@ -27,6 +29,7 @@ import HomeMenu from "../Components/HomeMenu.js";
 import HomeSubTitle from "../Components/HomeSubTitle.js";
 import HomeProduct from "../Components/HomeProduct.js";
 import HomeMarkets from "../Components/HomeMarkets.js";
+import HomeDeals from "../Components/HomeDeals.js";
 
 class HomeScreen extends Component {
   componentDidMount() {
@@ -81,6 +84,21 @@ class HomeScreen extends Component {
         more: false
       }
     ];
+    const bCard = () => (
+      <Card>
+        <CardItem>
+          <Text>NativeBase</Text>
+        </CardItem>
+        <CardItem>
+          <Body>
+            <Text>//Your text here</Text>
+          </Body>
+        </CardItem>
+        <CardItem>
+          <Text>GeekyAnts</Text>
+        </CardItem>
+      </Card>
+    );
     const subComponent = i => {
       switch (i) {
         case "products":
@@ -88,7 +106,11 @@ class HomeScreen extends Component {
         case "markets":
           return <HomeMarkets />;
         case "deals":
-          return <HomeProduct />;
+          return <HomeDeals />;
+        case "brand":
+          return <HomeDeals />;
+        case "business":
+          return bCard();
         default:
           return <View style={{ height: 100, backgroundColor: "#fff" }} />;
       }
