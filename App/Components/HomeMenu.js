@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import PropTypes from 'prop-types';
-import { View, Text, Icon } from "native-base";
+import { View, Text, Icon, Thumbnail } from "native-base";
 import styles from "./Styles/HomeMenuStyle";
 
 export default class HomeMenu extends Component {
@@ -16,22 +16,29 @@ export default class HomeMenu extends Component {
   // }
 
   render() {
+    const uri = [
+      "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
+      "https://sc01.alicdn.com/kf/HLB1sUeqTbvpK1RjSZFqq6AXUVXaF/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
+      "https://sc02.alicdn.com/kf/HLB119SvTkPoK1RjSZKbq6x1IXXaY/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
+      "https://sc02.alicdn.com/kf/HLB119SvTkPoK1RjSZKbq6x1IXXaY/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg"
+    ];
+
     return (
       <View style={styles.container}>
         <View style={styles.item}>
-          <Icon name="ios-menu" />
+          <Thumbnail source={{ uri: uri[0] }} />
           <Text style={styles.title}>All Categories</Text>
         </View>
         <View style={styles.item}>
-          <Icon name="logo-android" />
+          <Thumbnail source={{ uri: uri[0] }} />
           <Text style={styles.title}>Request for Quotation</Text>
         </View>
         <View style={styles.item}>
-          <Icon name="logo-dropbox" />
+          <Thumbnail source={{ uri: uri[2] }} />
           <Text style={styles.title}>Ready to Ship</Text>
         </View>
         <View style={styles.item}>
-          <Icon name="ios-compass" />
+          <Thumbnail source={{ uri: uri[3] }} />
           <Text style={styles.title}>New User Zone</Text>
         </View>
       </View>
