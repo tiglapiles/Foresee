@@ -25,6 +25,7 @@ import BottomFooter from "../Components/BottomFooter.js";
 import ImagesSwiper from "../Components/ImagesSwiper.js";
 import HomeMenu from "../Components/HomeMenu.js";
 import HomeSubTitle from "../Components/HomeSubTitle.js";
+import HomeProduct from "../Components/HomeProduct.js";
 
 class HomeScreen extends Component {
   componentDidMount() {
@@ -79,10 +80,22 @@ class HomeScreen extends Component {
         more: false
       }
     ];
+    const subComponent = i => {
+      switch (i) {
+        case "products":
+          return <HomeProduct />;
+        case "markets":
+          return <HomeProduct />;
+        case "deals":
+          return <HomeProduct />;
+        default:
+          return <View style={{ height: 100, backgroundColor: "#fff" }} />;
+      }
+    };
     return subItems.map((o, i) => (
       <View style={{ marginTop: 20 }} key={i}>
         <HomeSubTitle color={o.color} title={o.title} more={o.more} />
-        <View style={{ height: 100, backgroundColor: "#fff", marginTop: 8 }} />
+        {subComponent(o.name)}
       </View>
     ));
   };

@@ -10,7 +10,8 @@ export default function HomeSubTitle(props) {
     container: {
       height: 20,
       flexDirection: "row",
-      alignItems: "center"
+      alignItems: "center",
+      marginBottom: 8
     },
     block: {
       backgroundColor: color,
