@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BackHandler } from "react-native";
+import { BackHandler, Image } from "react-native";
 import {
   Content,
   Container,
@@ -31,6 +31,7 @@ import HomeProduct from "../Components/HomeProduct.js";
 import HomeMarkets from "../Components/HomeMarkets.js";
 import HomeDeals from "../Components/HomeDeals.js";
 import HomeTrade from "../Components/HomeTrade.js";
+import HomeYou from "../Components/HomeYou.js";
 
 class HomeScreen extends Component {
   componentDidMount() {
@@ -88,15 +89,18 @@ class HomeScreen extends Component {
     const bCard = () => (
       <Card>
         <CardItem>
-          <Text>NativeBase</Text>
-        </CardItem>
-        <CardItem>
-          <Body>
+          <Left>
             <Text>//Your text here</Text>
-          </Body>
-        </CardItem>
-        <CardItem>
-          <Text>GeekyAnts</Text>
+          </Left>
+          <Right>
+            <Image
+              style={{ width: 60, height: 60 }}
+              source={{
+                uri:
+                  "https://sc02.alicdn.com/kf/HTB1foTel7SWBuNjSszdq6zeSpXae/Wholesale-100-Cotton-Children-Blank-Round-Collar.jpg_300x300.jpg"
+              }}
+            />
+          </Right>
         </CardItem>
       </Card>
     );
@@ -114,6 +118,8 @@ class HomeScreen extends Component {
           return bCard();
         case "trade":
           return <HomeTrade />;
+        case "you":
+          return <HomeYou />;
         default:
           return <View style={{ height: 100, backgroundColor: "#fff" }} />;
       }
