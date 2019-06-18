@@ -26,6 +26,7 @@ import ImagesSwiper from "../Components/ImagesSwiper.js";
 import HomeMenu from "../Components/HomeMenu.js";
 import HomeSubTitle from "../Components/HomeSubTitle.js";
 import HomeProduct from "../Components/HomeProduct.js";
+import HomeMarkets from "../Components/HomeMarkets.js";
 
 class HomeScreen extends Component {
   componentDidMount() {
@@ -85,7 +86,7 @@ class HomeScreen extends Component {
         case "products":
           return <HomeProduct />;
         case "markets":
-          return <HomeProduct />;
+          return <HomeMarkets />;
         case "deals":
           return <HomeProduct />;
         default:
