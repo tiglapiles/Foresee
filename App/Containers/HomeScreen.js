@@ -30,6 +30,7 @@ import HomeSubTitle from "../Components/HomeSubTitle.js";
 import HomeProduct from "../Components/HomeProduct.js";
 import HomeMarkets from "../Components/HomeMarkets.js";
 import HomeDeals from "../Components/HomeDeals.js";
+import HomeTrade from "../Components/HomeTrade.js";
 
 class HomeScreen extends Component {
   componentDidMount() {
@@ -111,6 +112,8 @@ class HomeScreen extends Component {
           return <HomeDeals />;
         case "business":
           return bCard();
+        case "trade":
+          return <HomeTrade />;
         default:
           return <View style={{ height: 100, backgroundColor: "#fff" }} />;
       }

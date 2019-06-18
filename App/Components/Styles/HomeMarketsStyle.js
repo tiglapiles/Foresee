@@ -6,7 +6,6 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     height: 180
-    // overflow: "auto"
   },
   boxs: {
     width: 320,
