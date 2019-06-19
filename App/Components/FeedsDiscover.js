@@ -1,25 +1,49 @@
-import React, { Component } from 'react'
-// import PropTypes from 'prop-types';
-import { View, Text } from 'native-base'
-import styles from './Styles/FeedsDiscoverStyle'
+import React from "react";
+import { View, Text, Content } from "native-base";
+import styles from "./Styles/FeedsDiscoverStyle";
+import FeedsTopic from "../Components/FeedsTopic";
+import FeedsCard from "../Components/FeedsCard.js";
 
-export default class FeedsDiscover extends Component {
-  // // Prop type warnings
-  // static propTypes = {
-  //   someProperty: PropTypes.object,
-  //   someSetting: PropTypes.bool.isRequired,
-  // }
-  //
-  // // Defaults for props
-  // static defaultProps = {
-  //   someSetting: false
-  // }
-
-  render () {
-    return (
-      <View style={styles.container}>
-        <Text>FeedsDiscover Component</Text>
-      </View>
-    )
-  }
+export default function FeedsDiscover() {
+  const follows = [
+    {
+      thumb:
+        "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
+      title: "Foresee TLD.",
+      img:
+        "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
+      content: "content could be anything"
+    },
+    {
+      thumb:
+        "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
+      title: "Foresee TLD.",
+      img:
+        "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
+      content: "content could be anything"
+    },
+    {
+      thumb:
+        "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
+      title: "Foresee TLD.",
+      img:
+        "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
+      content: "content could be anything"
+    },
+    {
+      thumb:
+        "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
+      title: "Foresee TLD.",
+      img:
+        "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
+      content: "content could be anything"
+    }
+  ];
+  const renderCards = c => c.map((k, i) => <FeedsCard cardInfo={k} key={i} />);
+  return (
+    <Content style={styles.container}>
+      <FeedsTopic />
+      {renderCards(follows)}
+    </Content>
+  );
 }

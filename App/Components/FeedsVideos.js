@@ -1,25 +1,12 @@
-import React, { Component } from 'react'
-// import PropTypes from 'prop-types';
-import { View, Text } from 'native-base'
-import styles from './Styles/FeedsVideosStyle'
+import React from "react";
+import { View, Text, Content } from "native-base";
+import styles from "./Styles/FeedsDiscoverStyle";
+import FeedsTopic from "../Components/FeedsTopic";
 
-export default class FeedsVideos extends Component {
-  // // Prop type warnings
-  // static propTypes = {
-  //   someProperty: PropTypes.object,
-  //   someSetting: PropTypes.bool.isRequired,
-  // }
-  //
-  // // Defaults for props
-  // static defaultProps = {
-  //   someSetting: false
-  // }
-
-  render () {
-    return (
-      <View style={styles.container}>
-        <Text>FeedsVideos Component</Text>
-      </View>
-    )
-  }
+export default function FeedsDiscover() {
+  return (
+    <Content style={styles.container}>
+      <FeedsTopic />
+    </Content>
+  );
 }
