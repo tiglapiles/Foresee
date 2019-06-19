@@ -131,21 +131,59 @@ class HomeScreen extends Component {
       </View>
     ));
   };
+  searchBar = () => (
+    <View
+      style={{
+        paddingLeft: 10,
+        paddingRight: 10,
+        zIndex: 999,
+        width: "100%",
+        position: "absolute",
+        top: 20
+      }}
+    >
+      <View
+        style={{
+          /* flex: 1, */
+          /* width: "95%", */
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          backgroundColor: "#fff",
+          margin: "auto",
+          shadowOpacity: 0.75,
+          shadowRadius: 5,
+          shadowColor: "#bdc3c7",
+          shadowOffset: { height: 0, width: 0 }
+        }}
+      >
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <Icon
+            name="menu"
+            onPress={() => this.props.navigation.navigate("DrawerOpen")}
+          />
+        </View>
+        <View>
+          <Input
+            placeholder="Search products or suppliers"
+            style={{ flex: 4 }}
+          />
+        </View>
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <Icon name="ios-camera" />
+        </View>
+      </View>
+    </View>
+  );
 
   render() {
     return (
       <Container style={styles.container}>
-        {/* <Header searchBar rounded transparent> */}
-        {/*   <Item> */}
-        {/*     <Icon */}
-        {/*       name="menu" */}
-        {/*       onPress={() => this.props.navigation.navigate("DrawerOpen")} */}
-        {/*     /> */}
-        {/*     <Input placeholder="Search" /> */}
-        {/*     <Icon name="ios-camera" /> */}
-        {/*   </Item> */}
-        {/* </Header> */}
-
+        {this.searchBar()}
         <Content>
           <ImagesSwiper style={{ padding: 0 }} />
           <HomeMenu />
