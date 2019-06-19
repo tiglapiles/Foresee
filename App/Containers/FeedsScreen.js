@@ -11,11 +11,15 @@ import {
   Text,
   Title,
   Icon,
-  Footer,
-  FooterTab
+  View,
+  Tabs,
+  Tab
 } from "native-base";
 import { connect } from "react-redux";
 import BottomFooter from "../Components/BottomFooter.js";
+import FeedsFollowing from "../Components/FeedsFollowing.js";
+import FeedsDiscover from "../Components/FeedsDiscover.js";
+import FeedsVideos from "../Components/FeedsVideos.js";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
@@ -23,24 +27,28 @@ import BottomFooter from "../Components/BottomFooter.js";
 import styles from "./Styles/FeedsScreenStyle";
 
 class FeedsScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      indexPage: 1
+    };
+  }
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
       return true;
     });
   }
+
+  changeTab = e => {
+    console.log(e.i);
+  };
+
   render() {
     return (
       <Container>
-        <Header>
-          <Left>
-            {/* <Button */}
-            {/*   transparent */}
-            {/*   onPress={() => this.props.navigation.navigate("DrawerOpen")} */}
-            {/* > */}
-            {/*   <Icon name="menu" /> */}
-            {/* </Button> */}
-          </Left>
+        <Header hasTabs>
+          <Left />
           <Body>
             <Title>Feeds</Title>
           </Body>
@@ -49,9 +57,21 @@ class FeedsScreen extends Component {
           </Right>
         </Header>
 
-        <Content padder>
-          <Text>FeedsScreen Content</Text>
-        </Content>
+        <Tabs onChangeTab={this.changeTab} initialPage={0}>
+          <Tab heading="Following">
+            <FeedsFollowing />
+          </Tab>
+          <Tab heading="Discover">
+            <FeedsDiscover />
+          </Tab>
+          <Tab heading="Videos">
+            <FeedsVideos />
+          </Tab>
+        </Tabs>
+        {/* <Content padder> */}
+        {/*   <View style={{ height: 100, backgroundColor: "#ddd" }} /> */}
+        {/*   <Text>FeedsScreen Content</Text> */}
+        {/* </Content> */}
 
         <BottomFooter {...this.props} />
       </Container>
