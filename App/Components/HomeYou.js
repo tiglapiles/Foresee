@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Image } from "react-native";
-import { View, Text, Card, CardItem } from "native-base";
+import { View, Text, Icon } from "native-base";
 import styles from "./Styles/HomeYouStyle";
 
 export default function HomeYou() {
@@ -40,18 +40,19 @@ export default function HomeYou() {
   ];
   const cardItems = c => {
     return c.map((k, i) => (
-      <Card style={styles.item} key={i}>
-        <CardItem>
-          <Image style={styles.img} source={{ uri: k.img }} />
-        </CardItem>
-        <CardItem>
-          <Text>{k.title}</Text>
-          <Text>{k.priceS}</Text>
-        </CardItem>
-        <CardItem>
-          <Text>1YR</Text>
-        </CardItem>
-      </Card>
+      <View style={styles.item} key={i}>
+        <Image style={styles.img} source={{ uri: k.img }} />
+        <Text style={styles.title}>{k.title}</Text>
+        <Text style={styles.priceS}>
+          {k.priceS}-{k.priceE}
+        </Text>
+        <Text>{k.piece} Piece</Text>
+        <View style={styles.bottom}>
+          <Text style={{ fontSize: 10 }}>1YR</Text>
+          <Icon name="star" style={{ fontSize: 12, color: "#d35400" }} />
+          <Icon name="ios-heart" style={{ fontSize: 12, color: "red" }} />
+        </View>
+      </View>
     ));
   };
   return <View style={styles.container}>{cardItems(youItems)}</View>;
