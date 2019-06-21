@@ -20,6 +20,7 @@ import BottomFooter from "../Components/BottomFooter.js";
 import FeedsFollowing from "../Components/FeedsFollowing.js";
 import FeedsDiscover from "../Components/FeedsDiscover.js";
 import FeedsVideos from "../Components/FeedsVideos.js";
+// import ProductList from "../Containers/ProductList.js";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
@@ -57,7 +58,7 @@ class FeedsScreen extends Component {
           </Right>
         </Header>
 
-        <Tabs onChangeTab={this.changeTab} initialPage={0}>
+        <Tabs onChangeTab={this.changeTab} initialPage={1}>
           <Tab heading="Following">
             <FeedsFollowing />
           </Tab>

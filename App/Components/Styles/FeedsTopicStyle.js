@@ -10,9 +10,9 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   scroll: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    // flexDirection: "row",
+    // justifyContent: "flex-start",
+    // alignItems: "center",
     width: "100%",
     paddingLeft: 10
   },

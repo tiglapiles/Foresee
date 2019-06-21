@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image } from "react-native";
 import {
   Text,
@@ -24,6 +24,13 @@ export default function FeedsFollowing(props) {
             <Text note>April 15, 2016</Text>
           </Body>
         </Left>
+        <Right>
+          {k.follow ? null : (
+            <Button success round>
+              <Text>Follow</Text>
+            </Button>
+          )}
+        </Right>
       </CardItem>
       <CardItem>
         <Body>

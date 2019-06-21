@@ -32,6 +32,7 @@ import HomeMarkets from "../Components/HomeMarkets.js";
 import HomeDeals from "../Components/HomeDeals.js";
 import HomeTrade from "../Components/HomeTrade.js";
 import HomeYou from "../Components/HomeYou.js";
+import SearchBar from "../Components/SearchBar.js";
 
 class HomeScreen extends Component {
   componentDidMount() {
@@ -184,6 +185,7 @@ class HomeScreen extends Component {
     return (
       <Container style={styles.container}>
         {this.searchBar()}
+        {/* <SearchBar /> */}
         <Content>
           <ImagesSwiper style={{ padding: 0 }} />
           <HomeMenu />
