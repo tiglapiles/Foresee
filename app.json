@@ -1,4 +1,10 @@
 {
   "name": "Foresee",
-  "displayName": "Foresee"
+  "displayName": "Foresee",
+  "expo": {
+    "name": "Foresee",
+    "slug": "Foresee",
+    "sdkVersion": "33.0.0",
+    "privacy": "public"
+  }
 }
