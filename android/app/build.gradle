@@ -91,7 +91,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.foresee"
@@ -147,7 +147,9 @@ dependencies {
     compile project(':react-native-vector-icons')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
-    compile "com.facebook.react:react-native:+"  // From node_modules
+    //compile "com.android.support:appcompat-v7:+"
+    //compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile 'com.facebook.react:react-native:0.47.2'  // From node_modules
 }
 
 // Run this once to be able to run the application with BUCK
