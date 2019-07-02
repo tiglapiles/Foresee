@@ -1,5 +1,6 @@
 import React from "react";
 import { DrawerNavigator } from "react-navigation";
+import VideoFlip from "../Containers/VideoFlip";
 import FeedsScreen from "../Containers/FeedsScreen";
 import ForeseeScreen from "../Containers/ForeseeScreen";
 import HomeScreen from "../Containers/HomeScreen";
@@ -14,6 +15,7 @@ import SettingsScreen from "../Containers/SettingsScreen.js";
 import styles from "./Styles/NavigationStyles";
 
 const NavigationDrawer = DrawerNavigator(
+  // VideoFlip: { screen: VideoFlip },
   {
     Home: { screen: HomeScreen },
     Feeds: { screen: FeedsScreen },
