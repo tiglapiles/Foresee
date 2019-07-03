@@ -74,7 +74,7 @@ function FeedsVideos(props) {
     // console.log(id);
     navigation.navigate("Video");
   };
-  console.log(navigation);
+
   return (
     <Content style={styles.container}>
       <FeedsTopic />
