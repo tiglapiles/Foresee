@@ -16,12 +16,7 @@ export default class HomeMenu extends Component {
   // }
 
   render() {
-    const uri = [
-      "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      "https://sc01.alicdn.com/kf/HLB1sUeqTbvpK1RjSZFqq6AXUVXaF/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      "https://sc02.alicdn.com/kf/HLB119SvTkPoK1RjSZKbq6x1IXXaY/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      "https://sc02.alicdn.com/kf/HLB119SvTkPoK1RjSZKbq6x1IXXaY/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg"
-    ];
+    const uri = ["1.png", "2.png", "3.png", "4.png"];
 
     return (
       <View style={styles.container}>
@@ -30,7 +25,7 @@ export default class HomeMenu extends Component {
           <Text style={styles.title}>All Categories</Text>
         </View>
         <View style={styles.item}>
-          <Thumbnail source={{ uri: uri[0] }} />
+          <Thumbnail source={{ uri: uri[1] }} />
           <Text style={styles.title}>Request for Quotation</Text>
         </View>
         <View style={styles.item}>

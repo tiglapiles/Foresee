@@ -72,7 +72,7 @@ function FeedsVideos(props) {
   ];
   const handleUp = id => {
     // console.log(id);
-    navigation.navigate("VideoFlip");
+    navigation.navigate("Help Center");
   };
   console.log(navigation);
   return (

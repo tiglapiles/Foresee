@@ -11,6 +11,7 @@ import CurrencyScreen from "../Containers/CurrencyScreen.js";
 import HelpScreen from "../Containers/HelpScreen.js";
 import ScanScreen from "../Containers/ScanScreen.js";
 import SettingsScreen from "../Containers/SettingsScreen.js";
+// import FeedsNavigation from "../Navigation/FeedsNavigation.js";
 
 import styles from "./Styles/NavigationStyles";
 
@@ -24,7 +25,7 @@ const NavigationDrawer = DrawerNavigator(
     "My Favorites": { screen: MyScreen },
     "Scan QR Code": { screen: ScanScreen },
     "Currency Converter": { screen: CurrencyScreen },
-    "Help Center": { screen: HelpScreen },
+    "Help Center": { screen: VideoFlip },
     Settings: { screen: SettingsScreen }
   },
   {

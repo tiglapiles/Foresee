@@ -27,13 +27,7 @@ export default class ImagesSwiper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgList: [
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg",
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg",
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg",
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg",
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg"
-      ],
+      imgList: ["banner.png", "banner2.png"],
       loadQueue: [0, 0, 0, 0]
     };
     this.loadHandle = this.loadHandle.bind(this);
