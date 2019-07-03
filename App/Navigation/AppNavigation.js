@@ -6,12 +6,14 @@ import styles from "./Styles/NavigationStyles";
 import Login from "../Containers/LoginScreen";
 import LaunchScreen from "../Containers/LaunchScreen";
 import NavigationDrawer from "./NavigationDrawer";
+import VideoFlip from "../Containers/VideoFlip.js";
 
 const PrimaryNav = StackNavigator(
   {
     Login: { screen: Login },
     LaunchScreen: { screen: LaunchScreen },
-    NavigationDrawer: { screen: NavigationDrawer }
+    NavigationDrawer: { screen: NavigationDrawer },
+    Video: { screen: VideoFlip }
   },
   {
     initialRouteName: "Login",

@@ -4,6 +4,7 @@ import { Content, Text } from "native-base";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
+import VideoContain from "../Components/VideoContain.js";
 
 // Styles
 import styles from "./Styles/VideoFlipStyle";
@@ -23,7 +24,11 @@ class VideoFlip extends Component {
   render() {
     return (
       <Content>
-        <Text>VideoFlip Container</Text>
+        <VideoContain
+          videoItem={{
+            url: `http://b2b.yjzw.net/images/videos/Eco-Friendly-Geodesic-Dome-Tent-Camp-Resort.mp4`
+          }}
+        />
       </Content>
     );
   }
