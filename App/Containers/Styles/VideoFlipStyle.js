@@ -20,8 +20,8 @@ export default StyleSheet.create({
     paddingRight: 10
   },
   image: {
-    width: width,
-    height: height
+    width: "100%",
+    height: "100%"
   },
   item: {
     width: width,

@@ -1,5 +1,6 @@
 import React from "react";
 import { DrawerNavigator } from "react-navigation";
+import ProductDetail from "../Containers/ProductDetail";
 import VideoFlip from "../Containers/VideoFlip";
 import FeedsScreen from "../Containers/FeedsScreen";
 import ForeseeScreen from "../Containers/ForeseeScreen";
@@ -16,7 +17,6 @@ import SettingsScreen from "../Containers/SettingsScreen.js";
 import styles from "./Styles/NavigationStyles";
 
 const NavigationDrawer = DrawerNavigator(
-  // VideoFlip: { screen: VideoFlip },
   {
     Home: { screen: HomeScreen },
     Feeds: { screen: FeedsScreen },
@@ -25,7 +25,7 @@ const NavigationDrawer = DrawerNavigator(
     "My Favorites": { screen: MyScreen },
     "Scan QR Code": { screen: ScanScreen },
     "Currency Converter": { screen: CurrencyScreen },
-    "Help Center": { screen: VideoFlip },
+    "Help Center": { screen: HelpScreen },
     Settings: { screen: SettingsScreen }
   },
   {

@@ -1,9 +1,9 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { View, Text, Icon } from "native-base";
 import styles from "./Styles/HomeYouStyle";
 
-export default function HomeYou() {
+export default function HomeYou(props) {
   const youItems = [
     {
       img:
@@ -38,20 +38,25 @@ export default function HomeYou() {
       piece: 1
     }
   ];
+  const handleDetail = () => {
+    props.navigation.navigate("ProductDetail");
+  };
   const cardItems = c => {
     return c.map((k, i) => (
       <View style={styles.item} key={i}>
-        <Image style={styles.img} source={{ uri: k.img }} />
-        <Text style={styles.title}>{k.title}</Text>
-        <Text style={styles.priceS}>
-          {k.priceS}-{k.priceE}
-        </Text>
-        <Text>{k.piece} Piece</Text>
-        <View style={styles.bottom}>
-          <Text style={{ fontSize: 10 }}>1YR</Text>
-          <Icon name="star" style={{ fontSize: 12, color: "#d35400" }} />
-          <Icon name="ios-heart" style={{ fontSize: 12, color: "red" }} />
-        </View>
+        <TouchableOpacity onPress={handleDetail}>
+          <Image style={styles.img} source={{ uri: k.img }} />
+          <Text style={styles.title}>{k.title}</Text>
+          <Text style={styles.priceS}>
+            {k.priceS}-{k.priceE}
+          </Text>
+          <Text>{k.piece} Piece</Text>
+          <View style={styles.bottom}>
+            <Text style={{ fontSize: 10 }}>1YR</Text>
+            <Icon name="star" style={{ fontSize: 12, color: "#d35400" }} />
+            <Icon name="ios-heart" style={{ fontSize: 12, color: "red" }} />
+          </View>
+        </TouchableOpacity>
       </View>
     ));
   };
