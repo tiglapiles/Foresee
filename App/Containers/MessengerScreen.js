@@ -41,21 +41,18 @@ class MessengerScreen extends Component {
   messengeList = () => {
     const list = [
       {
-        url:
-          "https://i.alicdn.com/sc01/kf/HTB1oKhnbRGw3KVjSZFw762Q2FXau/Wholesales-different-dial-alloy-insert-clock.png_140x140xz.jpg",
+        url: "5.png",
         title: "Notification",
         note: "Hi Tiglath, view the most popular pr...",
         date: "Yesterday"
       },
       {
-        url:
-          "https://i.alicdn.com/sc01/kf/HTB1JXQ4aEvrK1RjSspcq6zzSXXau/30-inch-8k-190T-pongee-auto-open.jpg_140x140xz.jpg",
+        url: "6.png",
         title: "New Contacts",
         note: "New Connections and Requests"
       },
       {
-        url:
-          "https://i.alicdn.com/sc01/kf/HTB1XQn3V9zqK1RjSZFpq6ykSXXaX/freezer-safe-meal-prep-container-15-packs.jpg_140x140.jpg",
+        url: "7.png",
         title: "Inquiries",
         note: "No Content"
       }
@@ -124,28 +121,28 @@ class MessengerScreen extends Component {
               <Grid>
                 <Col>
                   <View style={styles.mItem}>
-                    <Icon name="ios-ionitron" style={{ fontSize: 60 }} />
+                    <Thumbnail source={{ uri: "8.png" }} />
                     <Text>TradeManager</Text>
                   </View>
                 </Col>
                 <Col>
                   <View style={styles.mItem}>
-                    <Icon name="ios-git-network" style={{ fontSize: 60 }} />
+                    <Thumbnail source={{ uri: "9.png" }} />
                     <Text>Connections</Text>
                   </View>
                 </Col>
                 <Col>
                   <View style={styles.mItem}>
-                    <Icon name="ios-pricetag" style={{ fontSize: 60 }} />
+                    <Thumbnail source={{ uri: "10.png" }} />
                     <Text>Tags</Text>
                   </View>
                 </Col>
               </Grid>
             </View>
             <View style={styles.new}>
-              <Icon
-                name="ios-contacts"
-                style={{ fontSize: 60, marginRight: 10, marginLeft: 10 }}
+              <Thumbnail
+                source={{ uri: "11.png" }}
+                style={{ marginRight: 10, marginLeft: 10 }}
               />
               <Text>New Contacts</Text>
             </View>

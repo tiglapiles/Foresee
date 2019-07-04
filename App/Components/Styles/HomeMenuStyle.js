@@ -11,7 +11,8 @@ export default StyleSheet.create({
     width: "25%",
     flexDirection: "column",
     justifyContent: "space-around",
-    alignItems: "center"
+    alignItems: "center",
+    alignContent: "stretch"
   },
   title: {
     fontSize: 12

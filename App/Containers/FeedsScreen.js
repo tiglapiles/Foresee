@@ -20,6 +20,7 @@ import BottomFooter from "../Components/BottomFooter.js";
 import FeedsFollowing from "../Components/FeedsFollowing.js";
 import FeedsDiscover from "../Components/FeedsDiscover.js";
 import FeedsVideos from "../Components/FeedsVideos.js";
+// import FeedNavRedux from "../Navigation/FeedsNavigation.js";
 // import ProductList from "../Containers/ProductList.js";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -66,7 +67,7 @@ class FeedsScreen extends Component {
             <FeedsDiscover />
           </Tab>
           <Tab heading="Videos">
-            <FeedsVideos />
+            <FeedsVideos {...this.props} />
           </Tab>
         </Tabs>
         {/* <Content padder> */}

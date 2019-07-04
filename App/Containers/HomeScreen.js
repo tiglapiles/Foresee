@@ -120,7 +120,7 @@ class HomeScreen extends Component {
         case "trade":
           return <HomeTrade />;
         case "you":
-          return <HomeYou />;
+          return <HomeYou {...this.props} />;
         default:
           return <View style={{ height: 100, backgroundColor: "#fff" }} />;
       }

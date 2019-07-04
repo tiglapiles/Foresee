@@ -1,5 +1,7 @@
 import React from "react";
 import { DrawerNavigator } from "react-navigation";
+import ProductDetail from "../Containers/ProductDetail";
+import VideoFlip from "../Containers/VideoFlip";
 import FeedsScreen from "../Containers/FeedsScreen";
 import ForeseeScreen from "../Containers/ForeseeScreen";
 import HomeScreen from "../Containers/HomeScreen";
@@ -10,6 +12,7 @@ import CurrencyScreen from "../Containers/CurrencyScreen.js";
 import HelpScreen from "../Containers/HelpScreen.js";
 import ScanScreen from "../Containers/ScanScreen.js";
 import SettingsScreen from "../Containers/SettingsScreen.js";
+// import FeedsNavigation from "../Navigation/FeedsNavigation.js";
 
 import styles from "./Styles/NavigationStyles";
 
