@@ -46,6 +46,7 @@
     "redux-persist": "^4.1.0",
     "redux-saga": "^0.15.6",
     "reduxsauce": "0.4.1",
+    "rn-sliding-up-panel": "^2.3.0",
     "seamless-immutable": "^7.0.1"
   },
   "devDependencies": {
