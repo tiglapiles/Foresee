@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // import PropTypes from 'prop-types';
+import { TouchableOpacity } from "react-native";
 import { View, Text, Icon, Thumbnail } from "native-base";
 import styles from "./Styles/HomeMenuStyle";
 
@@ -15,6 +16,11 @@ export default class HomeMenu extends Component {
   //   someSetting: false
   // }
 
+  category = e => {
+    // console.log(e);
+    this.props.navigation.navigate("ProductCategory");
+  };
+
   render() {
     const uri = [
       "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
@@ -26,9 +32,12 @@ export default class HomeMenu extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.item}>
-          <Thumbnail source={{ uri: uri[0] }} />
+          <TouchableOpacity onPress={this.category}>
+            <Thumbnail source={{ uri: uri[0] }} />
+          </TouchableOpacity>
           <Text style={styles.title}>All Categories</Text>
         </View>
+
         <View style={styles.item}>
           <Thumbnail source={{ uri: uri[0] }} />
           <Text style={styles.title}>Request for Quotation</Text>
