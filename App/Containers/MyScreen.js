@@ -40,7 +40,7 @@ class MyScreen extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>MyScreen</Title>
+            <Title>My Favorites</Title>
           </Body>
           <Right>
             <Text>SELECT</Text>
