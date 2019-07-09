@@ -17,11 +17,11 @@ import { startup } from "./StartupSagas";
 import { login } from "./LoginSagas";
 import { getUserAvatar } from "./GithubSagas";
 import {
-  homeRequest
+  // homeRequest
   // headFootRequest,
   // productContentRequest,
   // productListRequest,
-  // cateListRequest,
+  queryCateList
   // shopHomeRequest,
   // shopCateProduct
 } from "./ProductSagas";
@@ -43,6 +43,6 @@ export default function* root() {
 
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
-    takeLatest(ProductTypes.HOME_REQUEST, homeRequest, productApi)
+    takeLatest(ProductTypes.CATE_LIST_REQUEST, queryCateList, productApi)
   ]);
 }

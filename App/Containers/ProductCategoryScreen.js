@@ -11,9 +11,6 @@ import {
   Text,
   Title,
   Icon,
-  Footer,
-  FooterTab,
-  List,
   ListItem,
   Separator,
   Thumbnail
@@ -40,15 +37,22 @@ class ProductCategoryScreen extends Component {
       this.props.navigation.goBack();
       return true;
     });
+    this.props.getSubCate();
   }
 
   componentWillReceiveProps(newProps) {
     console.log(newProps);
   }
 
-  goSubCate = e => {
-    this.props.getCate();
-    this.props.navigation.navigate("ProductCategory", { cateName: e });
+  goSubCate = ({ cateName, subCate }) => {
+    if (subCate && subCate.length !== 0) {
+      this.props.navigation.navigate("ProductCategory", {
+        cateName: cateName,
+        subCate: subCate
+      });
+    } else {
+      this.props.navigation.navigate("ProductList");
+    }
   };
 
   getCategories = data =>
@@ -56,12 +60,12 @@ class ProductCategoryScreen extends Component {
       <ListItem
         avatar
         style={{ marginTop: 10 }}
-        onPress={() => this.goSubCate(k.title)}
+        onPress={() => this.goSubCate({ cateName: k.name, subCate: k._child })}
         key={i}
       >
         <Thumbnail source={{ uri: k.url }} />
         <Body>
-          <Text>{k.title}</Text>
+          <Text>{k.name}</Text>
         </Body>
       </ListItem>
     ));
@@ -74,6 +78,7 @@ class ProductCategoryScreen extends Component {
       }
     } = this.props;
     const cateName = params ? params.cateName : "All Categories";
+    const subCate = params ? params.subCate : cate;
     return (
       <Container>
         <Header>
@@ -92,7 +97,7 @@ class ProductCategoryScreen extends Component {
           <Separator bordered>
             <Text>{cateName}</Text>
           </Separator>
-          {this.getCategories(cate)}
+          {this.getCategories(subCate)}
         </Content>
       </Container>
     );
@@ -107,9 +112,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCate: () => {
-      dispatch(ProductActions.homeRequest());
-    }
+    getSubCate: dispatch(ProductActions.cateListRequest())
   };
 };
 
