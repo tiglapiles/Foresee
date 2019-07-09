@@ -14,8 +14,8 @@ const NavigationProduct = new StackNavigator(
     ProductList: { screen: ProductList }
   },
   {
-    headerMode: "none"
-    // initialRouteName: "ProductDetail"
+    headerMode: "none",
+    initialRouteName: "ProductDetail"
   }
 );
 

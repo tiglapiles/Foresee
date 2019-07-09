@@ -6,7 +6,9 @@ import styles from "./Styles/NavigationStyles";
 import Login from "../Containers/LoginScreen";
 import LaunchScreen from "../Containers/LaunchScreen";
 import NavigationDrawer from "./NavigationDrawer";
-import NavigationProduct from "./NavigationProduct.js";
+import NavigationProduct from "./NavigationProduct";
+import VideoFlip from "../Containers/VideoFlip.js";
+import ProductDetail from "../Containers/ProductDetail.js";
 
 const PrimaryNav = StackNavigator(
   {
