@@ -27,7 +27,7 @@ export function* queryCateList(api, action) {
   const defaultCate = require("../Fixtures/cate.json");
 
   if (response.ok) {
-    yield put(ProductActions.cateListRequest(response.data.data));
+    // yield put(ProductActions.cateListRequest(response.data.data));
   } else {
     yield put(ProductActions.cateListRequest(defaultCate));
   }
