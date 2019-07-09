@@ -1,7 +1,5 @@
 import React from "react";
 import { DrawerNavigator } from "react-navigation";
-import ProductDetail from "../Containers/ProductDetail";
-import VideoFlip from "../Containers/VideoFlip";
 import FeedsScreen from "../Containers/FeedsScreen";
 import ForeseeScreen from "../Containers/ForeseeScreen";
 import HomeScreen from "../Containers/HomeScreen";

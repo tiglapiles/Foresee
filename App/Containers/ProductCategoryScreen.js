@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import { BackHandler, TouchableOpacity } from "react-native";
+import { BackHandler } from "react-native";
 import {
   Content,
   Container,
@@ -79,6 +79,7 @@ class ProductCategoryScreen extends Component {
     } = this.props;
     const cateName = params ? params.cateName : "All Categories";
     const subCate = params ? params.subCate : cate;
+
     return (
       <Container>
         <Header>
