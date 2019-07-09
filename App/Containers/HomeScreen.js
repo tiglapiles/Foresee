@@ -188,7 +188,7 @@ class HomeScreen extends Component {
         {/* <SearchBar /> */}
         <Content>
           <ImagesSwiper style={{ padding: 0 }} />
-          <HomeMenu />
+          <HomeMenu {...this.props} />
           <View style={{ padding: 5 }}>{this.renderSubItems()}</View>
         </Content>
 
