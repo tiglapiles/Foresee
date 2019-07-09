@@ -97,7 +97,7 @@ class ForeseeScreen extends Component {
                 </Grid>
               </CardItem>
             </Card>
-            <Card>
+            <Card style={{ flexDirection: "column" }}>
               <CardItem>
                 <Icon name="ios-document" />
                 <Text>Manage Order</Text>
@@ -119,7 +119,7 @@ class ForeseeScreen extends Component {
                 <Right />
               </CardItem>
             </Card>
-            <Card>
+            <Card style={{ flexDirection: "column" }}>
               <CardItem>
                 <Icon name="ios-cash" />
                 <Text>My Coupons</Text>
@@ -131,7 +131,7 @@ class ForeseeScreen extends Component {
                 <Right />
               </CardItem>
             </Card>
-            <Card>
+            <Card style={{ flexDirection: "column" }}>
               <CardItem>
                 <Icon name="ios-pin" />
                 <Text>Shipping Address</Text>

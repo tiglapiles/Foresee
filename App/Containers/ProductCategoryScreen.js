@@ -41,7 +41,7 @@ class ProductCategoryScreen extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps);
+    console.log("ProductCate:", newProps);
   }
 
   goSubCate = ({ cateName, subCate }) => {
@@ -55,7 +55,7 @@ class ProductCategoryScreen extends Component {
     }
   };
 
-  getCategories = data =>
+  getCategories = (data = []) =>
     data.map((k, i) => (
       <ListItem
         avatar
@@ -113,7 +113,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getSubCate: dispatch(ProductActions.cateListRequest())
+    getSubCate: () => dispatch(ProductActions.cateListRequest())
   };
 };
 

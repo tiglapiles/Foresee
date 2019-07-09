@@ -26,8 +26,7 @@ export const INITIAL_STATE = Immutable({
 // export const productContentRequest = state => state.merge({ cate: [] });
 // export const productListRequest = state => state.merge({ cate: [] });
 export const cateList = (state, { list }) => {
-  console.log(list);
-  return state.merge({ cate: list });
+  return state.replace({ cate: list });
 };
 // export const shopHomeRequest = state => state.merge({ cate: [] });
 // export const shopCateProduct = state => state.merge({ cate: [] });

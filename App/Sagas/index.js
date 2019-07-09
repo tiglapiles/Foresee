@@ -42,7 +42,7 @@ export default function* root() {
     takeLatest(LoginTypes.LOGIN_REQUEST, login),
 
     // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
-    takeLatest(ProductTypes.CATE_LIST_REQUEST, queryCateList, productApi)
+    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
+    // takeLatest(ProductTypes.CATE_LIST_REQUEST, queryCateList, productApi)
   ]);
 }
