@@ -36,7 +36,10 @@ export default class ProductPriceCard extends Component {
               <Icon name="ios-more" />
             </Right>
           </CardItem>
-          <CardItem>
+          <CardItem
+            button
+            onPress={() => this.props.navigation.navigate("ShopDetail")}
+          >
             <Body>
               <Text>Click on any carditem</Text>
               <Text>Click on any carditem</Text>

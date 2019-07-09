@@ -26,11 +26,10 @@ import ImageSwiper from "../Components/ImagesSwiper.js";
 import ProductPriceCard from "../Components/ProductPriceCard.js";
 import SupplierProfileCard from "../Components/SupplierProfileCard.js";
 import DetailDrawer from "../Components/DetailDrawer.js";
-
 // Styles
-import styles from "./Styles/ProductDetailStyle";
+import styles from "./Styles/ShopDetailStyle";
 
-class ProductDetail extends Component {
+class ShopDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -69,7 +68,7 @@ class ProductDetail extends Component {
             <Content>
               <ImageSwiper />
               <ProductPriceCard />
-              <SupplierProfileCard {...this.props} />
+              <SupplierProfileCard />
               <DetailDrawer />
             </Content>
           </Tab>
@@ -136,4 +135,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductDetail);
+)(ShopDetail);
