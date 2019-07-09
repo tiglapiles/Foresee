@@ -15,7 +15,9 @@ import {
   Container,
   View,
   Footer,
-  FooterTab
+  TabHeading,
+  Input,
+  Item
 } from "native-base";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
@@ -26,6 +28,7 @@ import ImageSwiper from "../Components/ImagesSwiper.js";
 import ProductPriceCard from "../Components/ProductPriceCard.js";
 import SupplierProfileCard from "../Components/SupplierProfileCard.js";
 import DetailDrawer from "../Components/DetailDrawer.js";
+import FeedsCard from "../Components/FeedsCard";
 // Styles
 import styles from "./Styles/ShopDetailStyle";
 
@@ -40,30 +43,40 @@ class ShopDetail extends Component {
       return true;
     });
   }
-
+  renderCards = c => c.map((k, i) => <FeedsCard cardInfo={k} key={i} />);
   render() {
     return (
       <Container style={styles.container}>
-        <Header transparent hasTabs>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Product Details</Title>
-          </Body>
-          <Right>
-            <Button transparent>
-              <Icon name="ios-heart" />
-            </Button>
-          </Right>
+        <Header transparent hasTabs searchBar rounded>
+          {/* <Left> */}
+          <Button transparent onPress={() => this.props.navigation.goBack()}>
+            <Icon name="arrow-back" />
+          </Button>
+          {/* </Left> */}
+          {/* <Body> */}
+          <Item>
+            <Icon name="ios-search" />
+            <Input placeholder="Search" />
+            <Icon name="ios-people" />
+          </Item>
+          {/* </Body> */}
+          {/* <Right> */}
+          <Button transparent>
+            <Icon name="ios-menu" />
+          </Button>
+          {/* </Right> */}
         </Header>
         <Tabs>
           <Tab
-            heading="OVERVIEW"
+            /* heading="Home" */
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
+            heading={
+              <TabHeading style={{ flexDirection: "column" }}>
+                <Icon name="home" />
+                <Text>Home</Text>
+              </TabHeading>
+            }
           >
             <Content>
               <ImageSwiper />
@@ -73,9 +86,30 @@ class ShopDetail extends Component {
             </Content>
           </Tab>
           <Tab
-            heading="DETAILS"
+            /* heading="Product" */
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
+            heading={
+              <TabHeading style={{ flexDirection: "column" }}>
+                <Icon name="logo-dropbox" />
+                <Text>Product</Text>
+              </TabHeading>
+            }
+          >
+            <Content>
+              <HomeYou {...this.props} />
+            </Content>
+          </Tab>
+          <Tab
+            /* heading="Profile" */
+            textStyle={styles.tabTitle}
+            activeTextStyle={styles.tabTitle}
+            heading={
+              <TabHeading style={{ flexDirection: "column" }}>
+                <Icon name="ios-document" />
+                <Text>Profile</Text>
+              </TabHeading>
+            }
           >
             {/* <Content style={{ flex: 1 }}> */}
             {/* <ScrollView style={{ width: "100%", height: "100%", flex: 1 }}> */}
@@ -94,29 +128,33 @@ class ShopDetail extends Component {
             {/* </Content> */}
           </Tab>
           <Tab
-            heading="RECOMMENDED"
+            /* heading="Feeds" */
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
+            heading={
+              <TabHeading style={{ flexDirection: "column" }}>
+                <Icon name="heart" />
+                <Text>Feeds</Text>
+              </TabHeading>
+            }
           >
             <Content>
-              <HomeYou {...this.props} />
+              {this.renderCards(require("../Fixtures/follows.json"))}
             </Content>
           </Tab>
         </Tabs>
 
         <Footer style={styles.footer}>
-          {/* <FooterTab> */}
           <View style={styles.footV}>
-            <Button small style={styles.footButton}>
-              <Text style={styles.buttonText}>START ORDER</Text>
-            </Button>
             <Button small style={styles.footButton}>
               <Text style={styles.buttonText}>SEND INQUIRY</Text>
             </Button>
+            {/* <Button small style={styles.footButton}> */}
+            {/*   <Text style={styles.buttonText}>SEND INQUIRY</Text> */}
+            {/* </Button> */}
             <Button small style={styles.footButton}>
               <Text style={styles.buttonText}>CHAT NOW</Text>
             </Button>
-            {/* </FooterTab> */}
           </View>
         </Footer>
       </Container>
