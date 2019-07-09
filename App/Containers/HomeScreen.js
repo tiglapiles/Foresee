@@ -89,7 +89,10 @@ class HomeScreen extends Component {
     ];
     const bCard = () => (
       <Card>
-        <CardItem>
+        <CardItem
+          button
+          onPress={() => this.props.navigation.navigate("ProductDetail")}
+        >
           <Left>
             <Text>//Your text here</Text>
           </Left>
@@ -108,17 +111,17 @@ class HomeScreen extends Component {
     const subComponent = i => {
       switch (i) {
         case "products":
-          return <HomeProduct />;
+          return <HomeProduct {...this.props} />;
         case "markets":
-          return <HomeMarkets />;
+          return <HomeMarkets {...this.props} />;
         case "deals":
-          return <HomeDeals />;
+          return <HomeDeals {...this.props} />;
         case "brand":
-          return <HomeDeals />;
+          return <HomeDeals {...this.props} />;
         case "business":
           return bCard();
         case "trade":
-          return <HomeTrade />;
+          return <HomeTrade {...this.props} />;
         case "you":
           return <HomeYou {...this.props} />;
         default:
