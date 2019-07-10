@@ -43,8 +43,21 @@ export default function* root() {
 
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
-    // takeLatest(ProductTypes.CATE_LIST_REQUEST, queryCateList, productApi),
+    // ok.yjzw api
+    takeLatest(ProductTypes.REQUEST_HOME, queryHome, productApi),
+    takeLatest(ProductTypes.REQUEST_HEAD_FOOT, queryHeadFoot, productApi),
+    takeLatest(
+      ProductTypes.REQUEST_PRODUCT_CONTENT,
+      queryProductContent,
+      productApi
+    ),
+    takeLatest(ProductTypes.REQUEST_PRODUCT_LIST, queryProductList, productApi),
     takeLatest(ProductTypes.REQUEST_CATE_LIST, queryCateList, productApi),
-    takeLatest(ProductTypes.REQUEST_PRODUCT_LIST, queryProductList, productApi)
+    takeLatest(ProductTypes.REQUEST_SHOP_HOME, queryShopHome, productApi),
+    takeLatest(
+      ProductTypes.REQUEST_SHOP_CATE_PRODUCT,
+      queryShopCateProduct,
+      productApi
+    )
   ]);
 }

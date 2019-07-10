@@ -2,15 +2,27 @@ import { createReducer, createActions } from "reduxsauce";
 import Immutable from "seamless-immutable";
 
 const { Types, Creators } = createActions({
-  receiveHome: ["payload"],
-  receiveHeadFoot: ["payload"],
-  receiveProductContent: ["payload"],
+  //home
+  requestHome: null,
+  receiveHome: ["home"],
+  // headfoot
+  requestHeadFoot: null,
+  receiveHeadFoot: ["headfoot"],
+  // product content
+  requestProductContent: ["id"],
+  receiveProductContent: ["detail"],
+  // product list
   requestProductList: ["cid", "page"],
   receiveProductList: ["list"],
+  // categories list
   requestCateList: ["type"],
   receiveCateList: ["cate"],
-  receiveShopHome: ["payload"],
-  receiveShopCateProduct: ["payload"]
+  // shop home
+  requestShopHome: ["url_name"],
+  receiveShopHome: ["shop"],
+  // shop product list
+  requestShopCateProduct: ["pid", "page"],
+  receiveShopCateProduct: ["shopList"]
 });
 
 export const ProductTypes = Types;
@@ -21,27 +33,54 @@ export const INITIAL_STATE = Immutable({
   list: []
 });
 
-export const homeRequest = (state, action) => {
-  return state.merge([]);
-};
+//home
+export const homeRequest = state => state.merge();
+export const receiveHome = (state, { home }) => state.merge({ home });
+// headfoot
 export const headFootRequest = state => state.merge({ cate: [] });
-export const productContentRequest = state => state.merge({ cate: [] });
+export const receiveHeadFoot = (state, { headfoot }) =>
+  state.merge({ headfoot });
+// product content
+export const productContentRequest = (state, { id }) => state.merge({ id });
+export const receiveProductContent = (state, { detail }) =>
+  state.merge({ detail });
+// product list
 export const productListRequest = (state, { cid = 1, page = 1 }) =>
   state.merge({ cid, page });
 export const receiveProductList = (state, { list }) => state.merge({ list });
+// categories list
 export const requestCateList = (state, { type }) => state.merge({ type: type });
 export const receiveCateList = (state, { cate }) => state.replace({ cate });
-export const shopHomeRequest = state => state.merge({ cate: [] });
-export const shopCateProduct = state => state.merge({ cate: [] });
+// shop home
+export const shopHomeRequest = (state, { url_name }) =>
+  state.merge({ url_name });
+export const receiveShopHome = (state, { shop }) => state.merge({ shop });
+// shop home product list
+export const shopCateProductRequest = (state, { pid, page }) =>
+  state.merge({ pid, page });
+export const receiveShopCateProduct = (state, { shopList }) =>
+  state.merge({ shopList });
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.HOME_REQUEST]: homeRequest,
-  [Types.HEAD_FOOT_REQUEST]: headFootRequest,
-  [Types.PRODUCT_CONTENT_REQUEST]: productContentRequest,
+  // home
+  [Types.REQUEST_HOME]: homeRequest,
+  [Types.RECEIVE_HOME]: receiveHome,
+  //head_foot
+  [Types.REQUEST_HEAD_FOOT]: headFootRequest,
+  [Types.RECEIVE_HEAD_FOOT]: receiveHeadFoot,
+  //product_content
+  [Types.REQUEST_PRODUCT_CONTENT]: productContentRequest,
+  [Types.RECEIVE_PRODUCT_CONTENT]: receiveProductContent,
+  // product_list
   [Types.REQUEST_PRODUCT_LIST]: productListRequest,
   [Types.RECEIVE_PRODUCT_LIST]: receiveProductList,
+  // categories_list
   [Types.REQUEST_CATE_LIST]: requestCateList,
   [Types.RECEIVE_CATE_LIST]: receiveCateList,
-  [Types.SHOP_HOME_REQUEST]: shopHomeRequest,
-  [Types.SHOP_CATE_PRODUCT]: shopCateProduct
+  // shop_home
+  [Types.REQUEST_SHOP_HOME]: shopHomeRequest,
+  [Types.RECEIVE_SHOP_HOME]: receiveShopHome,
+  // shop_home_product_list
+  [Types.REQUEST_SHOP_CATE_PRODUCT]: shopCateProduct,
+  [Types.RECEIVE_SHOP_CATE_PRODUCT]: receiveShopCateProduct
 });
