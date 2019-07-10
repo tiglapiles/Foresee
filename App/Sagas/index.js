@@ -17,13 +17,13 @@ import { startup } from "./StartupSagas";
 import { login } from "./LoginSagas";
 import { getUserAvatar } from "./GithubSagas";
 import {
-  // homeRequest
-  // headFootRequest,
-  // productContentRequest,
-  // productListRequest,
-  queryCateList
-  // shopHomeRequest,
-  // shopCateProduct
+  queryHome,
+  queryHeadFoot,
+  queryProductContent,
+  queryProductList,
+  queryCateList,
+  queryShopHome,
+  queryshopCateProduct
 } from "./ProductSagas";
 
 /* ------------- API ------------- */
@@ -42,7 +42,9 @@ export default function* root() {
     takeLatest(LoginTypes.LOGIN_REQUEST, login),
 
     // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
-    // takeLatest(ProductTypes.CATE_LIST_REQUEST, queryCateList, productApi)
+    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
+    // takeLatest(ProductTypes.CATE_LIST_REQUEST, queryCateList, productApi),
+    takeLatest(ProductTypes.REQUEST_CATE_LIST, queryCateList, productApi),
+    takeLatest(ProductTypes.REQUEST_PRODUCT_LIST, queryProductList, productApi)
   ]);
 }

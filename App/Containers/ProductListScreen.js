@@ -1,63 +1,119 @@
-import React, { Component } from 'react'
-import { BackHandler } from 'react-native'
-import { Content, Container, Header, Left, Right, Body, Button, Text, Title, Icon, Footer, FooterTab } from 'native-base'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { BackHandler, Image } from "react-native";
+import {
+  Content,
+  Container,
+  Header,
+  Left,
+  Right,
+  Body,
+  Button,
+  Text,
+  Title,
+  Icon,
+  List,
+  ListItem
+} from "native-base";
+import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import ProductActions from "../Redux/ProductRedux.js";
 
 // Styles
-import styles from './Styles/ProductListScreenStyle'
+import styles from "./Styles/ProductListScreenStyle";
 
 class ProductListScreen extends Component {
-  componentDidMount () {
-    BackHandler.addEventListener('hardwareBackPress', () => {
+  componentWillMount() {}
+
+  componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
-      return true
-    })
+      return true;
+    });
+    this.props.getList(this.props.navigation.state.params.id, 1);
   }
-  render () {
+
+  handleTouch = id => this.props.navigation.navigate("ProductDetail", { id });
+
+  scrollToBottomLoad = page => {
+    const {
+      getList,
+      navigation: {
+        state: { params }
+      }
+    } = this.props;
+    getList(params.id, parseInt(page, 10) + 1);
+  };
+
+  render() {
+    const {
+      list,
+      navigation: {
+        state: { params }
+      }
+    } = this.props;
+    const cateName = params ? params.cateName : "ProductList";
+
     return (
       <Container>
         <Header>
           <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            >
-              <Icon name="menu" />
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="md-arrow-back" />
             </Button>
           </Left>
           <Body>
-            <Title>ProductListScreen</Title>
+            <Title>{cateName}</Title>
           </Body>
           <Right />
-
         </Header>
 
         <Content padder>
-          <Text>ProductListScreen Content</Text>
+          <List
+            dataArray={list}
+            onEndReachedThreshold={200}
+            /* onEndReached={() => this.scrollToBottomLoad(1)} */
+            renderRow={i => (
+              <ListItem button onPress={() => this.handleTouch({ id: i.id })}>
+                <Left>
+                  <Image
+                    source={{ uri: i.master_img }}
+                    style={{ width: 150, height: 150 }}
+                  />
+                </Left>
+                <Body>
+                  <Text>{i.name}</Text>
+                  <Text note numberOfLines={1}>
+                    {i.url_name}
+                  </Text>
+                </Body>
+                <Right>
+                  <Button transparent>
+                    <Text>{i.tag}</Text>
+                  </Button>
+                </Right>
+              </ListItem>
+            )}
+          />
         </Content>
-
-        <Footer>
-          <FooterTab>
-            <Button active full>
-              <Text>Footer</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
       </Container>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-  }
-}
+    list: state.product.list
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-  }
-}
+    getList: (cid, page) =>
+      dispatch(ProductActions.requestProductList(cid, page))
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductListScreen)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductListScreen);

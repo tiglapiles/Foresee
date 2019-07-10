@@ -1,42 +1,58 @@
 import { put, call } from "redux-saga/effects";
 import ProductActions from "../Redux/ProductRedux.js";
 
-// export function* homeRequest(api, action) {
-//   const response = yield call(api.getHome);
+export function* queryHome(api, action) {
+  const response = yield call(api.getHome);
 
-//   if (response.ok) {
-//     console.log(ProductActions);
-//     yield put(ProductActions.homeRequest());
-//   }
-// }
+  if (response.ok) {
+    yield put(ProductActions.receiveHome(response.data.data));
+  }
+}
 
-// export function* headFootRequest() {
-//   yield put(ProductActions.headFootRequest());
-// }
+export function* queryHeadFoot() {
+  const response = yield call(api.getHeadFoot);
 
-// export function* productContentRequest() {
-//   yield put(ProductActions.productContentRequest());
-// }
+  if (response.ok) {
+    yield put(ProductActions.receiveHeadFoot(response.data.data));
+  }
+}
 
-// export function* productListRequest() {
-//   yield put(ProductActions.productListRequest());
-// }
+export function* queryProductContent() {
+  const response = yield call(api.getProductContent);
+  if (response.ok) {
+    yield put(ProductActions.receiveProductContent(response.data.data));
+  }
+}
+
+export function* queryProductList(api, { cid = 1, page = 1 }) {
+  const response = yield call(api.getProductList, { cid, page });
+  const data = response ? response.data.data.data : [];
+  if (response.ok) {
+    yield put(ProductActions.receiveProductList(data));
+  }
+}
 
 export function* queryCateList(api, action) {
   const response = yield call(api.getCateList);
   const defaultCate = require("../Fixtures/cate.json");
 
   if (response.ok) {
-    yield put(ProductActions.cateListRequest(response.data.data));
+    yield put(ProductActions.receiveCateList(response.data.data));
   } else {
-    yield put(ProductActions.cateListRequest(defaultCate));
+    yield put(ProductActions.receiveCateList(defaultCate));
   }
 }
 
-// export function* shopHomeRequest() {
-//   yield put(ProductActions.shopHomeRequest());
-// }
+export function* queryShopHome() {
+  const response = yield call(api.getShopHome);
+  if (response.ok) {
+    yield put(ProductActions.receiveShopHome(response.data.data));
+  }
+}
 
-// export function* shopCateProduct() {
-//   yield put(ProductActions.shopCateProduct());
-// }
+export function* queryShopCateProduct() {
+  const response = yield call(api.getShopCateProduct);
+  if (response.ok) {
+    yield put(ProductActions.receiveShopCateProduct(response.data.data));
+  }
+}

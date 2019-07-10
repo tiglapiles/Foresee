@@ -41,17 +41,17 @@ class ProductCategoryScreen extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log("ProductCate:", newProps);
+    // console.log("ProductCate:", newProps);
   }
 
-  goSubCate = ({ cateName, subCate }) => {
+  goSubCate = ({ cateName = "Categories", subCate, id }) => {
     if (subCate && subCate.length !== 0) {
       this.props.navigation.navigate("ProductCategory", {
-        cateName: cateName,
-        subCate: subCate
+        cateName,
+        subCate
       });
     } else {
-      this.props.navigation.navigate("ProductList");
+      this.props.navigation.navigate("ProductList", { cateName, id });
     }
   };
 
@@ -60,10 +60,12 @@ class ProductCategoryScreen extends Component {
       <ListItem
         avatar
         style={{ marginTop: 10 }}
-        onPress={() => this.goSubCate({ cateName: k.name, subCate: k._child })}
+        onPress={() =>
+          this.goSubCate({ cateName: k.name, subCate: k._child, id: k.id })
+        }
         key={i}
       >
-        <Thumbnail source={{ uri: k.url }} />
+        <Thumbnail source={{ uri: k.m_img }} />
         <Body>
           <Text>{k.name}</Text>
         </Body>
@@ -113,7 +115,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getSubCate: () => dispatch(ProductActions.cateListRequest())
+    getSubCate: () => dispatch(ProductActions.requestCateList())
   };
 };
 
