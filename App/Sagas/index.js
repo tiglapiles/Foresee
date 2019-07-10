@@ -23,7 +23,7 @@ import {
   queryProductList,
   queryCateList,
   queryShopHome,
-  queryshopCateProduct
+  queryShopCateProduct
 } from "./ProductSagas";
 
 /* ------------- API ------------- */

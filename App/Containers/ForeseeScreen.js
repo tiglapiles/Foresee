@@ -33,6 +33,10 @@ class ForeseeScreen extends Component {
     });
   }
 
+  handleItem = name => this.props.navigation.navigate(name);
+
+  getCardItems = items => require("../Fixtures/foresee.json")[items];
+
   render() {
     return (
       <Container>
@@ -97,62 +101,39 @@ class ForeseeScreen extends Component {
                 </Grid>
               </CardItem>
             </Card>
-            <Card style={{ flexDirection: "column" }}>
-              <CardItem>
-                <Icon name="ios-document" />
-                <Text>Manage Order</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-quote" />
-                <Text>Request for Quotation</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-mail" />
-                <Text>Inquiries</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-flash" />
-                <Text>Manage Quotes</Text>
-                <Right />
-              </CardItem>
-            </Card>
-            <Card style={{ flexDirection: "column" }}>
-              <CardItem>
-                <Icon name="ios-cash" />
-                <Text>My Coupons</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="logo-bitcoin" />
-                <Text>Pay Later</Text>
-                <Right />
-              </CardItem>
-            </Card>
-            <Card style={{ flexDirection: "column" }}>
-              <CardItem>
-                <Icon name="ios-pin" />
-                <Text>Shipping Address</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-cloud" />
-                <Text>AliClound Drive</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-help-circle" />
-                <Text>Help Centera</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-settings" />
-                <Text>Settings</Text>
-                <Right />
-              </CardItem>
-            </Card>
+            <Card
+              style={{ flexDirection: "column" }}
+              dataArray={this.getCardItems("manage")}
+              renderRow={o => (
+                <CardItem button onPress={() => this.handleItem(o.navigate)}>
+                  <Icon name={o.icon} />
+                  <Text>{o.name}</Text>
+                  <Right />
+                </CardItem>
+              )}
+            />
+            <Card
+              style={{ flexDirection: "column" }}
+              dataArray={this.getCardItems("pay")}
+              renderRow={o => (
+                <CardItem button onPress={() => this.handleItem(o.navigate)}>
+                  <Icon name={o.icon} />
+                  <Text>{o.name}</Text>
+                  <Right />
+                </CardItem>
+              )}
+            />
+            <Card
+              style={{ flexDirection: "column" }}
+              dataArray={this.getCardItems("set")}
+              renderRow={o => (
+                <CardItem button onPress={() => this.handleItem(o.navigate)}>
+                  <Icon name={o.icon} />
+                  <Text>{o.name}</Text>
+                  <Right />
+                </CardItem>
+              )}
+            />
           </View>
         </Content>
 

@@ -81,6 +81,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.REQUEST_SHOP_HOME]: shopHomeRequest,
   [Types.RECEIVE_SHOP_HOME]: receiveShopHome,
   // shop_home_product_list
-  [Types.REQUEST_SHOP_CATE_PRODUCT]: shopCateProduct,
+  [Types.REQUEST_SHOP_CATE_PRODUCT]: shopCateProductRequest,
   [Types.RECEIVE_SHOP_CATE_PRODUCT]: receiveShopCateProduct
 });

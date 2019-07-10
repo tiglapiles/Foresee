@@ -1,0 +1,58 @@
+{
+  "manage": [
+    {
+      "name": "Manage Order",
+      "navigate": "ManageOrder",
+      "icon": "ios-document"
+    },
+    {
+      "name": "Request for Quotation",
+      "navigate": "RequestForQuotation",
+      "icon": "ios-quote"
+    },
+    {
+      "name": "Inquiries",
+      "navigate": "Inquiries",
+      "icon": "ios-mail"
+    },
+    {
+      "name": "Manage Quotes",
+      "navigate": "ManageQuotes",
+      "icon": "ios-flash"
+    }
+  ],
+  "pay": [
+    {
+      "name": "My Coupons",
+      "navigate": "MyCoupons",
+      "icon": "ios-cash"
+    },
+    {
+      "name": "Pay Later",
+      "navigate": "PayLater",
+      "icon": "logo-bitcoin"
+    }
+  ],
+  "set": [
+    {
+      "name": "Shipping Address",
+      "navigate": "ShippingAddress",
+      "icon": "ios-pin"
+    },
+    {
+      "name": "AliClound Drive",
+      "navigate": "CloundDrive",
+      "icon": "ios-cloud"
+    },
+    {
+      "name": "Help Center",
+      "navigate": "Help Center",
+      "icon": "ios-help-circle"
+    },
+    {
+      "name": "Settings",
+      "navigate": "Settings",
+      "icon": "ios-settings"
+    }
+  ]
+}
