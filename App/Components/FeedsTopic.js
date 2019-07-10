@@ -1,9 +1,9 @@
 import React from "react";
-import { ScrollView, Image } from "react-native";
+import { ScrollView, Image, TouchableOpacity } from "react-native";
 import { View, Text } from "native-base";
 import styles from "./Styles/FeedsTopicStyle";
 
-export default function FeedsTopic() {
+export default function FeedsTopic(props) {
   const topics = [
     {
       img:
@@ -33,7 +33,9 @@ export default function FeedsTopic() {
   const renderTopics = d =>
     d.map((i, k) => (
       <View key={k} style={styles.item}>
-        <Image source={{ uri: i.img }} style={{ width: 80, height: 100 }} />
+        <TouchableOpacity onPress={() => props.navigation.navigate("PayLater")}>
+          <Image source={{ uri: i.img }} style={{ width: 80, height: 100 }} />
+        </TouchableOpacity>
       </View>
     ));
   return (

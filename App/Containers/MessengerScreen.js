@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BackHandler } from "react-native";
+import { BackHandler, TouchableOpacity } from "react-native";
 import {
   View,
   Content,
@@ -38,6 +38,10 @@ class MessengerScreen extends Component {
     });
   }
 
+  handleTouch = e => {
+    this.props.navigation.navigate("Notification");
+  };
+
   messengeList = () => {
     const list = [
       {
@@ -60,7 +64,13 @@ class MessengerScreen extends Component {
     return (
       <List>
         {list.map((k, i) => (
-          <ListItem thumbnail key={i} itemHeader>
+          <ListItem
+            thumbnail
+            key={i}
+            itemHeader
+            button
+            onPress={() => this.handleTouch(k.title)}
+          >
             <Left>
               <Thumbnail
                 style={{ backgroundColor: "#e67e22" }}
@@ -79,6 +89,7 @@ class MessengerScreen extends Component {
       </List>
     );
   };
+
   render() {
     return (
       <Container>
@@ -121,29 +132,43 @@ class MessengerScreen extends Component {
               <Grid>
                 <Col>
                   <View style={styles.mItem}>
-                    <Thumbnail source={{ uri: "8.png" }} />
+                    <TouchableOpacity
+                      onPress={() => this.handleTouch("TradeManager")}
+                    >
+                      <Thumbnail source={{ uri: "8.png" }} />
+                    </TouchableOpacity>
                     <Text>TradeManager</Text>
                   </View>
                 </Col>
                 <Col>
                   <View style={styles.mItem}>
-                    <Thumbnail source={{ uri: "9.png" }} />
+                    <TouchableOpacity
+                      onPress={() => this.handleTouch("Connections")}
+                    >
+                      <Thumbnail source={{ uri: "9.png" }} />
+                    </TouchableOpacity>
                     <Text>Connections</Text>
                   </View>
                 </Col>
                 <Col>
                   <View style={styles.mItem}>
-                    <Thumbnail source={{ uri: "10.png" }} />
+                    <TouchableOpacity onPress={() => this.handleTouch("Tags")}>
+                      <Thumbnail source={{ uri: "10.png" }} />
+                    </TouchableOpacity>
                     <Text>Tags</Text>
                   </View>
                 </Col>
               </Grid>
             </View>
             <View style={styles.new}>
-              <Thumbnail
-                source={{ uri: "11.png" }}
-                style={{ marginRight: 10, marginLeft: 10 }}
-              />
+              <TouchableOpacity
+                onPress={() => this.handleTouch("New Contacts")}
+              >
+                <Thumbnail
+                  source={{ uri: "11.png" }}
+                  style={{ marginRight: 10, marginLeft: 10 }}
+                />
+              </TouchableOpacity>
               <Text>New Contacts</Text>
             </View>
             <View style={styles.contact}>

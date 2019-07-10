@@ -20,6 +20,7 @@ import ManageQuotesScreen from "../Containers/ManageQuotesScreen";
 import InquiriesScreen from "../Containers/InquiriesScreen";
 import RequestForQuotationScreen from "../Containers/RequestForQuotationScreen";
 import ManageOrderScreen from "../Containers/ManageOrderScreen";
+import NotificationScreen from "../Containers/NotificationScreen";
 
 const PrimaryNav = StackNavigator(
   {
@@ -40,7 +41,9 @@ const PrimaryNav = StackNavigator(
     ManageQuotes: { screen: ManageQuotesScreen },
     Inquiries: { screen: InquiriesScreen },
     RequestForQuotation: { screen: RequestForQuotationScreen },
-    ManageOrder: { screen: ManageOrderScreen }
+    ManageOrder: { screen: ManageOrderScreen },
+    // message
+    Notification: { screen: NotificationScreen }
   },
   {
     initialRouteName: "NavigationDrawer",

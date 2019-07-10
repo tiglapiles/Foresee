@@ -61,10 +61,10 @@ class FeedsScreen extends Component {
 
         <Tabs onChangeTab={this.changeTab} initialPage={1}>
           <Tab heading="Following">
-            <FeedsFollowing />
+            <FeedsFollowing {...this.props} />
           </Tab>
           <Tab heading="Discover">
-            <FeedsDiscover />
+            <FeedsDiscover {...this.props} />
           </Tab>
           <Tab heading="Videos">
             <FeedsVideos {...this.props} />

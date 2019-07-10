@@ -77,7 +77,7 @@ function FeedsVideos(props) {
 
   return (
     <Content style={styles.container}>
-      <FeedsTopic />
+      <FeedsTopic {...props} />
       <View>
         <FlatList
           renderItem={({ item, index, section }) => (

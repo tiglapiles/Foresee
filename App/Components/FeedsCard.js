@@ -16,7 +16,12 @@ export default function FeedsFollowing(props) {
   const k = props.cardInfo;
   return (
     <Card>
-      <CardItem header bordered>
+      <CardItem
+        header
+        bordered
+        button
+        onPress={() => props.navigation.navigate("ShopDetail")}
+      >
         <Left>
           <Thumbnail source={{ uri: k.thumb }} />
           <Body>

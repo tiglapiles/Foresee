@@ -4,7 +4,7 @@ import styles from "./Styles/FeedsDiscoverStyle";
 import FeedsTopic from "../Components/FeedsTopic";
 import FeedsCard from "../Components/FeedsCard.js";
 
-export default function FeedsDiscover() {
+export default function FeedsDiscover(props) {
   const follows = [
     {
       thumb:
@@ -39,10 +39,11 @@ export default function FeedsDiscover() {
       content: "content could be anything"
     }
   ];
-  const renderCards = c => c.map((k, i) => <FeedsCard cardInfo={k} key={i} />);
+  const renderCards = c =>
+    c.map((k, i) => <FeedsCard cardInfo={k} key={i} {...props} />);
   return (
     <Content style={styles.container}>
-      <FeedsTopic />
+      <FeedsTopic {...props} />
       {renderCards(follows)}
     </Content>
   );

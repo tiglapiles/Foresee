@@ -42,6 +42,7 @@ export default function FeedsFollowing(props) {
       follow: true
     }
   ];
-  const renderCards = c => c.map((k, i) => <FeedsCard cardInfo={k} key={i} />);
+  const renderCards = c =>
+    c.map((k, i) => <FeedsCard cardInfo={k} key={i} {...this.props} />);
   return <Content style={styles.container}>{renderCards(follows)}</Content>;
 }
