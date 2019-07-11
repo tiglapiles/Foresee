@@ -44,9 +44,19 @@ export default class ImagesSwiper extends Component {
   }
 
   getImageList = (e, defaultList) => {
-    const { home = {}, detail = {} } = e;
-    const listData =
-      Object.keys(home).length === 0 ? detail.img : home.swiperData;
+    const { home = {}, detail = {}, shop = {} } = e;
+    // detail.img : home.swiperData:shop.banner
+    const pMap = new Map([
+      [home, "swiperData"],
+      [detail, "img"],
+      [shop, "banner"]
+    ]);
+    let listData = [];
+    for (let [key, value] of pMap) {
+      if (key[value]) {
+        listData = key[value];
+      }
+    }
     const list =
       listData && listData.length !== 0
         ? [...listData].reduce((a, c) => [...a, c.img], [])

@@ -43,8 +43,8 @@ export function* queryCateList(api, action) {
   }
 }
 
-export function* queryShopHome(api, action) {
-  const response = yield call(api.getShopHome);
+export function* queryShopHome(api, { url_name }) {
+  const response = yield call(api.getShopHome, url_name);
   if (response.ok) {
     yield put(ProductActions.receiveShopHome(response.data.data));
   }
