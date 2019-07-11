@@ -9,7 +9,7 @@ export function* queryHome(api, action) {
   }
 }
 
-export function* queryHeadFoot() {
+export function* queryHeadFoot(api, action) {
   const response = yield call(api.getHeadFoot);
 
   if (response.ok) {
@@ -17,8 +17,8 @@ export function* queryHeadFoot() {
   }
 }
 
-export function* queryProductContent() {
-  const response = yield call(api.getProductContent);
+export function* queryProductContent(api, { id }) {
+  const response = yield call(api.getProductContent, id);
   if (response.ok) {
     yield put(ProductActions.receiveProductContent(response.data.data));
   }
@@ -43,14 +43,14 @@ export function* queryCateList(api, action) {
   }
 }
 
-export function* queryShopHome() {
+export function* queryShopHome(api, action) {
   const response = yield call(api.getShopHome);
   if (response.ok) {
     yield put(ProductActions.receiveShopHome(response.data.data));
   }
 }
 
-export function* queryShopCateProduct() {
+export function* queryShopCateProduct(api, action) {
   const response = yield call(api.getShopCateProduct);
   if (response.ok) {
     yield put(ProductActions.receiveShopCateProduct(response.data.data));

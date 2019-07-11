@@ -30,7 +30,9 @@ export default Creators;
 
 export const INITIAL_STATE = Immutable({
   cate: [],
-  list: []
+  list: [],
+  home: {},
+  detail: {}
 });
 
 //home

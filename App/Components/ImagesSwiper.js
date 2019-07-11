@@ -32,6 +32,9 @@ export default class ImagesSwiper extends Component {
     };
     this.loadHandle = this.loadHandle.bind(this);
   }
+
+  componentDidMount() {}
+
   loadHandle(i) {
     let loadQueue = this.state.loadQueue;
     loadQueue[i] = 1;
@@ -39,6 +42,17 @@ export default class ImagesSwiper extends Component {
       loadQueue
     });
   }
+
+  getImageList = (e, defaultList) => {
+    const { home = {}, detail = {} } = e;
+    const listData =
+      Object.keys(home).length === 0 ? detail.img : home.swiperData;
+    const list =
+      listData && listData.length !== 0
+        ? [...listData].reduce((a, c) => [...a, c.img], [])
+        : defaultList;
+    return list;
+  };
 
   render() {
     return (
@@ -50,7 +64,7 @@ export default class ImagesSwiper extends Component {
           autoplay={true}
           loop={true}
         >
-          {this.state.imgList.map((item, i) => (
+          {this.getImageList(this.props, this.state.imgList).map((item, i) => (
             <Slide
               loadHandle={this.loadHandle}
               loaded={!!this.state.loadQueue[i]}

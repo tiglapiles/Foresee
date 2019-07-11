@@ -19,7 +19,7 @@ import {
 } from "native-base";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import ProductActions from "../Redux/ProductRedux.js";
 
 // Styles
 import styles from "./Styles/HomeScreenStyle";
@@ -40,53 +40,11 @@ class HomeScreen extends Component {
       this.props.navigation.goBack();
       return true;
     });
+    this.props.getHome();
   }
 
   renderSubItems = () => {
-    const subItems = [
-      {
-        name: "products",
-        color: "#f1c40f",
-        title: "selected products",
-        more: false
-      },
-      {
-        name: "markets",
-        color: "#2980b9",
-        title: "industry markets",
-        more: true
-      },
-      {
-        name: "deals",
-        color: "#d35400",
-        title: "weekly deals",
-        more: false
-      },
-      {
-        name: "brand",
-        color: "#8e44ad",
-        title: "brand zone",
-        more: false
-      },
-      {
-        name: "business",
-        color: "#3498db",
-        title: "business insights",
-        more: false
-      },
-      {
-        name: "trade",
-        color: "#e74c3c",
-        title: "trade shows",
-        more: true
-      },
-      {
-        name: "you",
-        color: "#2ecc71",
-        title: "just for you",
-        more: false
-      }
-    ];
+    const subItems = require("../Fixtures/homeItems");
     const bCard = () => (
       <Card>
         <CardItem
@@ -199,7 +157,7 @@ class HomeScreen extends Component {
         {this.searchBar()}
         {/* <SearchBar /> */}
         <Content>
-          <ImagesSwiper style={{ padding: 0 }} />
+          <ImagesSwiper style={{ padding: 0 }} {...this.props} />
           <HomeMenu {...this.props} />
           <View style={{ padding: 5 }}>{this.renderSubItems()}</View>
         </Content>
@@ -211,11 +169,15 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    home: state.product.home
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    getHome: () => dispatch(ProductActions.requestHome())
+  };
 };
 
 export default connect(
