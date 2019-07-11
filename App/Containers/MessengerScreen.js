@@ -106,7 +106,11 @@ class MessengerScreen extends Component {
             <Title style={{ color: "#fff" }}>Messenger</Title>
           </Body>
           <Right>
-            <Icon name="ios-search" style={{ color: "#fff" }} />
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Notification")}
+            >
+              <Icon name="ios-search" style={{ color: "#fff" }} />
+            </TouchableOpacity>
           </Right>
         </Header>
         <Tabs tabBarUnderlineStyle={{ backgroundColor: "#fff" }}>

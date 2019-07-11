@@ -21,6 +21,8 @@ import InquiriesScreen from "../Containers/InquiriesScreen";
 import RequestForQuotationScreen from "../Containers/RequestForQuotationScreen";
 import ManageOrderScreen from "../Containers/ManageOrderScreen";
 import NotificationScreen from "../Containers/NotificationScreen";
+import HistoryScreen from "../Containers/HistoryScreen";
+import PersonalScreen from "../Containers/PersonalScreen";
 
 const PrimaryNav = StackNavigator(
   {
@@ -43,7 +45,9 @@ const PrimaryNav = StackNavigator(
     RequestForQuotation: { screen: RequestForQuotationScreen },
     ManageOrder: { screen: ManageOrderScreen },
     // message
-    Notification: { screen: NotificationScreen }
+    Notification: { screen: NotificationScreen },
+    History: { screen: HistoryScreen },
+    Personal: { screen: PersonalScreen }
   },
   {
     initialRouteName: "NavigationDrawer",

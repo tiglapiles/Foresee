@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BackHandler } from "react-native";
+import { BackHandler, TouchableOpacity } from "react-native";
 import {
   Content,
   Container,
@@ -47,6 +47,8 @@ class FeedsScreen extends Component {
   };
 
   render() {
+    const { indexPage } = this.state;
+
     return (
       <Container>
         <Header hasTabs>
@@ -55,11 +57,13 @@ class FeedsScreen extends Component {
             <Title>Feeds</Title>
           </Body>
           <Right>
-            <Icon name="heart" />
+            <TouchableOpacity onPress={() => this.setState({ indexPage: 0 })}>
+              <Icon name="heart" />
+            </TouchableOpacity>
           </Right>
         </Header>
 
-        <Tabs onChangeTab={this.changeTab} initialPage={1}>
+        <Tabs page={indexPage} onChangeTab={this.changeTab} initialPage={1}>
           <Tab heading="Following">
             <FeedsFollowing {...this.props} />
           </Tab>

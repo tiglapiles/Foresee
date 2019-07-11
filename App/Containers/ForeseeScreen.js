@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BackHandler } from "react-native";
+import { BackHandler, TouchableOpacity } from "react-native";
 import {
   Content,
   Container,
@@ -48,14 +48,20 @@ class ForeseeScreen extends Component {
             >
               <Icon name="menu" style={{ color: "#fff" }} />
             </Button>
-            <Text style={{ fontSize: 30, color: "#fff", marginLeft: 30 }}>
+            <Text
+              style={{ fontSize: 30, color: "#fff", marginLeft: 30 }}
+              onPress={() => this.props.navigation.navigate("Personal")}
+            >
               Tiglath Pileser
             </Text>
           </View>
 
           <View style={styles.info}>
             <Card>
-              <CardItem>
+              <CardItem
+                button
+                onPress={() => this.props.navigation.navigate("Login")}
+              >
                 <Body>
                   <Text style={{ marginBottom: 5 }}>
                     <Text style={{ fontSize: 25 }}>6</Text> Step (s) left to
@@ -63,7 +69,10 @@ class ForeseeScreen extends Component {
                   </Text>
                 </Body>
               </CardItem>
-              <CardItem>
+              <CardItem
+                button
+                onPress={() => this.props.navigation.navigate("Login")}
+              >
                 <Body>
                   <Text note>
                     Suppliers are more likely to reply if you profile is
@@ -71,7 +80,10 @@ class ForeseeScreen extends Component {
                   </Text>
                 </Body>
               </CardItem>
-              <CardItem>
+              <CardItem
+                button
+                onPress={() => this.props.navigation.navigate("Login")}
+              >
                 <Body>
                   <Text>------ ------ ------ ------ ------ ------</Text>
                 </Body>
@@ -81,22 +93,36 @@ class ForeseeScreen extends Component {
               <CardItem>
                 <Grid>
                   <Col>
-                    <View style={styles.col}>
-                      <Text style={{ fontSize: 25 }}>1</Text>
-                      <Text note>My Favorites</Text>
-                    </View>
+                    <TouchableOpacity
+                      onPress={() =>
+                        this.props.navigation.navigate("My Favorites")
+                      }
+                    >
+                      <View style={styles.col}>
+                        <Text style={{ fontSize: 25 }}>1</Text>
+                        <Text note>My Favorites</Text>
+                      </View>
+                    </TouchableOpacity>
                   </Col>
                   <Col>
-                    <View style={styles.col}>
-                      <Text style={{ fontSize: 25 }}>0</Text>
-                      <Text note>Shopping Cart</Text>
-                    </View>
+                    <TouchableOpacity
+                      onPress={() => this.props.navigation.navigate("Login")}
+                    >
+                      <View style={styles.col}>
+                        <Text style={{ fontSize: 25 }}>0</Text>
+                        <Text note>Shopping Cart</Text>
+                      </View>
+                    </TouchableOpacity>
                   </Col>
                   <Col>
-                    <View style={styles.col}>
-                      <Text style={{ fontSize: 25 }}>4</Text>
-                      <Text note>Browsing History</Text>
-                    </View>
+                    <TouchableOpacity
+                      onPress={() => this.props.navigation.navigate("History")}
+                    >
+                      <View style={styles.col}>
+                        <Text style={{ fontSize: 25 }}>4</Text>
+                        <Text note>Browsing History</Text>
+                      </View>
+                    </TouchableOpacity>
                   </Col>
                 </Grid>
               </CardItem>

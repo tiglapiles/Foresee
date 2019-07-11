@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, Image, BackHandler } from "react-native";
+import { ScrollView, Image, BackHandler, TouchableOpacity } from "react-native";
 import {
   List,
   ListItem,
@@ -31,8 +31,26 @@ class DrawerContent extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={Images.account} style={styles.logo} />
-          <Text style={styles.logout}>Sign In | Register</Text>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("My Foresee")}
+          >
+            <Image source={Images.account} style={styles.logo} />
+          </TouchableOpacity>
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={styles.logout}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              Sign In
+            </Text>
+            <Text style={styles.logout}> | </Text>
+            <Text
+              style={styles.logout}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              Register
+            </Text>
+          </View>
         </View>
         <Content>
           <List

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import React from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { View, Text } from "native-base";
 
 export default function HomeSubTitle(props) {
@@ -36,7 +36,14 @@ export default function HomeSubTitle(props) {
     <View style={styles.container}>
       <View style={styles.block} />
       <Text style={styles.title}>{title.toUpperCase()}</Text>
-      <Text style={styles.more}>{more ? "MORE" : ""}</Text>
+      {more ? (
+        <Text
+          style={styles.more}
+          onPress={() => props.navigation.navigate("ProductCategory")}
+        >
+          MORE
+        </Text>
+      ) : null}
     </View>
   );
 }

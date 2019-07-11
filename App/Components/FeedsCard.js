@@ -37,7 +37,7 @@ export default function FeedsFollowing(props) {
           )}
         </Right>
       </CardItem>
-      <CardItem>
+      <CardItem button onPress={() => props.navigation.navigate("Shopdetail")}>
         <Body>
           <Image
             source={{ uri: k.img }}
@@ -46,7 +46,12 @@ export default function FeedsFollowing(props) {
           <Text>{k.content}</Text>
         </Body>
       </CardItem>
-      <CardItem footer bordered>
+      <CardItem
+        footer
+        bordered
+        button
+        onPress={() => props.navigation.navigate("Shopdetail")}
+      >
         <Right>
           <Button transparent>
             <Icon active name="thumbs-up" />

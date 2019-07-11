@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BackHandler, Image } from "react-native";
+import { BackHandler, Image, TouchableOpacity } from "react-native";
 import {
   Content,
   Container,
@@ -130,7 +130,12 @@ class HomeScreen extends Component {
     };
     return subItems.map((o, i) => (
       <View style={{ marginTop: 20 }} key={i}>
-        <HomeSubTitle color={o.color} title={o.title} more={o.more} />
+        <HomeSubTitle
+          color={o.color}
+          title={o.title}
+          more={o.more}
+          {...this.props}
+        />
         {subComponent(o.name)}
       </View>
     ));
@@ -178,7 +183,11 @@ class HomeScreen extends Component {
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
-          <Icon name="ios-camera" />
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("Scan QR Code")}
+          >
+            <Icon name="ios-camera" />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
