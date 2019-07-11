@@ -49,7 +49,9 @@ export default class ProductPriceCard extends Component {
             onPress={() => this.props.navigation.navigate("ShopDetail")}
           >
             <Body>
-              <Text style={styles.company}>{detail.summary}</Text>
+              <Text style={styles.company}>
+                {detail.summary || "Company Name In There"}
+              </Text>
               <View style={styles.rate}>
                 <View style={styles.rateItem}>
                   <Text style={styles.rateTitle}>Response Time</Text>

@@ -50,7 +50,9 @@ export default class DetailDrawer extends Component {
           </CardItem>
           <CardItem onPress={() => alert("This is Card Header")}>
             <Body>
-              <Text>{detail.parameter}</Text>
+              <Text>
+                {detail.parameter || "Descript Detail About Product Infomation"}
+              </Text>
             </Body>
           </CardItem>
           {/* <CardItem footer button onPress={() => alert("This is Card Footer")}> */}

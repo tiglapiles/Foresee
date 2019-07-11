@@ -6,12 +6,14 @@ import styles from "./Styles/NavigationStyles";
 import Login from "../Containers/LoginScreen";
 import LaunchScreen from "../Containers/LaunchScreen";
 import NavigationDrawer from "./NavigationDrawer";
-import NavigationProduct from "./NavigationProduct";
+// import NavigationProduct from "./NavigationProduct";
 import VideoFlip from "../Containers/VideoFlip.js";
 import ProductDetail from "../Containers/ProductDetail.js";
+import ProductCategory from "../Containers/ProductCategoryScreen.js";
+import ProductList from "../Containers/ProductListScreen.js";
 import ShopDetail from "../Containers/ShopDetail.js";
-import SettingScreen from "../Containers/SettingScreen";
-import HelpCenterScreen from "../Containers/HelpCenterScreen";
+// import SettingScreen from "../Containers/SettingScreen";
+// import HelpCenterScreen from "../Containers/HelpCenterScreen";
 import CloundDriveScreen from "../Containers/CloundDriveScreen";
 import ShippingAddressScreen from "../Containers/ShippingAddressScreen";
 import PayLaterScreen from "../Containers/PayLaterScreen";
@@ -30,7 +32,9 @@ const PrimaryNav = StackNavigator(
     LaunchScreen: { screen: LaunchScreen },
     NavigationDrawer: { screen: NavigationDrawer },
     VideoFlip: { screen: VideoFlip },
-    NavigationProduct: { screen: NavigationProduct },
+    // NavigationProduct: { screen: NavigationProduct },
+    ProductCategory: { screen: ProductCategory },
+    ProductList: { screen: ProductList },
     ProductDetail: { screen: ProductDetail },
     ShopDetail: { screen: ShopDetail },
     // My Foresee
