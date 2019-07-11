@@ -25,22 +25,26 @@ export default class ProductPriceCard extends Component {
   // }
 
   render() {
+    const { detail = {} } = this.props;
+
     return (
       <View style={styles.container}>
         <Card>
           {/* <CardItem header button onPress={() => alert("This is Card Header")}> */}
           {/*   <Text>NativeBase</Text> */}
           {/* </CardItem> */}
-          <CardItem>
+          <CardItem bordered>
             <Body>
-              <Text>Click on any carditem</Text>
-              <Text>Click on any carditem</Text>
-              <Text>Click on any carditem</Text>
+              <Text style={styles.name}>
+                {detail.name || "Product Detail Name"}
+              </Text>
+              <Text style={styles.price}>$4.30 - $5.20</Text>
+              <Text style={styles.name}>Min.Order: 1000 Piesces</Text>
             </Body>
           </CardItem>
           <CardItem footer button onPress={() => alert("This is Card Footer")}>
             <Left>
-              <Text>Quick Quitation</Text>
+              <Text style={styles.name}>Quick Quitation</Text>
             </Left>
             <Right>
               <Icon name="ios-more" />

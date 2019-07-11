@@ -19,7 +19,7 @@ import {
 } from "native-base";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/
+import ProductActions from "../Redux/ProductRedux.js";
 import ProductOverview from "../Components/ProductOverview.js";
 import HomeYou from "../Components/HomeYou.js";
 import ImageSwiper from "../Components/ImagesSwiper.js";
@@ -36,13 +36,22 @@ class ProductDetail extends Component {
     this.state = {};
   }
   componentDidMount() {
+    const {
+      navigation: {
+        state: { params }
+      }
+    } = this.props;
+    const id = params ? params.id : 1;
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
       return true;
     });
+    this.props.getContent(id);
   }
 
   render() {
+    const { detail = {} } = this.props;
+
     return (
       <Container style={styles.container}>
         <Header transparent hasTabs>
@@ -55,7 +64,10 @@ class ProductDetail extends Component {
             <Title>Product Details</Title>
           </Body>
           <Right>
-            <Button transparent>
+            <Button
+              transparent
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
               <Icon name="ios-heart" />
             </Button>
           </Right>
@@ -67,10 +79,10 @@ class ProductDetail extends Component {
             activeTextStyle={styles.tabTitle}
           >
             <Content>
-              <ImageSwiper />
-              <ProductPriceCard />
+              <ImageSwiper {...this.props} />
+              <ProductPriceCard {...this.props} />
               <SupplierProfileCard {...this.props} />
-              <DetailDrawer />
+              <DetailDrawer {...this.props} />
             </Content>
           </Tab>
           <Tab
@@ -78,21 +90,21 @@ class ProductDetail extends Component {
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
           >
-            {/* <Content style={{ flex: 1 }}> */}
-            {/* <ScrollView style={{ width: "100%", height: "100%", flex: 1 }}> */}
-            <Image
-              source={{
-                uri:
-                  "https://sc01.alicdn.com/kf/HTB1AbzTddHO8KJjSZFLq6yTqVXai/205205747/HTB1AbzTddHO8KJjSZFLq6yTqVXai.jpg"
-              }}
-              style={{
-                width: "100%",
-                height: "100%"
-                /* flex: 1 */
-              }}
-            />
-            {/* </ScrollView> */}
-            {/* </Content> */}
+            <Content>
+              {/* <ScrollView style={{ width: "100%", height: "100%", flex: 1 }}> */}
+              {/* <Image */}
+              {/*   source={{ */}
+              {/*     uri: */}
+              {/*       "https://sc01.alicdn.com/kf/HTB1AbzTddHO8KJjSZFLq6yTqVXai/205205747/HTB1AbzTddHO8KJjSZFLq6yTqVXai.jpg" */}
+              {/*   }} */}
+              {/*   style={{ */}
+              {/*     width: "100%", */}
+              {/*     height: "100%" */}
+              {/*   }} */}
+              {/* /> */}
+              {/* </ScrollView> */}
+              <Text>{detail.url_name}</Text>
+            </Content>
           </Tab>
           <Tab
             heading="RECOMMENDED"
@@ -108,13 +120,25 @@ class ProductDetail extends Component {
         <Footer style={styles.footer}>
           {/* <FooterTab> */}
           <View style={styles.footV}>
-            <Button small style={styles.footButton}>
+            <Button
+              small
+              style={styles.footButton}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
               <Text style={styles.buttonText}>START ORDER</Text>
             </Button>
-            <Button small style={styles.footButton}>
+            <Button
+              small
+              style={styles.footButton}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
               <Text style={styles.buttonText}>SEND INQUIRY</Text>
             </Button>
-            <Button small style={styles.footButton}>
+            <Button
+              small
+              style={styles.footButton}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
               <Text style={styles.buttonText}>CHAT NOW</Text>
             </Button>
             {/* </FooterTab> */}
@@ -126,11 +150,15 @@ class ProductDetail extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    detail: state.product.detail
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    getContent: id => dispatch(ProductActions.requestProductContent(id))
+  };
 };
 
 export default connect(

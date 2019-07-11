@@ -30,24 +30,27 @@ export default class DetailDrawer extends Component {
   //   someSetting: false
   // }
   render() {
+    const { detail = {} } = this.props;
+
     return (
       <View style={styles.container}>
         <Card>
-          <CardItem header button onPress={() => alert("This is Card Header")}>
+          <CardItem
+            header
+            button
+            onPress={() => alert("This is Card Header")}
+            bordered
+          >
             <Left>
-              <Text>Quick Details</Text>
+              <Text style={styles.tip}>Quick Details</Text>
             </Left>
             <Right>
               <Icon name="ios-more" />
             </Right>
           </CardItem>
-          <CardItem>
+          <CardItem onPress={() => alert("This is Card Header")}>
             <Body>
-              <Text>Click on any carditem</Text>
-              <Text>Click on any carditem</Text>
-              <Text>Click on any carditem</Text>
-              <Text>Click on any carditem</Text>
-              <Text>Click on any carditem</Text>
+              <Text>{detail.parameter}</Text>
             </Body>
           </CardItem>
           {/* <CardItem footer button onPress={() => alert("This is Card Footer")}> */}

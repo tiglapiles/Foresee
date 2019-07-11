@@ -10,7 +10,7 @@ import {
   CardItem,
   Body
 } from "native-base";
-import styles from "./Styles/ProductPriceCardStyle";
+import styles from "./Styles/SupplierProfileCardStyle.js";
 
 export default class ProductPriceCard extends Component {
   // // Prop type warnings
@@ -25,12 +25,19 @@ export default class ProductPriceCard extends Component {
   // }
 
   render() {
+    const { detail = {} } = this.props;
+
     return (
       <View style={styles.container}>
         <Card>
-          <CardItem header button onPress={() => alert("This is Card Header")}>
+          <CardItem
+            header
+            button
+            onPress={() => alert("This is Card Header")}
+            bordered
+          >
             <Left>
-              <Text>Supplier Profile</Text>
+              <Text style={styles.tip}>Supplier Profile</Text>
             </Left>
             <Right>
               <Icon name="ios-more" />
@@ -38,20 +45,38 @@ export default class ProductPriceCard extends Component {
           </CardItem>
           <CardItem
             button
+            bordered
             onPress={() => this.props.navigation.navigate("ShopDetail")}
           >
             <Body>
-              <Text>Click on any carditem</Text>
-              <Text>Click on any carditem</Text>
-              <Text>Click on any carditem</Text>
+              <Text style={styles.company}>{detail.summary}</Text>
+              <View style={styles.rate}>
+                <View style={styles.rateItem}>
+                  <Text style={styles.rateTitle}>Response Time</Text>
+                  <Text style={styles.rateTitle}>&lt;24</Text>
+                </View>
+                <View style={styles.rateItem}>
+                  <Text style={styles.rateTitle}>Response Rate</Text>
+                  <Text style={styles.rateTitle}>96.4%</Text>
+                </View>
+                <View style={styles.rateItem}>
+                  <Text style={styles.rateTitle}>22 Transactions</Text>
+                  <Text style={styles.rateTitle}>$ 520,000+</Text>
+                </View>
+              </View>
             </Body>
           </CardItem>
           <CardItem footer button onPress={() => alert("This is Card Footer")}>
             <Left>
-              <Text>4YRS</Text>
+              <Text style={styles.tip}>4YRS</Text>
             </Left>
             <Right>
-              <Text>Learn More</Text>
+              <Text
+                style={styles.tip}
+                onPress={() => alert("This is Card Header")}
+              >
+                Learn More
+              </Text>
             </Right>
           </CardItem>
         </Card>
