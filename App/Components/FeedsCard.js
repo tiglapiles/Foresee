@@ -14,6 +14,7 @@ import {
 
 export default function FeedsFollowing(props) {
   const k = props.cardInfo;
+
   return (
     <Card>
       <CardItem
@@ -37,7 +38,7 @@ export default function FeedsFollowing(props) {
           )}
         </Right>
       </CardItem>
-      <CardItem button onPress={() => props.navigation.navigate("Shopdetail")}>
+      <CardItem button onPress={() => props.navigation.navigate("ShopDetail")}>
         <Body>
           <Image
             source={{ uri: k.img }}

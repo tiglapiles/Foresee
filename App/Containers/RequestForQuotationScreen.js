@@ -1,63 +1,73 @@
-import React, { Component } from 'react'
-import { BackHandler } from 'react-native'
-import { Content, Container, Header, Left, Right, Body, Button, Text, Title, Icon, Footer, FooterTab } from 'native-base'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { BackHandler } from "react-native";
+import {
+  Content,
+  Container,
+  Header,
+  Left,
+  Right,
+  Body,
+  Button,
+  Text,
+  Title,
+  Icon,
+  Footer,
+  FooterTab
+} from "native-base";
+import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
-import styles from './Styles/RequestForQuotationScreenStyle'
+import styles from "./Styles/RequestForQuotationScreenStyle";
 
 class RequestForQuotationScreen extends Component {
-  componentDidMount () {
-    BackHandler.addEventListener('hardwareBackPress', () => {
+  componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
-      return true
-    })
+      return true;
+    });
   }
-  render () {
+  render() {
     return (
       <Container>
         <Header>
           <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            >
-              <Icon name="menu" />
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
             </Button>
           </Left>
           <Body>
             <Title>RequestForQuotationScreen</Title>
           </Body>
           <Right />
-
         </Header>
 
         <Content padder>
           <Text>RequestForQuotationScreen Content</Text>
         </Content>
 
-        <Footer>
-          <FooterTab>
-            <Button active full>
-              <Text>Footer</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+        {/* <Footer> */}
+        {/*   <FooterTab> */}
+        {/*     <Button active full> */}
+        {/*       <Text>Footer</Text> */}
+        {/*     </Button> */}
+        {/*   </FooterTab> */}
+        {/* </Footer> */}
       </Container>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-  }
-}
+const mapStateToProps = state => {
+  return {};
+};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-  }
-}
+const mapDispatchToProps = dispatch => {
+  return {};
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(RequestForQuotationScreen)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RequestForQuotationScreen);
