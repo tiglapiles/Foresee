@@ -14,14 +14,13 @@ import {
   Title,
   Container,
   View,
-  Footer,
-  FooterTab
+  Footer
 } from "native-base";
 import { connect } from "react-redux";
 import HTMLView from "react-native-htmlview";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 import ProductActions from "../Redux/ProductRedux.js";
-import ProductOverview from "../Components/ProductOverview.js";
+// import ProductOverview from "../Components/ProductOverview.js";
 import HomeYou from "../Components/HomeYou.js";
 import ImageSwiper from "../Components/ImagesSwiper.js";
 import ProductPriceCard from "../Components/ProductPriceCard.js";

@@ -20,6 +20,7 @@ import {
   Item
 } from "native-base";
 import { connect } from "react-redux";
+import HTMLView from "react-native-htmlview";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 import ProductActions from "../Redux/ProductRedux.js";
 import ProductOverview from "../Components/ProductOverview.js";
@@ -118,11 +119,16 @@ class ShopDetail extends Component {
             }
           >
             <Content>
-              <Text>{shop_info.title}</Text>
-              <Text>{shop_info.url_name}</Text>
-              <Text>{shop_info.company}</Text>
-              <Text>{shop_info.remarks}</Text>
-              <Text>{shop_info.api_url}</Text>
+              <HTMLView
+                value={
+                  `<p>${shop_info.title}</p>` +
+                    `<p>${shop_info.url_name}</p>` +
+                    `<p>${shop_info.company}</p>` +
+                    `<p>${shop_info.remarks}</p>` +
+                    `<p>${shop_info.api_url}</p>` ||
+                  `<p><a href="http://jsdf.co">&hearts; nice job!</a></p>`
+                }
+              />
             </Content>
           </Tab>
           <Tab
