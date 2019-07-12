@@ -22,14 +22,16 @@ import ProductActions from "../Redux/ProductRedux.js";
 import styles from "./Styles/ProductListScreenStyle";
 
 class ProductListScreen extends Component {
-  componentWillMount() {}
-
   componentDidMount() {
+    const {
+      navigation: { state: params }
+    } = this.props;
+    const id = params ? params.id : 1;
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
       return true;
     });
-    this.props.getList(this.props.navigation.state.params.id, 1);
+    this.props.getList(id, 1);
   }
 
   handleTouch = id => this.props.navigation.navigate("ProductDetail", { id });
@@ -46,7 +48,7 @@ class ProductListScreen extends Component {
 
   render() {
     const {
-      list,
+      list = [],
       navigation: {
         state: { params }
       }
@@ -67,13 +69,14 @@ class ProductListScreen extends Component {
           <Right />
         </Header>
 
-        <Content padder>
+        <Content>
           <List
             dataArray={list}
             onEndReachedThreshold={200}
+            /* scroll end refresh mathod add later, now i do not know how to config that... */
             /* onEndReached={() => this.scrollToBottomLoad(1)} */
             renderRow={i => (
-              <ListItem button onPress={() => this.handleTouch({ id: i.id })}>
+              <ListItem button onPress={() => this.handleTouch(i.id)}>
                 <Left>
                   <Image
                     source={{ uri: i.master_img }}
