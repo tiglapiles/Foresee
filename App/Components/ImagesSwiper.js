@@ -43,28 +43,9 @@ export default class ImagesSwiper extends Component {
     });
   }
 
-  getImageList = (e, defaultList) => {
-    const { home = {}, detail = {}, shop = {} } = e;
-    // detail.img : home.swiperData:shop.banner
-    const pMap = new Map([
-      [home, "swiperData"],
-      [detail, "img"],
-      [shop, "banner"]
-    ]);
-    let listData = [];
-    for (let [key, value] of pMap) {
-      if (key[value]) {
-        listData = key[value];
-      }
-    }
-    const list =
-      listData && listData.length !== 0
-        ? [...listData].reduce((a, c) => [...a, c.img], [])
-        : defaultList;
-    return list;
-  };
-
   render() {
+    const { imgList = [] } = this.props;
+
     return (
       <View style={styles.container}>
         <Swiper
@@ -74,7 +55,7 @@ export default class ImagesSwiper extends Component {
           autoplay={true}
           loop={true}
         >
-          {this.getImageList(this.props, this.state.imgList).map((item, i) => (
+          {imgList.map((item, i) => (
             <Slide
               loadHandle={this.loadHandle}
               loaded={!!this.state.loadQueue[i]}

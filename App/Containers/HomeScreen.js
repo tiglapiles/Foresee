@@ -23,6 +23,7 @@ import ProductActions from "../Redux/ProductRedux.js";
 
 // Styles
 import styles from "./Styles/HomeScreenStyle";
+import { convertToImgList } from "../Lib/utils.js";
 import BottomFooter from "../Components/BottomFooter.js";
 import ImagesSwiper from "../Components/ImagesSwiper.js";
 import HomeMenu from "../Components/HomeMenu.js";
@@ -152,12 +153,18 @@ class HomeScreen extends Component {
   );
 
   render() {
+    const { home = {} } = this.props;
+
     return (
       <Container style={styles.container}>
         {this.searchBar()}
         {/* <SearchBar /> */}
         <Content>
-          <ImagesSwiper style={{ padding: 0 }} {...this.props} />
+          <ImagesSwiper
+            style={{ padding: 0 }}
+            {...this.props}
+            imgList={convertToImgList(home.swiperData)}
+          />
           <HomeMenu {...this.props} />
           <View style={{ padding: 5 }}>{this.renderSubItems()}</View>
         </Content>

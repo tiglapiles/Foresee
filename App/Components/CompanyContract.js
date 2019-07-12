@@ -19,8 +19,6 @@ export default class CompanyContract extends Component {
     const { contract = {} } = this.props;
 
     return (
-      // <View style={styles.container}>
-      // </View>
       <Card>
         <CardItem>
           <Left>

@@ -23,12 +23,10 @@ import { connect } from "react-redux";
 import HTMLView from "react-native-htmlview";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 import ProductActions from "../Redux/ProductRedux.js";
-import ProductOverview from "../Components/ProductOverview.js";
+import { convertToImgList } from "../Lib/utils.js";
+// import ProductOverview from "../Components/ProductOverview.js";
 import HomeYou from "../Components/HomeYou.js";
 import ImageSwiper from "../Components/ImagesSwiper.js";
-import ProductPriceCard from "../Components/ProductPriceCard.js";
-import SupplierProfileCard from "../Components/SupplierProfileCard.js";
-import DetailDrawer from "../Components/DetailDrawer.js";
 import FeedsCard from "../Components/FeedsCard";
 import CompanyInfo from "../Components/CompanyInfo";
 import CompanyContract from "../Components/CompanyContract.js";
@@ -55,8 +53,8 @@ class ShopDetail extends Component {
   }
   renderCards = c => c.map((k, i) => <FeedsCard cardInfo={k} key={i} />);
   render() {
-    const { shop } = this.props;
-    const shop_info = shop ? shop.shop_info : {};
+    const { shop = {} } = this.props;
+    const { shop_info = {} } = shop;
 
     return (
       <Container style={styles.container}>
@@ -85,13 +83,16 @@ class ShopDetail extends Component {
             }
           >
             <Content>
-              <CompanyInfo {...this.props} shop_info={shop_info} />
-              <ImageSwiper {...this.props} />
+              <CompanyInfo {...this.props} shop_info={shop.shop_info} />
+              <ImageSwiper
+                {...this.props}
+                imgList={convertToImgList(shop.banner)}
+              />
               {/* <ProductPriceCard {...this.props} /> */}
               {/* <SupplierProfileCard {...this.props} /> */}
               {/* <DetailDrawer {...this.props} /> */}
               <HomeYou {...this.props} />
-              <CompanyContract contract={shop_info} />
+              <CompanyContract contract={shop.shop_info} />
             </Content>
           </Tab>
           <Tab

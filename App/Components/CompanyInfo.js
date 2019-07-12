@@ -18,8 +18,6 @@ export default class CompanyInfo extends Component {
   render() {
     const { shop_info = {} } = this.props;
     return (
-      // <View style={styles.container}>
-      // </View>
       <Card style={styles.card}>
         <CardItem>
           <Body>

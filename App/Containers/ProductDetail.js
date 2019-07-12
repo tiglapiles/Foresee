@@ -20,6 +20,7 @@ import { connect } from "react-redux";
 import HTMLView from "react-native-htmlview";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 import ProductActions from "../Redux/ProductRedux.js";
+import { convertToImgList } from "../Lib/utils.js";
 // import ProductOverview from "../Components/ProductOverview.js";
 import HomeYou from "../Components/HomeYou.js";
 import ImageSwiper from "../Components/ImagesSwiper.js";
@@ -79,7 +80,10 @@ class ProductDetail extends Component {
             activeTextStyle={styles.tabTitle}
           >
             <Content>
-              <ImageSwiper {...this.props} />
+              <ImageSwiper
+                {...this.props}
+                imgList={convertToImgList(detail.img)}
+              />
               <ProductPriceCard {...this.props} />
               <SupplierProfileCard {...this.props} />
               <DetailDrawer {...this.props} />
