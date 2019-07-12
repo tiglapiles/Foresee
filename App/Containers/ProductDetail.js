@@ -18,6 +18,7 @@ import {
   FooterTab
 } from "native-base";
 import { connect } from "react-redux";
+import HTMLView from "react-native-htmlview";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 import ProductActions from "../Redux/ProductRedux.js";
 import ProductOverview from "../Components/ProductOverview.js";
@@ -91,19 +92,13 @@ class ProductDetail extends Component {
             activeTextStyle={styles.tabTitle}
           >
             <Content>
-              {/* <ScrollView style={{ width: "100%", height: "100%", flex: 1 }}> */}
-              {/* <Image */}
-              {/*   source={{ */}
-              {/*     uri: */}
-              {/*       "https://sc01.alicdn.com/kf/HTB1AbzTddHO8KJjSZFLq6yTqVXai/205205747/HTB1AbzTddHO8KJjSZFLq6yTqVXai.jpg" */}
-              {/*   }} */}
-              {/*   style={{ */}
-              {/*     width: "100%", */}
-              {/*     height: "100%" */}
-              {/*   }} */}
-              {/* /> */}
-              {/* </ScrollView> */}
-              <Text>{detail.url_name}</Text>
+              <HTMLView
+                value={
+                  detail.description ||
+                  `<p><a href="http://jsdf.co">&hearts; nice job!</a></p>`
+                }
+                /* stylesheet={styles} */
+              />
             </Content>
           </Tab>
           <Tab

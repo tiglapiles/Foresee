@@ -36,6 +36,7 @@
     "react-native": "0.47.2",
     "react-native-config": "^0.6.0",
     "react-native-drawer": "^2.3.0",
+    "react-native-htmlview": "^0.14.0",
     "react-native-i18n": "1.0.0",
     "react-native-modalbox": "^1.6.0",
     "react-native-swiper": "^1.5.14",

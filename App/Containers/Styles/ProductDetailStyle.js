@@ -32,5 +32,9 @@ export default StyleSheet.create({
   },
   buttonText: {
     fontSize: 12
+  },
+  a: {
+    fontWeight: "300",
+    color: "#FF3366" // make links coloured pink
   }
 });
