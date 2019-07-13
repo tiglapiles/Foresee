@@ -34,7 +34,8 @@ class ProductListScreen extends Component {
     this.props.getList(id, 1);
   }
 
-  handleTouch = id => this.props.navigation.navigate("ProductDetail", { id });
+  handleTouch = (id = 1) =>
+    this.props.navigation.navigate("ProductDetail", { id });
 
   scrollToBottomLoad = page => {
     const {
