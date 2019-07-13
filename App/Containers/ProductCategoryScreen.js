@@ -40,26 +40,23 @@ class ProductCategoryScreen extends Component {
     this.props.getSubCate();
   }
 
-  componentWillReceiveProps(newProps) {
-    // console.log("ProductCate:", newProps);
-  }
-
   goSubCate = ({ cateName = "Categories", subCate, id }) => {
     if (subCate && subCate.length !== 0) {
       this.props.navigation.navigate("ProductCategory", {
         cateName,
         subCate
       });
-    } else {
+    } else if (id) {
       this.props.navigation.navigate("ProductList", { cateName, id });
+    } else {
+      console.log("No More");
     }
   };
 
   getCategories = (data = []) =>
     data.map((k, i) => (
       <ListItem
-        avatar
-        style={{ marginTop: 10 }}
+        noBorder
         onPress={() =>
           this.goSubCate({ cateName: k.name, subCate: k._child, id: k.id })
         }

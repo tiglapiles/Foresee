@@ -11,8 +11,10 @@ const isIOS = Platform.OS === "ios";
 
 export class ListRenderer extends React.Component {
   shouldComponentUpdate(newProps) {
-    // return this.props.imageUrl !== newProps.imageUrl;
-    return true;
+    if (this.props.imageUrl.master_img !== newProps.imageUrl.master_img)
+      return true;
+    if (this.props.viewType !== newProps.viewType) return true;
+    return false;
   }
   componentWillUpdate() {
     //On iOS while recycling till the new image is loaded the old one remains visible. This forcefully hides the old image.
@@ -22,9 +24,6 @@ export class ListRenderer extends React.Component {
         style: { opacity: 0 }
       });
     }
-    // this.listView.setNativeProps({
-    //   style: { flexDirection: this.props.viewType === 2 ? "row" : "column" }
-    // });
   }
   handleOnLoad = () => {
     if (isIOS && this.imageRef) {
@@ -37,7 +36,9 @@ export class ListRenderer extends React.Component {
     const { imageUrl = {} } = this.props;
     return (
       <TouchableWithoutFeedback
-        onPress={() => this.props.navigation.navigate("ProductDetail")}
+        onPress={() =>
+          this.props.navigation.navigate("ProductDetail", { id: imageUrl.id })
+        }
       >
         <View
           ref={ref => (this.listView = ref)}
