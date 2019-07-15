@@ -6,5 +6,9 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 10
+  },
+  image: {
+    width: 25,
+    height: 25
   }
 });

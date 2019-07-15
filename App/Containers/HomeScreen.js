@@ -156,7 +156,7 @@ class HomeScreen extends Component {
     const { home = {} } = this.props;
 
     return (
-      <Container style={styles.container}>
+      <View style={styles.container}>
         {this.searchBar()}
         {/* <SearchBar /> */}
         <Content>
@@ -170,7 +170,7 @@ class HomeScreen extends Component {
         </Content>
 
         <BottomFooter {...this.props} />
-      </Container>
+      </View>
     );
   }
 }

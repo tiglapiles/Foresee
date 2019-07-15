@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Image } from "react-native";
 import {
   Text,
@@ -24,7 +24,7 @@ export default function FeedsFollowing(props) {
         onPress={() => props.navigation.navigate("ShopDetail")}
       >
         <Left>
-          <Thumbnail source={{ uri: k.thumb }} />
+          <Thumbnail square source={{ uri: k.thumb }} />
           <Body>
             <Text>{k.title}</Text>
             <Text note>April 15, 2016</Text>
