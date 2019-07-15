@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "react-native";
 import { Footer, FooterTab, Button, Icon, Text } from "native-base";
 import styles from "./Styles/BottomFooterStyle";
 
@@ -16,7 +17,7 @@ export default function BottomFooter(props) {
           vertical
           active={buttonsActive(active, "Home")}
         >
-          <Icon name="ios-home" />
+          <Image source={{ uri: "home.png" }} style={styles.image} />
           <Text style={styles.title}>Home</Text>
         </Button>
         <Button
@@ -24,7 +25,7 @@ export default function BottomFooter(props) {
           vertical
           active={buttonsActive(active, "Feeds")}
         >
-          <Icon name="ios-heart" />
+          <Image source={{ uri: "feeds.png" }} style={styles.image} />
           <Text style={styles.title}>Feeds</Text>
         </Button>
         <Button
@@ -32,7 +33,7 @@ export default function BottomFooter(props) {
           vertical
           active={buttonsActive(active, "Messenger")}
         >
-          <Icon active name="ios-chatboxes" />
+          <Image source={{ uri: "message.png" }} style={styles.image} />
           <Text style={styles.title}>Messenger</Text>
         </Button>
         <Button
@@ -40,7 +41,7 @@ export default function BottomFooter(props) {
           vertical
           active={buttonsActive(active, "My Foresee")}
         >
-          <Icon name="ios-person" />
+          <Image source={{ uri: "mine.png" }} style={styles.image} />
           <Text style={styles.title}>My Foresee</Text>
         </Button>
       </FooterTab>
