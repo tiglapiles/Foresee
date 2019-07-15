@@ -89,7 +89,7 @@ class ProductListScreen extends Component {
     //We have only one view type so not checks are needed here
     return (
       <ListRenderer
-        imageUrl={data}
+        listObj={data}
         viewType={this.state.viewType}
         {...this.props}
       />

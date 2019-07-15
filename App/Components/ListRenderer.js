@@ -1,92 +1,68 @@
 import React from "react";
-import {
-  Image,
-  Platform,
-  View,
-  TouchableWithoutFeedback,
-  Text
-} from "react-native";
-
-const isIOS = Platform.OS === "ios";
+import { View, TouchableWithoutFeedback, Text } from "react-native";
+import { Icon } from "native-base";
+import { ImageRenderer } from "../Components/ImageRenderer.js";
+import Styles from "./ListRendererStyles.js";
 
 export class ListRenderer extends React.Component {
   shouldComponentUpdate(newProps) {
-    if (this.props.imageUrl.master_img !== newProps.imageUrl.master_img)
-      return true;
+    if (this.props.listObj !== newProps.listObj) return true;
     if (this.props.viewType !== newProps.viewType) return true;
     return false;
   }
-  componentWillUpdate() {
-    //On iOS while recycling till the new image is loaded the old one remains visible. This forcefully hides the old image.
-    //It is then made visible onLoad
-    if (isIOS && this.imageRef) {
-      this.imageRef.setNativeProps({
-        style: { opacity: 0 }
-      });
-    }
-  }
-  handleOnLoad = () => {
-    if (isIOS && this.imageRef) {
-      this.imageRef.setNativeProps({
-        style: { opacity: 1 }
-      });
-    }
-  };
+
   render() {
-    const { imageUrl = {} } = this.props;
+    const { listObj = {}, viewType = 2 } = this.props;
+
     return (
       <TouchableWithoutFeedback
         onPress={() =>
-          this.props.navigation.navigate("ProductDetail", { id: imageUrl.id })
+          this.props.navigation.navigate("ProductDetail", { id: listObj.id })
         }
       >
         <View
-          ref={ref => (this.listView = ref)}
+          ref={ref => (this.cardRef = ref)}
           style={{
             flex: 1,
             margin: 3,
             backgroundColor: "#fff",
-            flexDirection: this.props.viewType === 2 ? "row" : "column",
-            padding: 5
+            padding: 5,
+            flexDirection: viewType === 2 ? "row" : "column"
           }}
         >
           <View style={{ backgroundColor: "lightgray", flex: 0.5 }}>
-            <Image
-              ref={ref => {
-                this.imageRef = ref;
-              }}
-              style={{ flex: 1 }}
-              onLoad={this.handleOnLoad}
-              source={{ uri: imageUrl.master_img }}
-            />
+            <ImageRenderer imageUrl={listObj.master_img} />
           </View>
 
-          <View
-            style={{
-              flex: 0.5,
-              flexDirection: "column",
-              justifyContent: "space-between",
-              padding: 5
-            }}
-          >
-            <Text numberOfLines={2} style={{ fontSize: 14, color: "#7f8c8d" }}>
-              {imageUrl.name}
+          <View style={Styles.text}>
+            <Text numberOfLines={2} style={Styles.name}>
+              {listObj.name}
             </Text>
-            <View
-              style={{
-                flexDirection: "column",
-                justifyContent: "space-between"
-              }}
-            >
-              <Text style={{ fontWeight: "bold" }}>$100.00 - $110.00</Text>
-              <Text style={{ fontWeight: "bold" }}>500 Metric Ton (MOQ)</Text>
-              <Text style={{ fontSize: 10, color: "#7f8c8d" }}>2YRS</Text>
-            </View>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <Text style={{ color: "#7f8c8d", fontSize: 10 }}>COMPARE</Text>
-              <Text style={{ color: "#7f8c8d", fontSize: 10 }}>CONTACT</Text>
+            <Text style={{ fontWeight: "bold" }}>$100.00 - $110.00</Text>
+            <Text style={{ fontWeight: "bold" }}>500 Metric Ton (MOQ)</Text>
+            <Text style={{ fontSize: 10, color: "#7f8c8d" }}>2YRS</Text>
+            <View style={Styles.buttomContainer}>
+              <View style={Styles.textButtom}>
+                <Icon name="ios-add-circle-outline" style={Styles.buttomIcon} />
+                <Text
+                  style={Styles.buttomText}
+                  onPress={() => this.props.navigation.navigate("Notification")}
+                >
+                  COMPARE
+                </Text>
+              </View>
+              <View style={Styles.textButtom}>
+                <Icon
+                  name="ios-notifications-outline"
+                  style={Styles.buttomIcon}
+                />
+                <Text
+                  style={Styles.buttomText}
+                  onPress={() => this.props.navigation.navigate("Notification")}
+                >
+                  CONTACT
+                </Text>
+              </View>
             </View>
           </View>
         </View>
