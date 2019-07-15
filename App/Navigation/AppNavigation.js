@@ -10,7 +10,7 @@ import NavigationDrawer from "./NavigationDrawer";
 import VideoFlip from "../Containers/VideoFlip.js";
 import ProductDetail from "../Containers/ProductDetail.js";
 import ProductCategory from "../Containers/ProductCategoryScreen.js";
-import ProductList from "../Containers/ProductListScreen.js";
+import ProductListDrawer from "../Components/ProductListDrawer.js";
 import ShopDetail from "../Containers/ShopDetail.js";
 // import SettingScreen from "../Containers/SettingScreen";
 // import HelpCenterScreen from "../Containers/HelpCenterScreen";
@@ -34,7 +34,7 @@ const PrimaryNav = StackNavigator(
     VideoFlip: { screen: VideoFlip },
     // NavigationProduct: { screen: NavigationProduct },
     ProductCategory: { screen: ProductCategory },
-    ProductList: { screen: ProductList },
+    ProductList: { screen: ProductListDrawer },
     ProductDetail: { screen: ProductDetail },
     ShopDetail: { screen: ShopDetail },
     // My Foresee

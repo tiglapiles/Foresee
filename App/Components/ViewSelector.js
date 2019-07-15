@@ -1,42 +1,17 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import { Text, TouchableHighlight, View, StyleSheet } from "react-native";
 import { Button, Icon } from "native-base";
-const styles = StyleSheet.create({
-  container: {
-    height: 50,
-    marginBottom: 2,
-    backgroundColor: "#ecf0f1",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    shadowColor: "#000000",
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 1,
-      width: 0
-    }
-  },
-  changeble: {
-    width: 50,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  refine: {
-    height: 30,
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: "#d6d7da",
-    alignSelf: "center"
-  }
-});
+import styles from "./Styles/ViewSelectorStyles.js";
 
 export class ViewSelector extends React.Component {
   constructor(props) {
     super(props);
     this.currentView = 2;
   }
+
+  static propTypes = {
+    openControlPanel: PropTypes.func.isRequired
+  };
 
   shouldComponentUpdate(newProps) {
     if (this.props.total !== newProps.total) return true;
@@ -66,10 +41,7 @@ export class ViewSelector extends React.Component {
             <Icon name={this.props.viewType === 1 ? "ios-list" : "md-apps"} />
           </TouchableHighlight>
           <View style={styles.refine} />
-          <Button
-            transparent
-            onPress={() => console.log("productlist: refine")}
-          >
+          <Button transparent onPress={this.props.openControlPanel}>
             <Icon name="ios-funnel" style={{ color: "#e67e22" }} />
             <Text style={{ color: "#e67e22" }}>Refine</Text>
           </Button>

@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import { BackHandler, View, ActivityIndicator } from "react-native";
-import { Header, Left, Right, Body, Button, Title, Icon } from "native-base";
+import {
+  Header,
+  Left,
+  Right,
+  Body,
+  Button,
+  Title,
+  Icon,
+  Drawer
+} from "native-base";
 import { RecyclerListView, DataProvider } from "recyclerlistview";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
@@ -45,16 +54,6 @@ class ProductListScreen extends Component {
       return true;
     });
   }
-
-  // scrollToBottomLoad = page => {
-  //   const {
-  //     getList,
-  //     navigation: {
-  //       state: { params }
-  //     }
-  //   } = this.props;
-  //   getList(params.id, parseInt(page, 10) + 1);
-  // };
 
   async fetchMoreData() {
     const {
@@ -138,7 +137,7 @@ class ProductListScreen extends Component {
             <Title>{cateName}</Title>
           </Body>
           <Right>
-            <Button transparent onPress={() => console.log("more")}>
+            <Button transparent onPress={() => console.log("select")}>
               <Icon name="md-more" />
             </Button>
           </Right>
@@ -148,6 +147,7 @@ class ProductListScreen extends Component {
           total={this.state.total}
           viewType={this.state.viewType}
           viewChange={this.viewChangeHandler}
+          {...this.props}
         />
         {this.state.count > 0 ? (
           <RecyclerListView
