@@ -5,11 +5,13 @@ import { RecyclerListView, DataProvider } from "recyclerlistview";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 import ProductActions from "../Redux/ProductRedux.js";
+import ProductApi from "../Services/ProductApi.js";
 import { LayoutUtil } from "../Lib/LayoutUtil";
 import { ListRenderer } from "../Components/ListRenderer";
 import { ViewSelector } from "../Components/ViewSelector";
 // Styles
 import styles from "./Styles/ProductListScreenStyle";
+const API = ProductApi.create();
 
 class ProductListScreen extends Component {
   constructor(props) {
@@ -65,14 +67,11 @@ class ProductListScreen extends Component {
       //To prevent redundant fetch requests. Needed because cases of quick up/down scroll can trigger onEndReached
       //more than once
       this.inProgressNetworkReq = true;
-      // const images = await DataCall.get(this.state.count, 18);
-      const imagesR = await fetch(
-        `http://ok.yjzw.net/api/Product/ProductList.html?cid=${cid}&&page=${
-          this.state.page
-        }`
-      );
-      const imagesD = await imagesR.json();
-      const images = imagesD.data.data;
+      const response = await API.getProductList({ cid, page: this.state.page });
+      if (!response.ok) {
+        return;
+      }
+      const images = await response.data.data.data;
       this.inProgressNetworkReq = false;
       this.setState({
         dataProvider: this.state.dataProvider.cloneWithRows(
@@ -81,7 +80,7 @@ class ProductListScreen extends Component {
         images: this.state.images.concat(images),
         count: this.state.count + 18,
         page: this.state.page + 1,
-        total: imagesD.data.total
+        total: response.data.data.total
       });
     }
   }
