@@ -25,20 +25,26 @@ export default function FeedsVideoList(props) {
         </CardItem>
         <CardItem>
           <Left>
-            <Text>{info.title}</Text>
+            <Text numberOfLines={2}>{info.title}</Text>
           </Left>
         </CardItem>
         <CardItem>
           <Left>
-            <Thumbnail small source={{ uri: info.thumb }} />
+            <Thumbnail
+              square
+              source={{ uri: info.thumb }}
+              style={{ width: 30, height: 30 }}
+            />
             <Body>
-              <Text>{info.name}</Text>
+              <Text numberOfLines={1} style={{ color: "#95a5a6" }}>
+                {info.name}
+              </Text>
             </Body>
           </Left>
           <Right>
             <Button transparent>
-              <Icon name="ios-eye" />
-              <Text>{info.view}</Text>
+              <Icon name="ios-eye" style={{ color: "#bdc3c7" }} />
+              <Text style={{ color: "#bdc3c7" }}>{info.view}</Text>
             </Button>
           </Right>
         </CardItem>
