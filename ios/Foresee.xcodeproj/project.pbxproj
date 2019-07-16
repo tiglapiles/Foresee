@@ -65,6 +65,10 @@
 		F2897029D9A341409DA38579 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EB67F17A0854F508F61CF0D /* MaterialIcons.ttf */; };
 		F638583BEB0D4685AD01A920 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AE1B86F93EE4771BF587536 /* Entypo.ttf */; };
 		F91CEB416C0B4EF79DB81D6C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3854892556E4C448F0D5FB9 /* FontAwesome.ttf */; };
+		FB1EBCDB22DDCD1600C1B542 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1EBCDA22DDCD1500C1B542 /* TwitterKit.framework */; };
+		FB1EBCDD22DDCD3D00C1B542 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1EBCDC22DDCD3D00C1B542 /* TwitterCore.framework */; };
+		FB1EBCDF22DDCD4400C1B542 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB1EBCDE22DDCD4300C1B542 /* TwitterKitResources.bundle */; };
+		FB1EBCE122DDCD4900C1B542 /* TwitterShareExtensionUIResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB1EBCE022DDCD4900C1B542 /* TwitterShareExtensionUIResources.bundle */; };
 		FBE42A6722DDAB9300B49A26 /* libRCTFBLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE42A4322DDAB2100B49A26 /* libRCTFBLogin.a */; };
 		FBE42A6922DDACAF00B49A26 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE42A6822DDACAF00B49A26 /* Bolts.framework */; };
 		FBE42A6B22DDACC300B49A26 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE42A6A22DDACC300B49A26 /* FBSDKCoreKit.framework */; };
@@ -263,6 +267,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		FB1EBCD522DDC7F600C1B542 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8769F9DDAF9940178D7BC922 /* RNTwitterSignIn.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D07E57251F07806700A7160F;
+			remoteInfo = RNTwitterSignIn;
+		};
 		FB3A311E22D819F800E3B714 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E1BD2C75559B4A73A809E9EB /* RNCamera.xcodeproj */;
@@ -403,6 +414,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		85268D701E7344748A51468D /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		86DFB6473DA74C1E83A160C7 /* libRNCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCamera.a; sourceTree = "<group>"; };
+		8769F9DDAF9940178D7BC922 /* RNTwitterSignIn.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNTwitterSignIn.xcodeproj; path = "../node_modules/react-native-twitter-signin/ios/RNTwitterSignIn.xcodeproj"; sourceTree = "<group>"; };
 		99FFF82D26C543ABAB41D2C2 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		A36B7133393147098C802C7D /* libReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReact.a; sourceTree = "<group>"; };
 		A657EE12689248C09F44AD0C /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
@@ -418,6 +430,11 @@
 		E6C88F0FC8204326A2D6256E /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		EC8E20222250466C971B48E1 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		F3854892556E4C448F0D5FB9 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		FB1EBCD822DDCCD400C1B542 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterKit.framework; path = "../../../Downloads/Twitter-Kit-iOS/TwitterKit.framework"; sourceTree = "<group>"; };
+		FB1EBCDA22DDCD1500C1B542 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		FB1EBCDC22DDCD3D00C1B542 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		FB1EBCDE22DDCD4300C1B542 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TwitterKitResources.bundle; sourceTree = "<group>"; };
+		FB1EBCE022DDCD4900C1B542 /* TwitterShareExtensionUIResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TwitterShareExtensionUIResources.bundle; sourceTree = "<group>"; };
 		FBE42A3B22DDAB2100B49A26 /* RCTFBLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBLogin.xcodeproj; path = "../node_modules/react-native-facebook-login/RCTFBLogin.xcodeproj"; sourceTree = "<group>"; };
 		FBE42A6822DDACAF00B49A26 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		FBE42A6A22DDACC300B49A26 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -448,7 +465,9 @@
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
+				FB1EBCDB22DDCD1600C1B542 /* TwitterKit.framework in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				FB1EBCDD22DDCD3D00C1B542 /* TwitterCore.framework in Frameworks */,
 				90E1E826839546639CC6CC62 /* libRNVectorIcons.a in Frameworks */,
 				7E8D62BBF8B3454B84BC2CAC /* libReact.a in Frameworks */,
 				FBE42A6D22DDACDE00B49A26 /* FBSDKLoginKit.framework in Frameworks */,
@@ -667,6 +686,7 @@
 				B631BF5EC0B440C0894AFD19 /* RCTVideo.xcodeproj */,
 				E1BD2C75559B4A73A809E9EB /* RNCamera.xcodeproj */,
 				12F180431BF34469BD6DA219 /* ReactNativePermissions.xcodeproj */,
+				8769F9DDAF9940178D7BC922 /* RNTwitterSignIn.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -683,6 +703,10 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				FB1EBCE022DDCD4900C1B542 /* TwitterShareExtensionUIResources.bundle */,
+				FB1EBCDE22DDCD4300C1B542 /* TwitterKitResources.bundle */,
+				FB1EBCDC22DDCD3D00C1B542 /* TwitterCore.framework */,
+				FB1EBCDA22DDCD1500C1B542 /* TwitterKit.framework */,
 				13B07FAE1A68108700A75B9A /* Foresee */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ForeseeTests */,
@@ -702,6 +726,14 @@
 				00E356EE1AD99517003FC87E /* ForeseeTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* Foresee-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* Foresee-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB1EBCAD22DDC7F600C1B542 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB1EBCD622DDC7F600C1B542 /* libRNTwitterSignIn.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -783,6 +815,7 @@
 		FBE42A6622DDAB9300B49A26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB1EBCD822DDCCD400C1B542 /* TwitterKit.framework */,
 				FBE42A6C22DDACDE00B49A26 /* FBSDKLoginKit.framework */,
 				FBE42A6A22DDACC300B49A26 /* FBSDKCoreKit.framework */,
 				FBE42A6822DDACAF00B49A26 /* Bolts.framework */,
@@ -975,6 +1008,10 @@
 					ProjectRef = D5EA07934E7948AEA96E7479 /* RNI18n.xcodeproj */;
 				},
 				{
+					ProductGroup = FB1EBCAD22DDC7F600C1B542 /* Products */;
+					ProjectRef = 8769F9DDAF9940178D7BC922 /* RNTwitterSignIn.xcodeproj */;
+				},
+				{
 					ProductGroup = FB65D9C022B66BBA00847B54 /* Products */;
 					ProjectRef = 42F1C1784AC349B19AEA3FA0 /* RNVectorIcons.xcodeproj */;
 				},
@@ -1165,6 +1202,13 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		FB1EBCD622DDC7F600C1B542 /* libRNTwitterSignIn.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNTwitterSignIn.a;
+			remoteRef = FB1EBCD522DDC7F600C1B542 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		FB3A311F22D819F800E3B714 /* libRNCamera.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1274,10 +1318,12 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				A2CBAB7D17DA4F90BCFEA9B6 /* Entypo.ttf in Resources */,
 				86D6DB818FD14AC39A900588 /* EvilIcons.ttf in Resources */,
+				FB1EBCDF22DDCD4400C1B542 /* TwitterKitResources.bundle in Resources */,
 				E5BC8DF3613444718169CEE1 /* FontAwesome.ttf in Resources */,
 				E62EEFBCBEE94DEEB000F674 /* Foundation.ttf in Resources */,
 				6AB463AB340D435D9273EDA4 /* Ionicons.ttf in Resources */,
 				06957868D5484AD89BA1BDA6 /* MaterialCommunityIcons.ttf in Resources */,
+				FB1EBCE122DDCD4900C1B542 /* TwitterShareExtensionUIResources.bundle in Resources */,
 				F2897029D9A341409DA38579 /* MaterialIcons.ttf in Resources */,
 				D76E9812807941AC904026F1 /* Octicons.ttf in Resources */,
 				1EA219531BA14F81B2A2C230 /* SimpleLineIcons.ttf in Resources */,
@@ -1424,6 +1470,7 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 				);
 				INFOPLIST_FILE = ForeseeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1462,6 +1509,7 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 				);
 				INFOPLIST_FILE = ForeseeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1509,6 +1557,7 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 				);
 				INFOPLIST_FILE = Foresee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1547,6 +1596,7 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 				);
 				INFOPLIST_FILE = Foresee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1583,6 +1633,7 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 				);
 				INFOPLIST_FILE = "Foresee-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1630,6 +1681,7 @@
 					"$(SRCROOT)/../node_modules/react-native-video/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 				);
 				INFOPLIST_FILE = "Foresee-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

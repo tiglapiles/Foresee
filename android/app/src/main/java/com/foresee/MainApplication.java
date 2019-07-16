@@ -3,6 +3,7 @@ package com.foresee;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.goldenowl.twittersignin.TwitterSigninPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new TwitterSigninPackage(),
             new RNCameraPackage(),
             new ReactVideoPackage(),
             new ReactNativeConfigPackage(),

@@ -29,6 +29,7 @@ import {
   Right
 } from "native-base";
 var { FBLogin, FBLoginManager } = require("react-native-facebook-login");
+import TwitterButton from "./TwitterButton";
 
 class LoginScreen extends React.Component {
   static propTypes = {
@@ -54,15 +55,15 @@ class LoginScreen extends React.Component {
 
   componentWillReceiveProps(newProps) {
     this.forceUpdate();
-    //  Did the login attempt complete?
+    //   Did the login attempt complete?
     if (this.isAttempting && !newProps.fetching) {
       this.props.navigation.goBack();
     }
   }
 
   componentWillMount() {
-    //  Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
-    //  TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
+    //   Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
+    //   TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
     this.keyboardDidShowListener = Keyboard.addListener(
       "keyboardDidShow",
       this.keyboardDidShow
@@ -79,7 +80,7 @@ class LoginScreen extends React.Component {
   }
 
   keyboardDidShow = e => {
-    //  Animation types easeInEaseOut/linear/spring
+    //   Animation types easeInEaseOut/linear/spring
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     let newSize = Metrics.screenHeight - e.endCoordinates.height;
     this.setState({
@@ -89,7 +90,7 @@ class LoginScreen extends React.Component {
   };
 
   keyboardDidHide = e => {
-    //  Animation types easeInEaseOut/linear/spring
+    //   Animation types easeInEaseOut/linear/spring
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     this.setState({
       visibleHeight: Metrics.screenHeight,
@@ -98,10 +99,10 @@ class LoginScreen extends React.Component {
   };
 
   handlePressLogin = () => {
-    //  const { username, password } = this.state
-    //  this.isAttempting = true
-    //  attempt a login - a saga is listening to pick it up from here.
-    //  this.props.attemptLogin(username, password);
+    //   const { username, password } = this.state
+    //   this.isAttempting = true
+    //   attempt a login - a saga is listening to pick it up from here.
+    //   this.props.attemptLogin(username, password);
     this.props.navigation.navigate("Home");
   };
 
@@ -219,7 +220,7 @@ class LoginScreen extends React.Component {
               size="large"
             />
             <Icon name="logo-linkedin" style={{ fontSize: 38 }} />
-            <Icon name="logo-twitter" style={{ fontSize: 38 }} />
+            <TwitterButton style={styles.button} />
           </View>
         </View>
       </View>
