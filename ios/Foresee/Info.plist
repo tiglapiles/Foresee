@@ -90,5 +90,7 @@
     <!-- Include this only if you are planning to use the microphone for video recording -->
     <key>NSMicrophoneUsageDescription</key>
     <string>Your message to user when the microsphone is accessed for the first time</string>
+    <key>CFBundleURLTypes</key> <array> <dict> <key>CFBundleURLSchemes</key> <array> <string>fb399627587425549</string> </array> </dict> </array> <key>FacebookAppID</key> <string>399627587425549</string> <key>FacebookDisplayName</key> <string>apptest</string>
+    <key>LSApplicationQueriesSchemes</key> <array> <string>fbapi</string> <string>fb-messenger-share-api</string> <string>fbauth2</string> <string>fbshareextension</string> </array>
   </dict>
 </plist>
