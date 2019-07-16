@@ -21,7 +21,12 @@ import {
   Item,
   Input,
   Label,
-  Icon
+  Icon,
+  Header,
+  Left,
+  Body,
+  Title,
+  Right
 } from "native-base";
 
 class LoginScreen extends React.Component {
@@ -96,7 +101,7 @@ class LoginScreen extends React.Component {
     // this.isAttempting = true
     // attempt a login - a saga is listening to pick it up from here.
     // this.props.attemptLogin(username, password);
-    this.props.navigation.navigate("LaunchScreen");
+    this.props.navigation.navigate("Home");
   };
 
   handleChangeUsername = text => {
@@ -115,67 +120,101 @@ class LoginScreen extends React.Component {
       ? Styles.textInput
       : Styles.textInputReadonly;
     return (
-      <ScrollView
-        contentContainerStyle={{ justifyContent: "center" }}
-        style={[Styles.container, { height: this.state.visibleHeight }]}
-        keyboardShouldPersistTaps="always"
-      >
-        <Image
-          source={Images.logo}
-          style={[Styles.topLogo, this.state.topLogo]}
-        />
-        <View style={Styles.form}>
-          <Form>
-            <Item stackedLabel>
-              <Label>Username</Label>
-              <Input
-                ref="username"
-                value={username}
-                editable={editable}
-                keyboardType="default"
-                returnKeyType="next"
-                autoCapitalize="none"
-                autoCorrect={false}
-                onChangeText={this.handleChangeUsername}
-                underlineColorAndroid="transparent"
-                onSubmitEditing={() => this.password._root.focus()}
-              />
-            </Item>
-            <Item stackedLabel>
-              <Label>Password</Label>
-              <Input
-                ref={ref => (this.password = ref)}
-                value={password}
-                editable={editable}
-                keyboardType="default"
-                returnKeyType="go"
-                autoCapitalize="none"
-                autoCorrect={false}
-                secureTextEntry
-                onChangeText={this.handleChangePassword}
-                underlineColorAndroid="transparent"
-                onSubmitEditing={this.handlePressLogin}
-              />
-            </Item>
-          </Form>
-          <View style={[Styles.loginRow]}>
-            <Button
-              style={{ flex: 1, justifyContent: "center" }}
-              full
-              onPress={this.handlePressLogin}
-            >
-              <NBText>Sign In</NBText>
+      <View style={{ flex: 1 }}>
+        <Header>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="ios-close" />
             </Button>
-            <Button
-              style={{ flex: 1, justifyContent: "center" }}
-              full
-              onPress={() => this.props.navigation.goBack()}
+          </Left>
+          <Body>
+            <Title>Sign In</Title>
+          </Body>
+          <Right>
+            <Icon name="ios-help-circle" />
+          </Right>
+        </Header>
+
+        <ScrollView
+          contentContainerStyle={{ justifyContent: "center" }}
+          style={[Styles.container, { height: this.state.visibleHeight }]}
+          keyboardShouldPersistTaps="always"
+        >
+          <Image
+            source={Images.logo}
+            style={[Styles.topLogo, this.state.topLogo]}
+          />
+          <View style={Styles.form}>
+            <Form>
+              <Item stackedLabel>
+                <Label>Username</Label>
+                <Input
+                  ref="username"
+                  value={username}
+                  editable={editable}
+                  keyboardType="default"
+                  returnKeyType="next"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  onChangeText={this.handleChangeUsername}
+                  underlineColorAndroid="transparent"
+                  onSubmitEditing={() => this.password._root.focus()}
+                />
+              </Item>
+              <Item stackedLabel>
+                <Label>Password</Label>
+                <Input
+                  ref={ref => (this.password = ref)}
+                  value={password}
+                  editable={editable}
+                  keyboardType="default"
+                  returnKeyType="go"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  secureTextEntry
+                  onChangeText={this.handleChangePassword}
+                  underlineColorAndroid="transparent"
+                  onSubmitEditing={this.handlePressLogin}
+                />
+              </Item>
+            </Form>
+            <View style={[Styles.loginRow]}>
+              <Button
+                style={{ flex: 1, justifyContent: "center" }}
+                full
+                onPress={this.handlePressLogin}
+              >
+                <NBText>Sign In</NBText>
+              </Button>
+            </View>
+            <Text
+              style={Styles.forgot}
+              onPress={() => this.props.navigation.navigate("Login")}
             >
-              <NBText>Cancel</NBText>
-            </Button>
+              Forgot password?
+            </Text>
+            <Text
+              style={Styles.register}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              Don't hava an account?
+              <Text style={{ color: "#e67e22" }}>Register</Text>
+            </Text>
+          </View>
+        </ScrollView>
+
+        <View style={Styles.loginOther}>
+          <Text style={Styles.signInWith}>Or sign in with</Text>
+          <View
+            style={{ justifyContent: "space-around", flexDirection: "row" }}
+          >
+            <Icon name="logo-google" style={{ fontSize: 38 }} />
+            <Icon name="logo-facebook" style={{ fontSize: 38 }} />
+            <Icon name="logo-linkedin" style={{ fontSize: 38 }} />
+            <Icon name="logo-twitter" style={{ fontSize: 38 }} />
           </View>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }

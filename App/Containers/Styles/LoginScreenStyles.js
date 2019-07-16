@@ -1,20 +1,20 @@
-import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes'
+import { StyleSheet } from "react-native";
+import { Colors, Metrics } from "../../Themes";
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 70,
+    paddingTop: 40,
     backgroundColor: Colors.background
   },
   form: {
-    backgroundColor: Colors.snow,
+    backgroundColor: "transparent",
     margin: Metrics.baseMargin,
     borderRadius: 4
   },
   row: {
     paddingVertical: Metrics.doubleBaseMargin,
     paddingHorizontal: Metrics.doubleBaseMargin,
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 1
   },
   rowLabel: {
@@ -31,8 +31,8 @@ export default StyleSheet.create({
   loginRow: {
     paddingBottom: Metrics.doubleBaseMargin,
     paddingHorizontal: Metrics.doubleBaseMargin,
-    flexDirection: 'row',
-    marginTop: 10
+    flexDirection: "row",
+    marginTop: 30
   },
   loginButtonWrapper: {
     flex: 1
@@ -42,14 +42,43 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.charcoal,
     backgroundColor: Colors.panther,
-    padding: 6
+    padding: 6,
+    zIndex: 999
   },
   loginText: {
-    textAlign: 'center',
+    textAlign: "center",
     color: Colors.silver
   },
   topLogo: {
-    alignSelf: 'center',
-    resizeMode: 'contain'
+    alignSelf: "center",
+    resizeMode: "contain"
+  },
+  forgot: {
+    alignSelf: "center",
+    textDecorationLine: "underline",
+    marginTop: 30,
+    color: "#bdc3c7",
+    fontSize: 14
+  },
+  register: {
+    marginTop: 30,
+    alignSelf: "center",
+    color: "#bdc3c7",
+    fontSize: 14
+  },
+  loginOther: {
+    flex: 1,
+    position: "absolute",
+    bottom: 0,
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "100%",
+    marginBottom: 10
+  },
+  signInWith: {
+    alignSelf: "center",
+    color: "#bdc3c7",
+    fontSize: 14,
+    marginBottom: 10
   }
-})
+});
