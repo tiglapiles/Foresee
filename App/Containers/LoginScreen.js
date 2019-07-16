@@ -10,6 +10,7 @@ import {
   LayoutAnimation
 } from "react-native";
 import { connect } from "react-redux";
+import { GoogleSignin, GoogleSigninButton } from "react-native-google-signin";
 import Styles from "./Styles/LoginScreenStyles";
 import { Images, Metrics } from "../Themes";
 import LoginActions from "../Redux/LoginRedux";
@@ -208,7 +209,13 @@ class LoginScreen extends React.Component {
           <View
             style={{ justifyContent: "space-around", flexDirection: "row" }}
           >
-            <Icon name="logo-google" style={{ fontSize: 38 }} />
+            <GoogleSigninButton
+              style={{ width: 48, height: 48 }}
+              size={GoogleSigninButton.Size.Icon}
+              color={GoogleSigninButton.Color.Dark}
+              onPress={this._signIn}
+              disabled={this.state.isSigninInProgress}
+            />
             <Icon name="logo-facebook" style={{ fontSize: 38 }} />
             <Icon name="logo-linkedin" style={{ fontSize: 38 }} />
             <Icon name="logo-twitter" style={{ fontSize: 38 }} />

@@ -1,0 +1,53 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'Foresee' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Foresee
+
+  # target 'Foresee-tvOSTests' do
+  #   inherit! :search_paths
+  #   # Pods for testing
+  # end
+
+  target 'ForeseeTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'Foresee-tvOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Foresee-tvOS
+
+  target 'Foresee-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'test_google_signin' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for test_google_signin
+  pod 'GoogleSignIn', '~> 4.4.0'
+  # RNGoogleSignin requires GoogleSignIn >= 4.3.0
+
+  target 'test_google_signin-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'test_google_signinTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

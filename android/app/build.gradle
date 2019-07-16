@@ -143,6 +143,7 @@ signingConfigs {
 }
 
 dependencies {
+    compile project(':react-native-google-signin')
     compile project(':react-native-camera')
     compile project(':react-native-video')
     compile project(':react-native-config')
