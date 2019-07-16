@@ -214,7 +214,10 @@ class LoginScreen extends React.Component {
               alignItems: "center"
             }}
           >
-            <Icon name="logo-google" style={{ fontSize: 38 }} />
+            <Icon
+              name="logo-google"
+              style={{ fontSize: 38, color: "#e67e22" }}
+            />
             <FBLogin
               style={{ height: 30, width: 30, overflow: "hidden" }}
               size="large"
@@ -232,7 +235,10 @@ class LoginScreen extends React.Component {
                 />
               )}
             />
-            <Icon name="logo-twitter" style={{ fontSize: 38 }} />
+            <Icon
+              name="logo-twitter"
+              style={{ fontSize: 38, color: "#74b9ff" }}
+            />
           </View>
         </View>
       </View>
