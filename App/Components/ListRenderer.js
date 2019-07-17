@@ -6,7 +6,8 @@ import Styles from "./ListRendererStyles.js";
 
 export class ListRenderer extends React.Component {
   shouldComponentUpdate(newProps) {
-    if (this.props.listObj !== newProps.listObj) return true;
+    if (this.props.listObj.master_img !== newProps.listObj.master_img)
+      return true;
     if (this.props.viewType !== newProps.viewType) return true;
     return false;
   }
