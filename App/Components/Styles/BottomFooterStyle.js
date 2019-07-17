@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   footer: {
-    backgroundColor: "#2c3e50"
+    backgroundColor: "#f5f5f5"
   },
   title: {
     fontSize: 10
