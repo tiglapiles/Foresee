@@ -54,7 +54,7 @@ const PrimaryNav = StackNavigator(
     Personal: { screen: PersonalScreen }
   },
   {
-    initialRouteName: "LaunchScreen",
+    initialRouteName: "NavigationDrawer",
     headerMode: "none"
   }
 );

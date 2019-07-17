@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "iphone",
+      "filename" : "launch.jpg",
       "scale" : "1x"
     },
     {
