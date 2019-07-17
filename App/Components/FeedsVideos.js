@@ -79,6 +79,10 @@ function FeedsVideos(props) {
       <FeedsTopic {...props} />
       <View>
         <FlatList
+          columnWrapperStyle={{ justifyContent: "space-between", padding: 10 }}
+          /* ItemSeparatorComponent={highlighted => ( */
+          /*   <View style={[{ height: 2 }, highlighted && { marginLeft: 0 }]} /> */
+          /* )} */
           renderItem={({ item, index, section }) => (
             <FeedsVideoList item={item} handleUp={handleUp} />
           )}

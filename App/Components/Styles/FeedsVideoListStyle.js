@@ -2,25 +2,46 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    width: "46%",
-    // flexdirection: "row",
+    // flex: 1,
+    width: "48.8%",
+    flexDirection: "column",
     backgroundColor: "#fff",
-    // alignitems: "center",
-    // flexWrap: "wrap",
-    overflow: "hidden",
-    borderRadius: 5,
-    height: 250
+    borderRadius: 10,
+    height: 250,
+    overflow: "hidden"
+  },
+  imgContainer: {
+    flex: 0.6,
+    backgroundColor: "lightgray",
+    overflow: "hidden"
   },
   img: {
     width: "100%",
-    height: 150,
-    // flex: 1,
+    height: "100%",
     overflow: "hidden"
   },
-  bottom: {
-    // flexDirection: "column",
-    // justifyContent: "space-between",
-    // alignItems: "center"
+  textContainer: {
+    flexDirection: "column",
+    justifyContent: "space-between",
+    padding: 10,
+    flex: 0.4
+  },
+  info: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    justifyContent: "space-between"
+  },
+  thumb: {
+    flexDirection: "row",
+    alignItems: "center",
+    overflow: "hidden",
+    width: "60%"
+  },
+  view: {
+    width: "40%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end"
   }
 });
