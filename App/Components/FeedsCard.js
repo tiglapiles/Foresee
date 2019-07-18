@@ -1,5 +1,4 @@
 import React from "react";
-import { Image } from "react-native";
 import {
   Text,
   Card,
@@ -11,6 +10,7 @@ import {
   Left,
   Thumbnail
 } from "native-base";
+import ImageGrid from "../Components/ImageGrid.js";
 
 export default function FeedsFollowing(props) {
   const k = props.cardInfo;
@@ -40,11 +40,8 @@ export default function FeedsFollowing(props) {
       </CardItem>
       <CardItem button onPress={() => props.navigation.navigate("ShopDetail")}>
         <Body>
-          <Image
-            source={{ uri: k.img }}
-            style={{ height: 200, width: 200, flex: 1 }}
-          />
           <Text>{k.content}</Text>
+          <ImageGrid {...props} />
         </Body>
       </CardItem>
       <CardItem
