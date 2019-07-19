@@ -22,10 +22,10 @@ export default class ImageGrid extends Component {
   // }
   images = () => [
     // "https:i.alicdn.com/sc01/kf/HTB1hXLkazvuK1Rjy0Faq6x2aVXav/8000w-Electric-Bike-Kits-with-LCD-5.jpg_250x250.jpg",
-    "https:i.alicdn.com/sc01/kf/HTB1AynNXynrK1RjSsziq6xptpXak/Big-power-Enduroebike-48v-72v-3000w-electric.jpg_250x250.jpg",
-    "https:i.alicdn.com/sc01/kf/HTB134tlafuSBuNkHFqDq6xfhVXau/CZJB-205-35-48v-1000-watt-electric.jpg_250x250.jpg",
-    "https:i.alicdn.com/sc01/kf/HTB19Jc4NFXXXXX5XFXXq6xXFXXXQ/police-motorcycle-48v-2000w-electric-bike-motor.jpg_250x250.jpg",
-    "https:i.alicdn.com/sc01/kf/HTB19FnjDNSYBuNjSspjq6x73VXak/60V-72V-3000W-5000W-high-speed-full.jpg_250x250.jpg",
+    // "https:i.alicdn.com/sc01/kf/HTB1AynNXynrK1RjSsziq6xptpXak/Big-power-Enduroebike-48v-72v-3000w-electric.jpg_250x250.jpg",
+    // "https:i.alicdn.com/sc01/kf/HTB134tlafuSBuNkHFqDq6xfhVXau/CZJB-205-35-48v-1000-watt-electric.jpg_250x250.jpg",
+    // "https:i.alicdn.com/sc01/kf/HTB19Jc4NFXXXXX5XFXXq6xXFXXXQ/police-motorcycle-48v-2000w-electric-bike-motor.jpg_250x250.jpg",
+    // "https:i.alicdn.com/sc01/kf/HTB19FnjDNSYBuNjSspjq6x73VXak/60V-72V-3000W-5000W-high-speed-full.jpg_250x250.jpg",
     "https:i.alicdn.com/sc01/kf/HTB1wJNLi3LD8KJjSszeq6yGRpXa9/QS-Motor-3000W-205-50H-V2-E.jpg_250x250.jpg",
     "https:i.alicdn.com/sc01/kf/HTB1g19EKkSWBuNjSszdq6zeSpXaA/2016-newest-design-high-strong-stainless-steel.jpg_250x250.jpg",
     "https://i.alicdn.com/sc01/kf/HTB1oii4n0bJ8KJjy1zjq6yqapXaY/Yiwu-Market-Best-Price-Long-Range-DIY.jpg_250x250.jpg",
@@ -59,7 +59,7 @@ export default class ImageGrid extends Component {
     } else if (length === 4) {
       arrayImg = convertToTwoVectorArray(data);
       return arrayImg.map((k, i) => (
-        <Row key={i} style={styles.row}>
+        <Row key={i} style={{ width: "66%" }}>
           {this.renderImages(k)}
         </Row>
       ));
