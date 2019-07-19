@@ -5,7 +5,8 @@
     "title": "Foresee TLD.",
     "img":
     "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
-    "content": "content could be anything"
+    "content": "content could be anything",
+    "type":"video"
   },
   {
     "thumb":
@@ -13,7 +14,8 @@
     "title": "Foresee TLD.",
     "img":
     "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
-    "content": "content could be anything"
+    "content": "content could be anything",
+    "type":"images"
   },
   {
     "thumb":
@@ -21,7 +23,8 @@
     "title": "Foresee TLD.",
     "img":
     "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
-    "content": "content could be anything"
+    "content": "content could be anything",
+    "type":"video"
   },
   {
     "thumb":
@@ -29,6 +32,7 @@
     "title": "Foresee TLD.",
     "img":
     "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
-    "content": "content could be anything"
+    "content": "content could be anything",
+    "type":"images"
   }
 ]

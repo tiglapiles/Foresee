@@ -6,7 +6,8 @@
     "img":
     "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
     "content": "content could be anything",
-    "follow": true
+    "follow": true,
+    "type":"images"
   },
   {
     "thumb":
@@ -15,7 +16,8 @@
     "img":
     "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
     "content": "content could be anything",
-    "follow": true
+    "follow": true,
+    "type":"images"
   },
   {
     "thumb":
@@ -24,7 +26,8 @@
     "img":
     "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
     "content": "content could be anything",
-    "follow": true
+    "follow": true,
+    "type":"video"
   },
   {
     "thumb":
@@ -33,6 +36,7 @@
     "img":
     "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg",
     "content": "content could be anything",
-    "follow": true
+    "follow": true,
+    "type":"video"
   }
 ]
