@@ -1,29 +1,11 @@
 import React, { Component } from "react";
-import { BackHandler, Image, TouchableOpacity } from "react-native";
-import {
-  Content,
-  Container,
-  Header,
-  Left,
-  Right,
-  Body,
-  Button,
-  Text,
-  Title,
-  Icon,
-  Item,
-  Input,
-  View,
-  Card,
-  CardItem
-} from "native-base";
+import { BackHandler, ScrollView } from "react-native";
+import { View } from "native-base";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 import ProductActions from "../Redux/ProductRedux.js";
-
-// Styles
-import styles from "./Styles/HomeScreenStyle";
 import { convertToImgList } from "../Lib/utils.js";
+// home component
 import BottomFooter from "../Components/BottomFooter.js";
 import ImagesSwiper from "../Components/ImagesSwiper.js";
 import HomeMenu from "../Components/HomeMenu.js";
@@ -31,135 +13,71 @@ import HomeSubTitle from "../Components/HomeSubTitle.js";
 import HomeProduct from "../Components/HomeProduct.js";
 import HomeMarkets from "../Components/HomeMarkets.js";
 import HomeDeals from "../Components/HomeDeals.js";
-import HomeTrade from "../Components/HomeTrade.js";
+// import HomeTrade from "../Components/HomeTrade.js";
 import HomeYou from "../Components/HomeYou.js";
-import SearchBar from "../Components/SearchBar.js";
+import SearchBarTem from "../Components/SearchBarTem.js";
+import BusinessCard from "../Components/BusinessCard.js";
+// Styles
+import styles from "./Styles/HomeScreenStyle";
 
 class HomeScreen extends Component {
+  componentWillMount() {
+    this.props.getHome();
+    this.props.getHomeProduct("en");
+  }
+
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
       return true;
     });
-    this.props.getHome();
   }
 
   renderSubItems = () => {
-    const subItems = require("../Fixtures/homeItems");
-    const bCard = () => (
-      <Card>
-        <CardItem
-          button
-          onPress={() => this.props.navigation.navigate("ProductDetail")}
-        >
-          <Left>
-            <Text>//Your text here</Text>
-          </Left>
-          <Right>
-            <Image
-              style={{ width: 60, height: 60 }}
-              source={{
-                uri:
-                  "https://sc02.alicdn.com/kf/HTB1foTel7SWBuNjSszdq6zeSpXae/Wholesale-100-Cotton-Children-Blank-Round-Collar.jpg_300x300.jpg"
-              }}
-            />
-          </Right>
-        </CardItem>
-      </Card>
-    );
-    const subComponent = i => {
-      switch (i) {
-        case "products":
-          return <HomeProduct {...this.props} />;
-        case "markets":
-          return <HomeMarkets {...this.props} />;
-        case "deals":
-          return <HomeDeals {...this.props} />;
-        case "brand":
-          return <HomeDeals {...this.props} />;
-        case "business":
-          return bCard();
-        case "trade":
-          return <HomeTrade {...this.props} />;
-        case "you":
-          return <HomeYou {...this.props} />;
+    const { homeProduct = [] } = this.props;
+    const subComponent = ({ name, info }) => {
+      switch (name) {
+        case "Preferred area":
+          return <HomeProduct info={info} {...this.props} />;
+        case "Industry market":
+          return <HomeMarkets info={info} {...this.props} />;
+        case "Weekly specials":
+          return <HomeDeals info={info} {...this.props} />;
+        case "Brand Zone":
+          return <HomeDeals info={info} {...this.props} />;
+        case "made in America":
+          return <HomeDeals info={info} {...this.props} />;
+        case "Exhibition":
+          return <BusinessCard info={info} {...this.props} />;
+        // case "trade":
+        //   return <HomeTrade info={info} {...this.props} />;
+        // case "you":
+        //   return <HomeYou info={info} {...this.props} />;
         default:
           return <View style={{ height: 100, backgroundColor: "#fff" }} />;
       }
     };
-    return subItems.map((o, i) => (
+
+    return homeProduct.map((o = {}, i) => (
       <View style={{ marginTop: 20 }} key={i}>
         <HomeSubTitle
           color={o.color}
-          title={o.title}
+          title={o.name}
           more={o.more}
           {...this.props}
         />
-        {subComponent(o.name)}
+        {subComponent({ name: o.name, info: o.child })}
       </View>
     ));
   };
-  searchBar = () => (
-    <View
-      style={{
-        paddingLeft: 10,
-        paddingRight: 10,
-        zIndex: 999,
-        width: "100%",
-        position: "absolute",
-        top: 20
-      }}
-    >
-      <View
-        style={{
-          /* flex: 1, */
-          /* width: "95%", */
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          backgroundColor: "#fff",
-          margin: "auto",
-          shadowOpacity: 0.75,
-          shadowRadius: 5,
-          shadowColor: "#bdc3c7",
-          shadowOffset: { height: 0, width: 0 }
-        }}
-      >
-        <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          <Icon
-            name="menu"
-            onPress={() => this.props.navigation.navigate("DrawerOpen")}
-          />
-        </View>
-        <View>
-          <Input
-            placeholder="Search products or suppliers"
-            style={{ flex: 4 }}
-          />
-        </View>
-        <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Scan QR Code")}
-          >
-            <Icon name="ios-camera" />
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
-  );
 
   render() {
     const { home = {} } = this.props;
 
     return (
       <View style={styles.container}>
-        {this.searchBar()}
-        {/* <SearchBar /> */}
-        <Content>
+        <SearchBarTem {...this.props} />
+        <ScrollView>
           <ImagesSwiper
             style={{ padding: 0 }}
             {...this.props}
@@ -167,7 +85,11 @@ class HomeScreen extends Component {
           />
           <HomeMenu {...this.props} />
           <View style={{ padding: 5 }}>{this.renderSubItems()}</View>
-        </Content>
+          <View style={{ marginTop: 20, padding: 5 }}>
+            <HomeSubTitle title={"JUST FOR YOU"} />
+            <HomeYou {...this.props} />
+          </View>
+        </ScrollView>
 
         <BottomFooter {...this.props} />
       </View>
@@ -177,13 +99,15 @@ class HomeScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-    home: state.product.home
+    home: state.product.home,
+    homeProduct: state.product.homeProduct
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getHome: () => dispatch(ProductActions.requestHome())
+    getHome: () => dispatch(ProductActions.requestHome()),
+    getHomeProduct: lang => dispatch(ProductActions.requestHomeProduct(lang))
   };
 };
 

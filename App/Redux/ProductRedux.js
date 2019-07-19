@@ -22,7 +22,10 @@ const { Types, Creators } = createActions({
   receiveShopHome: ["shop"],
   // shop product list
   requestShopCateProduct: ["pid", "page"],
-  receiveShopCateProduct: ["shopList"]
+  receiveShopCateProduct: ["shopList"],
+  // home product
+  requestHomeProduct: ["lang"],
+  receiveHomeProduct: ["homeProduct"]
 });
 
 export const ProductTypes = Types;
@@ -32,7 +35,8 @@ export const INITIAL_STATE = Immutable({
   cate: [],
   list: [],
   home: {},
-  detail: {}
+  detail: {},
+  homeProduct: []
 });
 
 //home
@@ -62,7 +66,12 @@ export const shopCateProductRequest = (state, { pid, page }) =>
   state.merge({ pid, page });
 export const receiveShopCateProduct = (state, { shopList }) =>
   state.merge({ shopList });
+// home product
+export const requestHomeProduct = (state, { lang }) => state.merge({ lang });
+export const receiveHomeProduct = (state, { homeProduct }) =>
+  state.merge({ homeProduct });
 
+// reducer
 export const reducer = createReducer(INITIAL_STATE, {
   // home
   [Types.REQUEST_HOME]: homeRequest,
@@ -84,5 +93,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.RECEIVE_SHOP_HOME]: receiveShopHome,
   // shop_home_product_list
   [Types.REQUEST_SHOP_CATE_PRODUCT]: shopCateProductRequest,
-  [Types.RECEIVE_SHOP_CATE_PRODUCT]: receiveShopCateProduct
+  [Types.RECEIVE_SHOP_CATE_PRODUCT]: receiveShopCateProduct,
+  // home product
+  [Types.REQUEST_HOME_PRODUCT]: requestHomeProduct,
+  [Types.RECEIVE_HOME_PRODUCT]: receiveHomeProduct
 });

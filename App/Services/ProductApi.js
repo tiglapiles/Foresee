@@ -19,6 +19,9 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
   const getShopHome = url_name => api.get("Entshop/Home.html", { url_name });
   const getShopCateProduct = ({ pid, page }) =>
     api.get("Entshop/CatProduct.html", { pid, page });
+  const getHomeProduct = lang => api.get("index/index.html", { lang });
+  const getProductCards = ({ page, lang }) =>
+    api.get("index/product.html", { page, lang });
 
   return {
     getHome,
@@ -27,7 +30,10 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
     getProductList,
     getCateList,
     getShopHome,
-    getShopCateProduct
+    getShopCateProduct,
+    // api just for app
+    getHomeProduct,
+    getProductCards
   };
 };
 

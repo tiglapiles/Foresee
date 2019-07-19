@@ -16,7 +16,8 @@ export default StyleSheet.create({
   img: {
     width: 80,
     height: 80,
-    marginBottom: 15
+    marginBottom: 15,
+    backgroundColor: "lightgray"
   },
   price: {
     fontWeight: "bold",

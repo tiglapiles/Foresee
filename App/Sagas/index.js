@@ -23,7 +23,8 @@ import {
   queryProductList,
   queryCateList,
   queryShopHome,
-  queryShopCateProduct
+  queryShopCateProduct,
+  queryHomeProduct
 } from "./ProductSagas";
 
 /* ------------- API ------------- */
@@ -58,6 +59,7 @@ export default function* root() {
       ProductTypes.REQUEST_SHOP_CATE_PRODUCT,
       queryShopCateProduct,
       productApi
-    )
+    ),
+    takeLatest(ProductTypes.REQUEST_HOME_PRODUCT, queryHomeProduct, productApi)
   ]);
 }

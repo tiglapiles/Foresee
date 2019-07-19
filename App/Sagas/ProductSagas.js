@@ -56,3 +56,11 @@ export function* queryShopCateProduct(api, action) {
     yield put(ProductActions.receiveShopCateProduct(response.data.data));
   }
 }
+
+// home product
+export function* queryHomeProduct(api, { lang }) {
+  const response = yield call(api.getHomeProduct, lang);
+  if (response.ok) {
+    yield put(ProductActions.receiveHomeProduct(response.data.data));
+  }
+}

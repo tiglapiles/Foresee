@@ -5,16 +5,19 @@ import { View, Icon, Text } from "native-base";
 import styles from "./Styles/ProductCardStyle";
 
 export default class ProductCard extends Component {
-  // // Prop type warnings
-  // static propTypes = {
-  //   someProperty: PropTypes.object,
-  //   someSetting: PropTypes.bool.isRequired,
-  // }
+  shouldComponentUpdate(newProps) {
+    return this.props.item.img !== newProps.img;
+  }
+  //   // Prop type warnings
+  //   static propTypes = {
+  //     someProperty: PropTypes.object,
+  //     someSetting: PropTypes.bool.isRequired,
+  //       }
   //
-  // // Defaults for props
-  // static defaultProps = {
-  //   someSetting: false
-  // }
+  //       // Defaults for props
+  //       static defaultProps = {
+  //         someSetting: false
+  //       }
 
   handleDetail = () => {
     this.props.navigation.navigate("ProductDetail");

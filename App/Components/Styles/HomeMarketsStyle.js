@@ -14,7 +14,8 @@ export default StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 5
+    marginRight: 5,
+    overflow: "hidden"
   },
   title: {
     fontWeight: "bold",
@@ -28,7 +29,9 @@ export default StyleSheet.create({
     justifyContent: "space-between"
   },
   img: {
-    width: 80,
-    height: 90
+    // width: 80,
+    // height: 90
+    width: "100%",
+    height: "100%"
   }
 });
