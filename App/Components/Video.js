@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { View, Text } from "native-base";
-import Video from "react-native-video";
+import VideoPlayer from "react-native-video-controls";
+// import Video from "react-native-video";
 import styles from "./Styles/VideoStyle";
 
 export default class VideoComponent extends Component {
@@ -34,7 +35,7 @@ export default class VideoComponent extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Video
+        <VideoPlayer
           source={{ uri: this.props.url }}
           ref={ref => {
             this.player = ref;
@@ -42,10 +43,17 @@ export default class VideoComponent extends Component {
           onBuffer={this.onBuffer} // Callback when remote video is buffering
           onError={this.videoError} // Callback when video cannot be loaded
           style={styles.backgroundVideo}
-          controls={true}
           resizeMode="contain"
           /* onReadyForDisplay={this.readyPlay} */
           onLoad={this.readyPlay}
+          controlTimeout={5000}
+          toggleResizeModeOnFullscreen={false}
+          showOnStart={false}
+          disableFullscreen={true}
+          disableSeekbar={true}
+          disableVolume={true}
+          disableBack={true}
+          disableTimer={true}
         />
       </View>
     );

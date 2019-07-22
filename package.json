@@ -46,6 +46,7 @@
     "react-native-swiper": "^1.5.14",
     "react-native-vector-icons": "4.1.1",
     "react-native-video": "^3.2.1",
+    "react-native-video-controls": "^1.5.1",
     "react-navigation": "1.0.0-beta.26",
     "react-redux": "^5.0.2",
     "recyclerlistview": "^1.3.4",
