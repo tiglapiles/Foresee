@@ -22,7 +22,8 @@ const images = {
   backButton: require("../Images/Icons/back-button.png"),
   closeButton: require("../Images/Icons/close-button.png"),
   account: require("../Images/Icons/account-filling.png"),
-  swiperLoading: require("../Images/Home/loading.gif")
+  swiperLoading: require("../Images/Home/loading.gif"),
+  playButton: require("../Images/Icons/btn-play.png")
 };
 
 export default images;

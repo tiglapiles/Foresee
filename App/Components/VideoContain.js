@@ -33,7 +33,7 @@ export default class VideoContain extends Component {
 
     return (
       <View style={styles.container}>
-        <VideoComponent url={item.url} />
+        <VideoComponent ref={ref => (this.video = ref)} url={item.url} />
         <TouchableOpacity
           onPress={() => this.props.navigation.goBack()}
           style={styles.outline}

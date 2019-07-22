@@ -1,13 +1,27 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { View, Text } from "native-base";
-import VideoPlayer from "react-native-video-controls";
-// import Video from "react-native-video";
+import { TouchableOpacity, Image, View } from "react-native";
+import Video from "react-native-video";
+// import VideoPlayer from "react-native-video-controls";
+import images from "../Themes/Images.js";
 import styles from "./Styles/VideoStyle";
 
 export default class VideoComponent extends Component {
-  shouldComponentUpdate(newProps) {
-    return this.props.url !== newProps.url;
+  constructor(props) {
+    super(props);
+    this.player;
+    this.state = {
+      paused: true
+    };
+  }
+
+  shouldComponentUpdate(newProps, nextState) {
+    if (this.props.url !== newProps.url) {
+      return true;
+    }
+    if (this.state.paused !== nextState.paused) {
+      return true;
+    }
   }
 
   // Prop type warnings
@@ -18,6 +32,10 @@ export default class VideoComponent extends Component {
   // Defaults for props
   static defaultProps = {
     url: "http://techslides.com/demos/sample-videos/small.mp4"
+  };
+
+  videoPause = () => {
+    this.setState({ paused: !this.state.paused });
   };
 
   onBuffer = e => {
@@ -34,28 +52,36 @@ export default class VideoComponent extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <VideoPlayer
+      <TouchableOpacity style={styles.container} onPress={this.videoPause}>
+        <Video
           source={{ uri: this.props.url }}
           ref={ref => {
             this.player = ref;
           }} // Store reference
+          paused={this.state.paused}
           onBuffer={this.onBuffer} // Callback when remote video is buffering
           onError={this.videoError} // Callback when video cannot be loaded
           style={styles.backgroundVideo}
-          resizeMode="contain"
+          resizeMode="cover"
           /* onReadyForDisplay={this.readyPlay} */
           onLoad={this.readyPlay}
           controlTimeout={5000}
-          toggleResizeModeOnFullscreen={false}
-          showOnStart={false}
-          disableFullscreen={true}
-          disableSeekbar={true}
-          disableVolume={true}
-          disableBack={true}
-          disableTimer={true}
+          repeat={false}
+          /* toggleResizeModeOnFullscreen={false} */
+          /* showOnStart={false} */
+          /* disableFullscreen={true} */
+          /* disableSeekbar={true} */
+          /* disableVolume={true} */
+          /* disableBack={true} */
+          /* disableTimer={true} */
+          /* disablePlayPause={true} */
         />
-      </View>
+        {this.state.paused && (
+          <View style={styles.imgBox}>
+            <Image source={images.playButton} style={styles.img} />
+          </View>
+        )}
+      </TouchableOpacity>
     );
   }
 }
