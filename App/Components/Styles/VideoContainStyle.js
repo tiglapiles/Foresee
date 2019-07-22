@@ -9,7 +9,7 @@ export default StyleSheet.create({
   text: {
     color: "#fff",
     fontSize: 20,
-    position: "relative",
+    position: "absolute",
     bottom: 20
   },
   image: {
@@ -18,16 +18,28 @@ export default StyleSheet.create({
     height: "100%"
   },
   outline: {
-    position: "relative",
+    position: "absolute",
     top: 20,
     left: 20,
-    color: "rgba(0, 0, 0, 0.8)"
+    width: 36,
+    height: 36,
+    borderRadius: 22,
+    padding: 2,
+    backgroundColor: "rgba(236, 240, 241,0.5)",
+    alignItems: "center"
   },
-  title: {
-    position: "relative",
+  back: {
+    color: "#fff"
+  },
+  box: {
+    position: "absolute",
     bottom: 100,
     backgroundColor: "transparent",
     paddingLeft: 10,
     paddingRight: 10
+  },
+  title: {
+    color: "#fff",
+    marginBottom: 10
   }
 });

@@ -22,37 +22,10 @@ class VideoFlip extends Component {
     });
   }
 
-  videoList = [
-    {
-      index: 1,
-      title: "Picture Contain in one screen",
-      url:
-        "http:b2b.yjzw.net/images/videos/Eco-Friendly-Geodesic-Dome-Tent-Camp-Resort.mp4",
-      img:
-        "https://i.alicdn.com/img/tfs/TB1Hgw9vhjaK1RjSZKzXXXVwXXa-240-320.png"
-    },
-    {
-      index: 2,
-      title: "Picture Contain in one screen",
-      url:
-        "http:b2b.yjzw.net/images/videos/Eco-Friendly-Geodesic-Dome-Tent-Camp-Resort.mp4",
-      img:
-        "https://i.alicdn.com/img/tfs/TB1_9hVumzqK1RjSZFLXXcn2XXa-1000-1500.png"
-    },
-    {
-      index: 3,
-      title: "Picture Contain in one screen",
-      url:
-        "http:b2b.yjzw.net/images/videos/Eco-Friendly-Geodesic-Dome-Tent-Camp-Resort.mp4",
-      img:
-        "https://i.alicdn.com/img/tfs/TB1_9hVumzqK1RjSZFLXXcn2XXa-1000-1500.png"
-    }
-  ];
-
   slideItem = items =>
     items.map((k, i) => (
       <View key={i} style={styles.item}>
-        <VideoContain item={k} />
+        <VideoContain item={k} {...this.props} />
       </View>
     ));
 
@@ -79,7 +52,7 @@ class VideoFlip extends Component {
         pagingEnabled={true}
         /* scrollToTop={true} */
       >
-        {this.slideItem(this.videoList)}
+        {this.slideItem(require("../Fixtures/videoflip.json"))}
       </ScrollView>
     );
   }

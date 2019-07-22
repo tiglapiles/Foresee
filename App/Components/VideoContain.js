@@ -1,31 +1,50 @@
 import React, { Component } from "react";
-// import PropTypes from 'prop-types';
-import { Image } from "react-native";
-import { View, Text } from "native-base";
+import PropTypes from "prop-types";
+import { Image, TouchableOpacity } from "react-native";
+import { View, Text, Icon } from "native-base";
 import VideoComponent from "../Components/Video.js";
 import styles from "./Styles/VideoContainStyle";
 
 export default class VideoContain extends Component {
   constructor(props) {
     super(props);
-    this.url = `http://b2b.yjzw.net/images/videos/Eco-Friendly-Geodesic-Dome-Tent-Camp-Resort.mp4`;
-    this.url2 = "http://techslides.com/demos/sample-videos/small.mp4";
   }
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.item.url !== nextProps.item.url;
+  }
+
+  static propTypes = {
+    item: PropTypes.object
+  };
+
+  static defaultProps = {
+    item: {
+      url: "http://techslides.com/demos/sample-videos/small.mp4",
+      img:
+        "https://i.alicdn.com/img/tfs/TB1_9hVumzqK1RjSZFLXXcn2XXa-1000-1500.png",
+      title: "Picture Contain in one screen",
+      hashTag: "#Factory"
+    }
+  };
+
   render() {
-    const { item } = this.props;
+    const { item = {} } = this.props;
 
     return (
       <View style={styles.container}>
-        <VideoComponent url={this.url2} />
-        {/* <TouchableOpacity */}
-        {/*   onPress={() => this.props.navigation.goBack()} */}
-        {/*   style={styles.outline} */}
-        {/* > */}
-        {/*   <Icon name="ios-close-circle-outline" style={styles.outline} /> */}
-        {/* </TouchableOpacity> */}
+        <VideoComponent url={item.url} />
+        <TouchableOpacity
+          onPress={() => this.props.navigation.goBack()}
+          style={styles.outline}
+        >
+          <Icon name="ios-close-circle-outline" style={styles.back} />
+        </TouchableOpacity>
         {/* <Image source={{ uri: item.img }} style={styles.image} /> */}
-        {/* <Text style={styles.text}>Video Player</Text> */}
+        <View style={styles.box}>
+          <Text style={styles.title}>{item.hashTag}</Text>
+          <Text style={styles.title}>{item.title}</Text>
+        </View>
       </View>
     );
   }
