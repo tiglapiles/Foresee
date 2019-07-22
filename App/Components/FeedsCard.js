@@ -12,7 +12,7 @@ import {
   View
 } from "native-base";
 import ImageGrid from "../Components/ImageGrid.js";
-import VideoComponent from "../Components/Video.js";
+import CardVideo from "../Components/CardVideo.js";
 
 export default function FeedsFollowing(props) {
   const info = props.cardInfo;
@@ -24,43 +24,13 @@ export default function FeedsFollowing(props) {
     </View>
   );
 
-  const renderVideo = (info = {}) => (
-    <View
-      style={{
-        flex: 1,
-        width: "100%",
-        height: 300,
-        flexDirection: "column",
-        justifyContent: "space-between"
-      }}
-    >
-      <Text numberOfLines={2}>{info.content}</Text>
-      <View style={{ width: "100%", height: "70%" }}>
-        <VideoComponent
-          url={"http://techslides.com/demos/sample-videos/small.mp4"}
-        />
-      </View>
-      <View
-        style={{
-          height: 50,
-          backgroundColor: "lightgray",
-          borderRadius: 10,
-          overflow: "hidden"
-          /* lineHeight: 50 */
-        }}
-      >
-        <Text style={{ lineHeight: 50 }}>US $1.18 Pieces</Text>
-      </View>
-    </View>
-  );
-
   const renderCardContent = (info = {}) => {
     const type = info.type;
     switch (type) {
       case "images":
         return renderImages(info);
       case "video":
-        return renderVideo(info);
+        return <CardVideo info={info} {...props} />;
       default:
         return <Text>There nothing contain in the Card!</Text>;
     }
