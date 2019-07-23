@@ -50,7 +50,7 @@ class FeedsScreen extends Component {
     const { indexPage } = this.state;
 
     return (
-      <Container>
+      <View style={styles.container}>
         <Header hasTabs>
           <Left />
           <Body>
@@ -74,13 +74,9 @@ class FeedsScreen extends Component {
             <FeedsVideos {...this.props} />
           </Tab>
         </Tabs>
-        {/* <Content padder> */}
-        {/*   <View style={{ height: 100, backgroundColor: "#ddd" }} /> */}
-        {/*   <Text>FeedsScreen Content</Text> */}
-        {/* </Content> */}
 
         <BottomFooter {...this.props} />
-      </Container>
+      </View>
     );
   }
 }

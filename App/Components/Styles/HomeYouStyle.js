@@ -2,11 +2,8 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
-    flex: 1
-    // flexDirection: "row",
-    // justifyContent: "space-between",
-    // flexWrap: "wrap",
-    // alignItems: "flex-start"
+    flex: 1,
+    padding: 5
   },
   badge: {
     width: 20,

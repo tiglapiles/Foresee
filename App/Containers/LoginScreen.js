@@ -133,7 +133,11 @@ class LoginScreen extends React.Component {
             <Title>Sign In</Title>
           </Body>
           <Right>
-            <Icon name="ios-help-circle" />
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Help Center")}
+            >
+              <Icon name="ios-help-circle" />
+            </TouchableOpacity>
           </Right>
         </Header>
 

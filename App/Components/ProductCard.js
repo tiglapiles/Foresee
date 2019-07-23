@@ -19,21 +19,24 @@ export default class ProductCard extends Component {
   //         someSetting: false
   //       }
 
-  handleDetail = () => {
-    this.props.navigation.navigate("ProductDetail");
+  handleDetail = id => {
+    this.props.navigation.navigate("ProductDetail", { id });
   };
 
   render() {
     const { item = {} } = this.props;
 
     return (
-      <TouchableOpacity onPress={this.handleDetail} style={styles.item}>
+      <TouchableOpacity
+        onPress={() => this.handleDetail(item.id)}
+        style={styles.item}
+      >
         <View style={styles.imgContainer}>
           <Image style={styles.img} source={{ uri: item.img }} />
         </View>
         <View style={styles.textContainer}>
           <Text numberOfLines={2} style={styles.title}>
-            {item.title}
+            {item.name}
           </Text>
           <Text style={styles.priceS}>
             {item.priceS} - {item.priceE}

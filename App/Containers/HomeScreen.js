@@ -35,7 +35,7 @@ class HomeScreen extends Component {
 
   renderSubItems = () => {
     const { homeProduct = [] } = this.props;
-    const subComponent = ({ name, info }) => {
+    const subComponent = ({ name, info = {} }) => {
       switch (name) {
         case "Preferred area":
           return <HomeProduct info={info} {...this.props} />;
@@ -85,8 +85,11 @@ class HomeScreen extends Component {
           />
           <HomeMenu {...this.props} />
           <View style={{ padding: 5 }}>{this.renderSubItems()}</View>
+
           <View style={{ marginTop: 20, padding: 5 }}>
             <HomeSubTitle title={"JUST FOR YOU"} />
+          </View>
+          <View style={{ height: 500 }}>
             <HomeYou {...this.props} />
           </View>
         </ScrollView>

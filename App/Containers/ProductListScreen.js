@@ -1,15 +1,6 @@
 import React, { Component } from "react";
 import { BackHandler, View, ActivityIndicator } from "react-native";
-import {
-  Header,
-  Left,
-  Right,
-  Body,
-  Button,
-  Title,
-  Icon,
-  Drawer
-} from "native-base";
+import { Header, Left, Right, Body, Button, Title, Icon } from "native-base";
 import { RecyclerListView, DataProvider } from "recyclerlistview";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)

@@ -54,7 +54,7 @@ class ProductDetail extends Component {
     const { detail = {} } = this.props;
 
     return (
-      <Container style={styles.container}>
+      <View style={styles.container}>
         <Header transparent hasTabs>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
@@ -109,9 +109,7 @@ class ProductDetail extends Component {
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
           >
-            <Content>
-              <HomeYou {...this.props} />
-            </Content>
+            <HomeYou {...this.props} />
           </Tab>
         </Tabs>
 
@@ -142,7 +140,7 @@ class ProductDetail extends Component {
             {/* </FooterTab> */}
           </View>
         </Footer>
-      </Container>
+      </View>
     );
   }
 }

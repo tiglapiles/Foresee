@@ -41,7 +41,9 @@ export default class CardVideo extends Component {
         </View>
         <TouchableOpacity
           style={styles.textLink}
-          onPress={() => this.props.navigation.navigate("VideoFlip", { id })}
+          onPress={() =>
+            this.props.navigation.navigate("VideoFlip", { id: info.id })
+          }
         >
           <Image source={{ uri: info.img }} style={styles.img} />
           <View>
