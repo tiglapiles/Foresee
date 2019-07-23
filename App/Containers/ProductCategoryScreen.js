@@ -93,7 +93,7 @@ class ProductCategoryScreen extends Component {
           <Right />
         </Header>
 
-        <Content>
+        <Content style={{ backgroundColor: "#ffffff" }}>
           <Separator bordered>
             <Text>{cateName}</Text>
           </Separator>
