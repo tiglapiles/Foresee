@@ -79,15 +79,17 @@ class HomeScreen extends Component {
         <SearchBarTem {...this.props} />
 
         <HomeYou {...this.props}>
-          <ImagesSwiper
-            style={{ padding: 0 }}
-            imgList={convertToImgList(home.swiperData)}
-          />
-          <HomeMenu {...this.props} />
-          <View style={{ padding: 5 }}>{this.renderSubItems()}</View>
+          <View>
+            <ImagesSwiper
+              style={{ padding: 0 }}
+              imgList={convertToImgList(home.swiperData)}
+            />
+            <HomeMenu {...this.props} />
+            <View style={{ padding: 5 }}>{this.renderSubItems()}</View>
 
-          <View style={{ marginTop: 20, padding: 5 }}>
-            <HomeSubTitle title={"JUST FOR YOU"} />
+            <View style={{ marginTop: 20, padding: 5 }}>
+              <HomeSubTitle title={"JUST FOR YOU"} />
+            </View>
           </View>
         </HomeYou>
 

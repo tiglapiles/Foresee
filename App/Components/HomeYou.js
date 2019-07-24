@@ -54,6 +54,14 @@ export default class HomeYou extends Component {
       <View style={{ height: 30 }} />
     );
 
+  renderHeader = () => {
+    const { children } = this.props;
+    if (!children) {
+      return <View />;
+    }
+    return children;
+  };
+
   render() {
     const { list = [] } = this.state;
 
@@ -61,8 +69,8 @@ export default class HomeYou extends Component {
       <View style={styles.container}>
         {this.state.count > 0 ? (
           <FlatList
-            ListHeaderComponent={() => this.props.children}
-            columnWrapperStyle={{ justifyContent: "space-between" }}
+            ListHeaderComponent={this.renderHeader}
+            columnWrapperStyle={styles.list}
             ItemSeparatorComponent={this.itemSeparator}
             renderItem={({ item, index, section }) => (
               <ProductCard {...this.props} item={item} />
