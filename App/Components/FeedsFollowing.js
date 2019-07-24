@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FlatList, Image, ActivityIndicator, View } from "react-native";
+import { FlatList, ActivityIndicator, View } from "react-native";
 import { timeout } from "../Lib/utils.js";
 import styles from "./Styles/FeedsFollowingStyle";
 import FeedsCard from "../Components/FeedsCard";

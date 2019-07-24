@@ -6,12 +6,8 @@ import {
   Header,
   Tab,
   Tabs,
-  Left,
-  Body,
-  Right,
   Button,
   Icon,
-  Title,
   Container,
   View,
   Footer,
@@ -27,9 +23,9 @@ import { convertToImgList } from "../Lib/utils.js";
 // import ProductOverview from "../Components/ProductOverview.js";
 import HomeYou from "../Components/HomeYou.js";
 import ImageSwiper from "../Components/ImagesSwiper.js";
-import FeedsCard from "../Components/FeedsCard";
 import CompanyInfo from "../Components/CompanyInfo";
 import CompanyContract from "../Components/CompanyContract.js";
+import FeedsFollowing from "../Components/FeedsFollowing.js";
 // Styles
 import styles from "./Styles/ShopDetailStyle";
 
@@ -38,6 +34,7 @@ class ShopDetail extends Component {
     super(props);
     this.state = {};
   }
+
   componentDidMount() {
     const {
       navigation: {
@@ -45,13 +42,14 @@ class ShopDetail extends Component {
       }
     } = this.props;
     const url_name = params ? params.url_name : "url_name";
+    this.props.getShopInfo("china-disposable");
+
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
       return true;
     });
-    this.props.getShopInfo("china-disposable");
   }
-  renderCards = c => c.map((k, i) => <FeedsCard cardInfo={k} key={i} />);
+
   render() {
     const { shop = {} } = this.props;
     const { shop_info = {} } = shop;
@@ -84,13 +82,7 @@ class ShopDetail extends Component {
           >
             <Content>
               <CompanyInfo {...this.props} shop_info={shop.shop_info} />
-              <ImageSwiper
-                {...this.props}
-                imgList={convertToImgList(shop.banner)}
-              />
-              {/* <ProductPriceCard {...this.props} /> */}
-              {/* <SupplierProfileCard {...this.props} /> */}
-              {/* <DetailDrawer {...this.props} /> */}
+              <ImageSwiper imgList={convertToImgList(shop.banner)} />
               <HomeYou {...this.props} />
               <CompanyContract contract={shop.shop_info} />
             </Content>
@@ -133,7 +125,6 @@ class ShopDetail extends Component {
             </Content>
           </Tab>
           <Tab
-            /* heading="Feeds" */
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
             heading={
@@ -143,9 +134,7 @@ class ShopDetail extends Component {
               </TabHeading>
             }
           >
-            <Content>
-              {this.renderCards(require("../Fixtures/follows.json"))}
-            </Content>
+            <FeedsFollowing {...this.props} />
           </Tab>
         </Tabs>
 

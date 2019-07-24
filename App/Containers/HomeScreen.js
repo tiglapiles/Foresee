@@ -77,10 +77,10 @@ class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <SearchBarTem {...this.props} />
-        <ScrollView>
+
+        <HomeYou {...this.props}>
           <ImagesSwiper
             style={{ padding: 0 }}
-            {...this.props}
             imgList={convertToImgList(home.swiperData)}
           />
           <HomeMenu {...this.props} />
@@ -89,10 +89,7 @@ class HomeScreen extends Component {
           <View style={{ marginTop: 20, padding: 5 }}>
             <HomeSubTitle title={"JUST FOR YOU"} />
           </View>
-          <View style={{ height: 500 }}>
-            <HomeYou {...this.props} />
-          </View>
-        </ScrollView>
+        </HomeYou>
 
         <BottomFooter {...this.props} />
       </View>

@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import { BackHandler, TouchableOpacity } from "react-native";
 import {
-  Content,
-  Container,
   Header,
   Left,
   Right,
   Body,
-  Button,
-  Text,
   Title,
   Icon,
   View,
@@ -24,7 +20,6 @@ import FeedsVideos from "../Components/FeedsVideos.js";
 // import ProductList from "../Containers/ProductList.js";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-
 // Styles
 import styles from "./Styles/FeedsScreenStyle";
 

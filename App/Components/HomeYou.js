@@ -38,7 +38,7 @@ export default class HomeYou extends Component {
   }
 
   scrollEndRefresh = ({ distanceFromEnd }) => {
-    console.log("flatlist scroll end: ", distanceFromEnd);
+    // console.log("flatlist scroll end: ", distanceFromEnd);
     this.getProductElements();
     this.setState({});
   };
@@ -47,6 +47,13 @@ export default class HomeYou extends Component {
     <View style={[styles.separator, highlighted && { marginLeft: 0 }]} />
   );
 
+  renderFooter = () =>
+    this.waitForResponse ? (
+      <ActivityIndicator style={{ margin: 10 }} size="large" color={"black"} />
+    ) : (
+      <View style={{ height: 30 }} />
+    );
+
   render() {
     const { list = [] } = this.state;
 
@@ -54,6 +61,7 @@ export default class HomeYou extends Component {
       <View style={styles.container}>
         {this.state.count > 0 ? (
           <FlatList
+            ListHeaderComponent={() => this.props.children}
             columnWrapperStyle={{ justifyContent: "space-between" }}
             ItemSeparatorComponent={this.itemSeparator}
             renderItem={({ item, index, section }) => (
@@ -65,17 +73,7 @@ export default class HomeYou extends Component {
             horizontal={false}
             onEndReachedThreshold={0.5}
             onEndReached={this.scrollEndRefresh}
-            ListFooterComponent={() =>
-              this.waitForResponse ? (
-                <ActivityIndicator
-                  style={{ margin: 10 }}
-                  size="large"
-                  color={"black"}
-                />
-              ) : (
-                <View style={{ height: 30 }} />
-              )
-            }
+            ListFooterComponent={this.renderFooter}
           />
         ) : null}
       </View>

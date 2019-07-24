@@ -80,10 +80,7 @@ class ProductDetail extends Component {
             activeTextStyle={styles.tabTitle}
           >
             <Content>
-              <ImageSwiper
-                {...this.props}
-                imgList={convertToImgList(detail.img)}
-              />
+              <ImageSwiper imgList={convertToImgList(detail.img)} />
               <ProductPriceCard {...this.props} />
               <SupplierProfileCard {...this.props} />
               <DetailDrawer {...this.props} />
