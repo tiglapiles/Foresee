@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { TouchableOpacity } from "react-native";
-import { View, Text, Icon } from "native-base";
+import { View, Text, Icon, Thumbnail, Button } from "native-base";
 import VideoComponent from "../Components/Video.js";
 import styles from "./Styles/VideoContainStyle";
 
@@ -54,6 +54,33 @@ export default class VideoContain extends Component {
     ));
   };
 
+  renderLink = () => (
+    <TouchableOpacity
+      style={styles.link}
+      onPress={() => this.props.navigation.navigate("ProductDetail")}
+    >
+      <View style={styles.linkLeft}>
+        <Thumbnail
+          square
+          source={{
+            uri:
+              "https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg"
+          }}
+        />
+        <View style={styles.linkText}>
+          <Text style={{ fontSize: 14 }}>US $100-200</Text>
+          <Text style={{ fontSize: 14 }}>100 (MOQ)</Text>
+        </View>
+      </View>
+      <View>
+        <Button transparent>
+          <Text style={{ fontSize: 14 }}>VIEW</Text>
+          <Icon name="arrow-forward" />
+        </Button>
+      </View>
+    </TouchableOpacity>
+  );
+
   render() {
     const { item = {} } = this.props;
 
@@ -68,8 +95,13 @@ export default class VideoContain extends Component {
         </TouchableOpacity>
         {/* <Image source={{ uri: item.img }} style={styles.image} /> */}
         <View style={styles.box}>
-          <Text style={styles.title}>{item.hashTag}</Text>
-          <Text style={styles.title}>{item.title}</Text>
+          <Text numOfLines={1} style={styles.title}>
+            {item.hashTag}
+          </Text>
+          <Text numberOfLines={2} style={styles.title}>
+            {item.title}
+          </Text>
+          {this.renderLink()}
         </View>
         <View style={styles.thumb}>{this.renderThumbs()}</View>
       </View>

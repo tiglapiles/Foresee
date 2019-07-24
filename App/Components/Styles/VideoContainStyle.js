@@ -34,7 +34,7 @@ export default StyleSheet.create({
   },
   box: {
     position: "absolute",
-    bottom: 100,
+    bottom: 30,
     backgroundColor: "transparent",
     paddingLeft: 10,
     paddingRight: 10
@@ -42,6 +42,24 @@ export default StyleSheet.create({
   title: {
     color: "#fff",
     marginBottom: 10
+  },
+  link: {
+    backgroundColor: "rgba(236, 240, 241,0.2)",
+    borderRadius: 5,
+    width: 280,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 5,
+    alignItems: "center"
+  },
+  linkLeft: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center"
+  },
+  linkText: {
+    flexDirection: "column",
+    marginLeft: 8
   },
   thumb: {
     position: "absolute",

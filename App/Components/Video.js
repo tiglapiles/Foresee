@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { TouchableOpacity, Image, View } from "react-native";
 import Video from "react-native-video";
-// import VideoPlayer from "react-native-video-controls";
 import images from "../Themes/Images.js";
 import styles from "./Styles/VideoStyle";
 
@@ -62,19 +61,11 @@ export default class VideoComponent extends Component {
           onBuffer={this.onBuffer} // Callback when remote video is buffering
           onError={this.videoError} // Callback when video cannot be loaded
           style={styles.backgroundVideo}
-          resizeMode="cover"
+          resizeMode="contain"
           /* onReadyForDisplay={this.readyPlay} */
           onLoad={this.readyPlay}
           controlTimeout={5000}
           repeat={false}
-          /* toggleResizeModeOnFullscreen={false} */
-          /* showOnStart={false} */
-          /* disableFullscreen={true} */
-          /* disableSeekbar={true} */
-          /* disableVolume={true} */
-          /* disableBack={true} */
-          /* disableTimer={true} */
-          /* disablePlayPause={true} */
         />
         {this.state.paused && (
           <View style={styles.imgBox}>
