@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { BackHandler, Image, ScrollView, TouchableOpacity } from "react-native";
-import { Content, Text, View, Icon } from "native-base";
+import { BackHandler, ScrollView, ActivityIndicator } from "react-native";
+import PropTypes from "prop-types";
+import { View } from "native-base";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
+import { timeout } from "../Lib/utils.js";
 import VideoContain from "../Components/VideoContain.js";
 
 // Styles
@@ -12,13 +14,53 @@ import styles from "./Styles/VideoFlipStyle";
 class VideoFlip extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      videos: [],
+      page: 1,
+      count: 0
+    };
+    this.waitForResponse = false;
   }
 
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
       return true;
+    });
+    this.setState({ videos: this.props.videos });
+  }
+
+  static propTypes = {
+    videos: PropTypes.array
+  };
+
+  static defaultProps = {
+    videos: [
+      {
+        index: 1,
+        hashTag: "#Factory",
+        title: "Picture Contain in one screenx",
+        url: "http://techslides.com/demos/sample-videos/small.mp4",
+        img:
+          "https://i.alicdn.com/img/tfs/TB1Hgw9vhjaK1RjSZKzXXXVwXXa-240-320.png"
+      }
+    ]
+  };
+
+  async getProductVideos() {
+    const { page, videos, count } = this.state;
+    this.waitForResponse = true;
+    await timeout(1000);
+    const response = require("../Fixtures/videoflip.json");
+    this.waitForResponse = false;
+    // if (!response.ok) {
+    //   return;
+    // }
+    const resVideo = response;
+    this.setState({
+      videos: videos.concat(resVideo),
+      page: page + 1,
+      count: count + 3
     });
   }
 
@@ -30,29 +72,52 @@ class VideoFlip extends Component {
     ));
 
   onScroll = e => {
-    console.log(e);
+    const { nativeEvent = {} } = e;
+    const isCloseToBottom = ({
+      layoutMeasurement,
+      contentOffset,
+      contentSize
+    }) => layoutMeasurement.height + contentOffset.y >= contentSize.height;
+    const isCloseToTop = ({ layoutMeasurement, contentOffset, contentSize }) =>
+      contentOffset.y == 0;
+
+    if (isCloseToTop(nativeEvent)) {
+      //do something
+    }
+    if (isCloseToBottom(nativeEvent)) {
+      this.getProductVideos();
+      this.setState({});
+    }
   };
 
-  scrollEnd = e => {
-    console.log(e);
-  };
+  renderFooter = () =>
+    this.waitForResponse ? (
+      <ActivityIndicator style={{ margin: 10 }} size="large" color={"black"} />
+    ) : (
+      <View style={{ height: 40 }} />
+    );
 
   render() {
+    const { videos } = this.state;
+
     return (
       <ScrollView
+        alwaysBounceVertical={true}
         centerContent={true}
         contentContainerStyle={styles.scroll}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         keyboardDismissMode={"on-drag"}
+        scrollEventThrottle={0}
         onScroll={this.onScroll}
         style={styles.box}
         directionalLockEnabled={true}
         onScrollAnimationEnd={this.scrollEnd}
         pagingEnabled={true}
-        /* scrollToTop={true} */
+        scrollToTop={true}
       >
-        {this.slideItem(require("../Fixtures/videoflip.json"))}
+        {this.slideItem(videos)}
+        {this.renderFooter()}
       </ScrollView>
     );
   }

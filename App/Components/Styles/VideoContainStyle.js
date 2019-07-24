@@ -63,7 +63,7 @@ export default StyleSheet.create({
   },
   thumb: {
     position: "absolute",
-    bottom: 100,
+    bottom: 70,
     right: 40,
     flexDirection: "column",
     justifyContent: "space-between",

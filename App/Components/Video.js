@@ -38,7 +38,7 @@ export default class VideoComponent extends Component {
   };
 
   onBuffer = e => {
-    console.log(e);
+    // console.log(e);
   };
 
   videoError = e => {
@@ -46,32 +46,35 @@ export default class VideoComponent extends Component {
   };
 
   readyPlay = e => {
-    console.log("video: ready to play!");
+    // console.log("video: ready to play!");
   };
+
+  renderControl = () =>
+    this.state.paused && (
+      <View style={styles.imgBox}>
+        <Image source={images.playButton} style={styles.img} />
+      </View>
+    );
 
   render() {
     return (
       <TouchableOpacity style={styles.container} onPress={this.videoPause}>
         <Video
+          {...this.props}
           source={{ uri: this.props.url }}
           ref={ref => {
             this.player = ref;
-          }} // Store reference
+          }} //  Store reference
           paused={this.state.paused}
-          onBuffer={this.onBuffer} // Callback when remote video is buffering
-          onError={this.videoError} // Callback when video cannot be loaded
+          onBuffer={this.onBuffer} //  Callback when remote video is buffering
+          onError={this.videoError} //  Callback when video cannot be loaded
           style={styles.backgroundVideo}
           resizeMode="contain"
-          /* onReadyForDisplay={this.readyPlay} */
           onLoad={this.readyPlay}
           controlTimeout={5000}
           repeat={false}
         />
-        {this.state.paused && (
-          <View style={styles.imgBox}>
-            <Image source={images.playButton} style={styles.img} />
-          </View>
-        )}
+        {this.renderControl()}
       </TouchableOpacity>
     );
   }
