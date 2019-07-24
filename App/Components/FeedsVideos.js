@@ -38,6 +38,10 @@ class FeedsVideos extends Component {
     });
   }
 
+  handleUp = id => {
+    this.props.navigation.navigate("VideoFlip", { id });
+  };
+
   scrollEnd = ({ distanceFromEnd }) => {
     this.getProductElements();
     this.setState({});
