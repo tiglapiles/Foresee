@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Image, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { View, Text, Icon } from "native-base";
 import VideoComponent from "../Components/Video.js";
 import styles from "./Styles/VideoContainStyle";
@@ -28,6 +28,32 @@ export default class VideoContain extends Component {
     }
   };
 
+  renderThumbs = () => {
+    const items = [
+      {
+        icon: "ios-add-circle",
+        event: () => this.props.navigation.navigate("Login")
+      },
+      {
+        icon: "ios-thumbs-up",
+        event: () => this.props.navigation.navigate("Login")
+      },
+      {
+        icon: "md-share",
+        event: () => this.props.navigation.navigate("Login")
+      },
+      {
+        icon: "ios-chatboxes",
+        event: () => this.props.navigation.navigate("Login")
+      }
+    ];
+    return items.map((k, i) => (
+      <TouchableOpacity onPress={k.event} key={i}>
+        <Icon name={k.icon} style={{ color: "#fff" }} />
+      </TouchableOpacity>
+    ));
+  };
+
   render() {
     const { item = {} } = this.props;
 
@@ -45,6 +71,7 @@ export default class VideoContain extends Component {
           <Text style={styles.title}>{item.hashTag}</Text>
           <Text style={styles.title}>{item.title}</Text>
         </View>
+        <View style={styles.thumb}>{this.renderThumbs()}</View>
       </View>
     );
   }

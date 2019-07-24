@@ -83,7 +83,11 @@ class ProductCategoryScreen extends Component {
       <Container>
         <Header>
           <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
+            <Button
+              style={{ height: "100%", width: 60 }}
+              transparent
+              onPress={() => this.props.navigation.goBack()}
+            >
               <Icon name="md-arrow-back" />
             </Button>
           </Left>

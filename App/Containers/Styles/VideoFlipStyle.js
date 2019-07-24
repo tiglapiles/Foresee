@@ -14,7 +14,7 @@ export default StyleSheet.create({
   box: {},
   item: {
     width: width,
-    height: height,
-    backgroundColor: "rgba(236, 240, 241,0.6)"
+    height: height
+    // backgroundColor: "rgba(236, 240, 241,0.6)"
   }
 });

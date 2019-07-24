@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgba(236, 240, 241,0.8)"
+    backgroundColor: "rgba(0, 0, 0, 0.8)"
     // width: "100%",
     // height: "100%"
   },
@@ -42,5 +42,14 @@ export default StyleSheet.create({
   title: {
     color: "#fff",
     marginBottom: 10
+  },
+  thumb: {
+    position: "absolute",
+    bottom: 100,
+    right: 40,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: 200
   }
 });
