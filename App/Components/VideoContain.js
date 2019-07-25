@@ -3,15 +3,9 @@ import PropTypes from "prop-types";
 import { TouchableOpacity, Image } from "react-native";
 import { View, Text, Icon, Thumbnail, Button } from "native-base";
 import VideoComponent from "../Components/Video.js";
-import { timeout } from "../Lib/utils.js";
 import styles from "./Styles/VideoContainStyle";
 
 export default class VideoContain extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   static propTypes = {
     item: PropTypes.object,
     play: PropTypes.bool.isRequired
@@ -34,31 +28,20 @@ export default class VideoContain extends Component {
     return false;
   }
 
-  componentDidUpdate(prevProps) {
-    // console.log(this.props.video);
-  }
+  componentDidUpdate(prevProps) {}
 
   renderThumbs = () => {
     const items = [
-      {
-        icon: "ios-add-circle",
-        event: () => this.props.navigation.navigate("Login")
-      },
-      {
-        icon: "ios-thumbs-up",
-        event: () => this.props.navigation.navigate("Login")
-      },
-      {
-        icon: "md-share",
-        event: () => this.props.navigation.navigate("Login")
-      },
-      {
-        icon: "ios-chatboxes",
-        event: () => this.props.navigation.navigate("Login")
-      }
+      { icon: "ios-add-circle" },
+      { icon: "ios-thumbs-up" },
+      { icon: "md-share" },
+      { icon: "ios-chatboxes" }
     ];
     return items.map((k, i) => (
-      <TouchableOpacity onPress={k.event} key={i}>
+      <TouchableOpacity
+        onPress={() => this.props.navigation.navigate("Login")}
+        key={i}
+      >
         <Icon name={k.icon} style={{ color: "#fff" }} />
       </TouchableOpacity>
     ));

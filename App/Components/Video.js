@@ -15,12 +15,9 @@ export default class VideoComponent extends Component {
   }
 
   shouldComponentUpdate(newProps, nextState) {
-    if (this.props.url !== newProps.url) {
-      return true;
-    }
-    if (this.state.paused !== nextState.paused) {
-      return true;
-    }
+    if (this.props.url !== newProps.url) return true;
+    if (this.state.paused !== nextState.paused) return true;
+    return false;
   }
 
   // Prop type warnings
