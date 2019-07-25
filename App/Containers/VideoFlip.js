@@ -94,7 +94,7 @@ class VideoFlip extends Component {
     this.waitForResponse ? (
       <ActivityIndicator style={{ margin: 10 }} size="large" color={"black"} />
     ) : (
-      <View style={{ height: 40 }} />
+      <View style={{ height: 1 }} />
     );
 
   render() {
