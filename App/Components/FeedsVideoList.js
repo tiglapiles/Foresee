@@ -1,60 +1,58 @@
-import React from "react";
+import React, { Component } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
-import {
-  Text,
-  Left,
-  Thumbnail,
-  Body,
-  Right,
-  Button,
-  Icon,
-  CardItem
-} from "native-base";
+import { Text, Thumbnail, Icon } from "native-base";
 import styles from "./Styles/FeedsVideoListStyle";
 
-export default function FeedsVideoList(props) {
-  const info = props.item;
-  const action = props.handleUp;
+export default class FeedsVideoList extends Component {
+  shouldComponentUpdate(nextProps) {
+    return this.props.item.id !== nextProps.item.id;
+  }
 
-  return (
-    <TouchableOpacity
-      onPress={() => action(info.videoIndex)}
-      style={styles.container}
-    >
-      <View style={styles.imgContainer}>
-        <Image source={{ uri: info.url }} style={styles.img} />
-      </View>
-      <View style={styles.textContainer}>
-        <Text numberOfLines={2}>{info.title}</Text>
+  render() {
+    const { item = {} } = this.props;
+    const thumbUrl = item.user_avatar
+      ? item.user_avatar
+      : `https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg`;
 
-        <View style={styles.info}>
-          <View style={styles.thumb}>
-            <Thumbnail
-              square
-              source={{ uri: info.thumb }}
-              style={{ width: 30, height: 30, marginRight: 2 }}
-            />
+    return (
+      <TouchableOpacity
+        onPress={() =>
+          this.props.navigation.navigate("VideoFlip", { id: item.id })
+        }
+        style={styles.container}
+      >
+        <View style={styles.imgContainer}>
+          <Image source={{ uri: item.img }} style={styles.img} />
+        </View>
+        <View style={styles.textContainer}>
+          <Text numberOfLines={2}>{item.name}</Text>
 
-            <Text
-              numberOfLines={1}
-              style={{ color: "#95a5a6", fontSize: 12 }}
-              ellipsizeMode="tail"
-            >
-              {info.name}
-            </Text>
-          </View>
+          <View style={styles.info}>
+            <View style={styles.thumb}>
+              <Thumbnail
+                square
+                source={{ uri: thumbUrl }}
+                style={styles.miniThumb}
+              />
 
-          <View transparent style={styles.view}>
-            <Icon name="ios-eye" style={{ color: "#bdc3c7" }} />
-            <Text
-              style={{ color: "#bdc3c7", overflow: "hidden", fontSize: 12 }}
-              numberOfLines={1}
-            >
-              {info.view}
-            </Text>
+              <Text
+                numberOfLines={1}
+                style={styles.miniText}
+                ellipsizeMode="tail"
+              >
+                {item.author}
+              </Text>
+            </View>
+
+            <View transparent style={styles.view}>
+              <Icon name="ios-eye" style={{ color: "#bdc3c7" }} />
+              <Text style={styles.viewNum} numberOfLines={1}>
+                {item.cid}
+              </Text>
+            </View>
           </View>
         </View>
-      </View>
-    </TouchableOpacity>
-  );
+      </TouchableOpacity>
+    );
+  }
 }
