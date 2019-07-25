@@ -24,7 +24,7 @@ export default class HomeYou extends Component {
   async getProductElements() {
     const { page, list, lang, count } = this.state;
     this.waitForResponse = true;
-    const response = await API.getProductCards({ page: page, lang: lang });
+    const response = await API.getProductCards({ page, lang });
     this.waitForResponse = false;
     if (!response.ok) {
       return;

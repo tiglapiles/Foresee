@@ -9,6 +9,7 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
     timeout: 10000
   });
 
+  // api for another app
   const getHome = () => api.get("Home/index.html");
   const getHeadFoot = () => api.get("Home/headfoot.html");
   const getProductContent = id =>
@@ -19,9 +20,14 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
   const getShopHome = url_name => api.get("Entshop/Home.html", { url_name });
   const getShopCateProduct = ({ pid, page }) =>
     api.get("Entshop/CatProduct.html", { pid, page });
+  // api for app
   const getHomeProduct = lang => api.get("index/index.html", { lang });
   const getProductCards = ({ page, lang }) =>
     api.get("index/product.html", { page, lang });
+  const getProductVideosList = ({ page, lang }) =>
+    api.get("index/video.html", { page, lang });
+  const getProductTop = ({ lang }) =>
+    api.get("index/video_category.html", { lang });
 
   return {
     getHome,
@@ -33,7 +39,9 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
     getShopCateProduct,
     // api just for app
     getHomeProduct,
-    getProductCards
+    getProductCards,
+    getProductVideosList,
+    getProductTop
   };
 };
 

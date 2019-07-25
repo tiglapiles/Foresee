@@ -43,5 +43,20 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end"
+  },
+  miniThumb: {
+    width: 30,
+    height: 30,
+    marginRight: 2,
+    backgroundColor: "rgba(189, 195, 199,0.8)"
+  },
+  miniText: {
+    color: "#95a5a6",
+    fontSize: 12
+  },
+  viewNum: {
+    color: "#bdc3c7",
+    overflow: "hidden",
+    fontSize: 12
   }
 });

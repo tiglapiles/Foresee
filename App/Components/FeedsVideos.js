@@ -2,35 +2,47 @@ import React, { Component } from "react";
 import { FlatList, ActivityIndicator, View } from "react-native";
 import { connect } from "react-redux";
 import styles from "./Styles/FeedsDiscoverStyle";
-import { timeout } from "../Lib/utils.js";
+import ProductApi from "../Services/ProductApi.js";
 import FeedsTopic from "../Components/FeedsTopic";
 import FeedsVideoList from "../Components/FeedsVideoList.js";
+
+const API = ProductApi.create();
 
 class FeedsVideos extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      lang: "en",
       list: [],
       page: 1,
-      conunt: 0
+      conunt: 0,
+      info: []
     };
     this.waitForResponse = false;
   }
 
   componentWillMount() {
     this.getProductElements();
+    this.getTopicInfo();
+  }
+
+  async getTopicInfo() {
+    const { lang } = this.state;
+    const response = await API.getProductTop({ lang });
+    if (response.ok) {
+      this.setState({ info: response.data.data });
+    }
   }
 
   async getProductElements() {
-    const { page, list, count } = this.state;
+    const { page, list, count, lang } = this.state;
     this.waitForResponse = true;
-    await timeout(500);
-    const response = require("../Fixtures/videos.json");
+    const response = await API.getProductVideosList({ page, lang });
     this.waitForResponse = false;
-    // if (!response.ok) {
-    // return;
-    // }
-    const resList = response;
+    if (!response.ok) {
+      return;
+    }
+    const resList = response.data.data.data;
     this.setState({
       list: list.concat(resList),
       page: page + 1,
@@ -38,28 +50,31 @@ class FeedsVideos extends Component {
     });
   }
 
-  handleUp = id => {
-    this.props.navigation.navigate("VideoFlip", { id });
-  };
-
   scrollEnd = ({ distanceFromEnd }) => {
     this.getProductElements();
     this.setState({});
   };
 
+  renderFooter = () =>
+    this.waitForResponse ? (
+      <ActivityIndicator style={{ margin: 10 }} size="large" color={"black"} />
+    ) : (
+      <View style={{ height: 30 }} />
+    );
+
   render() {
-    const { list } = this.state;
+    const { list, info } = this.state;
 
     return (
       <View style={styles.container}>
         <FlatList
-          ListHeaderComponent={() => <FeedsTopic {...this.props} />}
+          ListHeaderComponent={() => <FeedsTopic info={info} {...this.props} />}
           columnWrapperStyle={{ justifyContent: "space-between", padding: 10 }}
           /* ItemSeparatorComponent={highlighted => ( */
           /*   <View style={[{ height: 2 }, highlighted && { marginLeft: 0 }]} /> */
           /* )} */
           renderItem={({ item, index, section }) => (
-            <FeedsVideoList item={item} handleUp={this.handleUp} />
+            <FeedsVideoList item={item} {...this.props} />
           )}
           data={list}
           keyExtractor={(item, index) => index}
@@ -69,17 +84,7 @@ class FeedsVideos extends Component {
           horizontal={false}
           onEndReachedThreshold={0.5}
           onEndReached={this.scrollEnd}
-          ListFooterComponent={() =>
-            this.waitForResponse ? (
-              <ActivityIndicator
-                style={{ margin: 10 }}
-                size="large"
-                color={"black"}
-              />
-            ) : (
-              <View style={{ height: 30 }} />
-            )
-          }
+          ListFooterComponent={this.renderFooter}
         />
       </View>
     );

@@ -38,7 +38,8 @@ class FeedsScreen extends Component {
   }
 
   changeTab = e => {
-    console.log(e.i);
+    // console.log(e.i);
+    // this.setState({ indexPage: e.i });
   };
 
   render() {
