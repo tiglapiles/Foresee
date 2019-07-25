@@ -17,7 +17,8 @@ class VideoFlip extends Component {
     this.state = {
       videos: [],
       page: 1,
-      count: 0
+      count: 0,
+      index: 0
     };
     this.waitForResponse = false;
   }
@@ -64,12 +65,14 @@ class VideoFlip extends Component {
     });
   }
 
-  slideItem = items =>
-    items.map((k, i) => (
+  slideItem = items => {
+    const { index } = this.state;
+    return items.map((k, i) => (
       <View key={i} style={styles.item}>
-        <VideoContain item={k} {...this.props} />
+        <VideoContain item={k} play={i == index} {...this.props} />
       </View>
     ));
+  };
 
   onScroll = e => {
     const { nativeEvent = {} } = e;
@@ -80,6 +83,10 @@ class VideoFlip extends Component {
     }) => layoutMeasurement.height + contentOffset.y >= contentSize.height;
     const isCloseToTop = ({ layoutMeasurement, contentOffset, contentSize }) =>
       contentOffset.y == 0;
+    const isInMiddle = ({ layoutMeasurement, contentOffset, contentSize }) =>
+      contentOffset.y % layoutMeasurement.height == 0;
+    const indexPage = ({ layoutMeasurement, contentOffset, contentSize }) =>
+      Math.floor(contentOffset.y / layoutMeasurement.height);
 
     if (isCloseToTop(nativeEvent)) {
       //do something
@@ -88,11 +95,14 @@ class VideoFlip extends Component {
       this.getProductVideos();
       this.setState({});
     }
+    if (isInMiddle(nativeEvent)) {
+      this.setState({ index: indexPage(nativeEvent) });
+    }
   };
 
   renderFooter = () =>
     this.waitForResponse ? (
-      <ActivityIndicator style={{ margin: 10 }} size="large" color={"black"} />
+      <ActivityIndicator style={{ margin: 0 }} size="small" color={"black"} />
     ) : (
       <View style={{ height: 1 }} />
     );

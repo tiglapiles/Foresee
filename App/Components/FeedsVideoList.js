@@ -3,6 +3,8 @@ import { Image, TouchableOpacity, View } from "react-native";
 import { Text, Thumbnail, Icon } from "native-base";
 import styles from "./Styles/FeedsVideoListStyle";
 
+const IMG = `https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg`;
+
 export default class FeedsVideoList extends Component {
   shouldComponentUpdate(nextProps) {
     return this.props.item.id !== nextProps.item.id;
@@ -10,9 +12,8 @@ export default class FeedsVideoList extends Component {
 
   render() {
     const { item = {} } = this.props;
-    const thumbUrl = item.user_avatar
-      ? item.user_avatar
-      : `https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg`;
+    const thumbUrl = item.user_avatar ? item.user_avatar : IMG;
+    const img = item.img ? item.img : IMG;
 
     return (
       <TouchableOpacity
@@ -22,7 +23,7 @@ export default class FeedsVideoList extends Component {
         style={styles.container}
       >
         <View style={styles.imgContainer}>
-          <Image source={{ uri: item.img }} style={styles.img} />
+          <Image source={{ uri: img }} style={styles.img} />
         </View>
         <View style={styles.textContainer}>
           <Text numberOfLines={2}>{item.name}</Text>

@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+const { height, width } = Dimensions.get("window");
 
 export default StyleSheet.create({
   container: {
@@ -14,9 +15,8 @@ export default StyleSheet.create({
     bottom: 20
   },
   image: {
-    // flex: 1,
-    width: "100%",
-    height: "100%"
+    width: width,
+    height: height
   },
   outline: {
     position: "absolute",

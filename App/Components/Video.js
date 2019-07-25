@@ -46,7 +46,12 @@ export default class VideoComponent extends Component {
   };
 
   readyPlay = e => {
-    // console.log("video: ready to play!");
+    // console.log("video: ready to play!: ", e);
+    return e.duration;
+  };
+
+  playVideo = () => {
+    this.setState({ paused: false });
   };
 
   renderControl = () =>

@@ -38,7 +38,6 @@ export default class HomeYou extends Component {
   }
 
   scrollEndRefresh = ({ distanceFromEnd }) => {
-    // console.log("flatlist scroll end: ", distanceFromEnd);
     this.getProductElements();
     this.setState({});
   };
@@ -55,10 +54,7 @@ export default class HomeYou extends Component {
     );
 
   renderHeader = () => {
-    const { children } = this.props;
-    if (!children) {
-      return <View />;
-    }
+    const { children = <View /> } = this.props;
     return children;
   };
 
