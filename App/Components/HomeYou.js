@@ -58,6 +58,10 @@ export default class HomeYou extends Component {
     return children;
   };
 
+  scrollToTop = () => {
+    this.listRef.scrollToOffset({ animated: true, offset: 0 });
+  };
+
   render() {
     const { list = [] } = this.state;
 
@@ -65,6 +69,8 @@ export default class HomeYou extends Component {
       <View style={styles.container}>
         {this.state.count > 0 ? (
           <FlatList
+            {...this.props}
+            ref={ref => (this.listRef = ref)}
             ListHeaderComponent={this.renderHeader}
             columnWrapperStyle={styles.list}
             ItemSeparatorComponent={this.itemSeparator}
@@ -78,6 +84,7 @@ export default class HomeYou extends Component {
             onEndReachedThreshold={0.5}
             onEndReached={this.scrollEndRefresh}
             ListFooterComponent={this.renderFooter}
+            scrollEventThrottle={0}
           />
         ) : null}
       </View>

@@ -6,7 +6,8 @@ export default StyleSheet.create({
     backgroundColor: "#fff",
     height: 200,
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    borderRadius: 5
   },
   item: {
     flexDirection: "column",

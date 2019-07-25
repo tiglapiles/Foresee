@@ -3,25 +3,22 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {},
   item: {
-    // flex: 1,
     height: 350,
-    // paddingLeft: 10,
     width: "49%",
     backgroundColor: "#fff",
-    // marginRight: 10,
-    // marginBottom: 10,
-    paddingTop: 2,
     flexDirection: "column",
     justifyContent: "space-around",
     shadowOffset: { width: 2, height: 2 },
     shadowRadius: 2,
-    shadowColor: "lightgray",
+    shadowColor: "gray",
     shadowOpacity: 1.0,
     borderRadius: 5
   },
   imgContainer: {
     flex: 0.6,
     backgroundColor: "lightgray",
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
     overflow: "hidden"
   },
   img: {

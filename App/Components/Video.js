@@ -64,9 +64,6 @@ export default class VideoComponent extends Component {
         <Video
           {...this.props}
           source={{ uri: this.props.url }}
-          ref={ref => {
-            this.player = ref;
-          }} //  Store reference
           paused={this.state.paused}
           onBuffer={this.onBuffer} //  Callback when remote video is buffering
           onError={this.videoError} //  Callback when video cannot be loaded

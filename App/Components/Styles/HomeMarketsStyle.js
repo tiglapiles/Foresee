@@ -14,7 +14,7 @@ export default StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 5,
+    marginRight: 10,
     overflow: "hidden"
   },
   title: {

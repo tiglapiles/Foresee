@@ -28,6 +28,7 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
     api.get("index/video.html", { page, lang });
   const getProductTop = ({ lang }) =>
     api.get("index/video_category.html", { lang });
+  const getHomeBanner = () => api.get("index/banner.html");
 
   return {
     getHome,
@@ -41,7 +42,8 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
     getHomeProduct,
     getProductCards,
     getProductVideosList,
-    getProductTop
+    getProductTop,
+    getHomeBanner
   };
 };
 

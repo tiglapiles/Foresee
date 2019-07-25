@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { BackHandler, ScrollView } from "react-native";
-import { View } from "native-base";
+import { BackHandler, TouchableOpacity } from "react-native";
+import { View, Icon } from "native-base";
 import { connect } from "react-redux";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 import ProductActions from "../Redux/ProductRedux.js";
@@ -21,6 +21,16 @@ import BusinessCard from "../Components/BusinessCard.js";
 import styles from "./Styles/HomeScreenStyle";
 
 class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.homeRef;
+    this.offset = 0;
+    this.state = {
+      upDisplay: false,
+      footer: true
+    };
+  }
+
   componentWillMount() {
     this.props.getHome();
     this.props.getHomeProduct("en");
@@ -31,6 +41,12 @@ class HomeScreen extends Component {
       this.props.navigation.goBack();
       return true;
     });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.upDisplay !== nextState.upDisplay) return true;
+    if (this.state.footer !== nextState.footer) return true;
+    return false;
   }
 
   renderSubItems = () => {
@@ -71,6 +87,34 @@ class HomeScreen extends Component {
     ));
   };
 
+  scrollToTop = () => {
+    this.homeRef.scrollToTop();
+  };
+
+  scrollAction = e => {
+    const { nativeEvent = {} } = e;
+    const scrollDown = ({ layoutMeasurement, contentOffset, contentSize }) =>
+      contentOffset.y > layoutMeasurement.height;
+    const isCloseToTop = ({ layoutMeasurement, contentOffset, contentSize }) =>
+      contentOffset.y <= layoutMeasurement.height;
+    const scrollUp = ({ layoutMeasurement, contentOffset, contentSize }) => {
+      const dir = contentOffset.y > this.offset ? true : false;
+      this.offset = contentOffset.y;
+      return dir;
+    };
+    if (scrollDown(nativeEvent)) {
+      this.setState({ upDisplay: true });
+    }
+    if (isCloseToTop(nativeEvent)) {
+      this.setState({ upDisplay: false });
+    }
+    if (scrollUp(nativeEvent)) {
+      this.setState({ footer: false });
+    } else {
+      this.setState({ footer: true });
+    }
+  };
+
   render() {
     const { home = {} } = this.props;
 
@@ -78,7 +122,11 @@ class HomeScreen extends Component {
       <View style={styles.container}>
         <SearchBarTem {...this.props} />
 
-        <HomeYou {...this.props}>
+        <HomeYou
+          ref={ref => ref && (this.homeRef = ref)}
+          {...this.props}
+          onScroll={this.scrollAction}
+        >
           <View>
             <ImagesSwiper
               style={{ padding: 0 }}
@@ -93,7 +141,12 @@ class HomeScreen extends Component {
           </View>
         </HomeYou>
 
-        <BottomFooter {...this.props} />
+        {this.state.upDisplay ? (
+          <TouchableOpacity style={styles.up} onPress={this.scrollToTop}>
+            <Icon name="md-arrow-round-up" style={{ color: "#fff" }} />
+          </TouchableOpacity>
+        ) : null}
+        {this.state.footer ? <BottomFooter {...this.props} /> : null}
       </View>
     );
   }

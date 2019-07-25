@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
-    flex: 1
-    // padding: 5
+    flex: 1,
+    backgroundColor: "rgba(245, 246, 250,1.0)"
   },
   badge: {
     width: 20,
