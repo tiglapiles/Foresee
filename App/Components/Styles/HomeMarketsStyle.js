@@ -5,7 +5,8 @@ export default StyleSheet.create({
     // flex: 1
     flexDirection: "row",
     justifyContent: "flex-start",
-    height: 180
+    height: 180,
+    paddingLeft: 10
   },
   boxs: {
     width: 320,

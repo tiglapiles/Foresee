@@ -49,12 +49,12 @@ export default class HomeYou extends Component {
   renderFooter = () =>
     this.waitForResponse ? (
       <ActivityIndicator
-        style={{ margin: 10, backgroundColor: "#fff" }}
+        style={{ margin: 10, backgroundColor: "#fff", height: 60 }}
         size="large"
         color={"black"}
       />
     ) : (
-      <View style={{ height: 30 }} />
+      <View style={{ height: 60 }} />
     );
 
   renderHeader = () => {
@@ -71,7 +71,7 @@ export default class HomeYou extends Component {
 
     return (
       <View style={styles.container}>
-        {this.state.count > 0 ? (
+        {this.state.count > 0 && (
           <FlatList
             {...this.props}
             ref={ref => (this.listRef = ref)}
@@ -89,8 +89,12 @@ export default class HomeYou extends Component {
             onEndReached={this.scrollEndRefresh}
             ListFooterComponent={this.renderFooter}
             scrollEventThrottle={0}
+            alwaysBounceVertical={true}
+            overScrollMode={"never"}
+            showsVerticalScrollIndicator={false}
+            bounces={false}
           />
-        ) : null}
+        )}
       </View>
     );
   }

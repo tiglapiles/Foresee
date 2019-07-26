@@ -11,7 +11,8 @@ export default function HomeSubTitle(props) {
       height: 20,
       flexDirection: "row",
       alignItems: "center",
-      marginBottom: 8
+      marginBottom: 8,
+      paddingLeft: 8
     },
     block: {
       backgroundColor: color,

@@ -47,10 +47,7 @@ class HomeScreen extends Component {
     const { homeProduct = [] } = this.props;
     if (this.state.upDisplay !== nextState.upDisplay) return true;
     if (this.state.footer !== nextState.footer) return true;
-    if (
-      !homeProduct[0] ||
-      homeProduct[0].name !== nextProps.homeProduct[0].name
-    )
+    if (!homeProduct[0] || homeProduct[0].id !== nextProps.homeProduct[0].id)
       return true;
     return false;
   }
@@ -150,9 +147,9 @@ class HomeScreen extends Component {
               imgList={convertToImgList([...home])}
             />
             <HomeMenu {...this.props} />
-            <View style={{ padding: 5 }}>{this.renderSubItems()}</View>
-
-            <View style={{ marginTop: 20, padding: 5 }}>
+            {/* <View style={{ padding: 0 }}>{}</View> */}
+            {this.renderSubItems()}
+            <View style={{ marginTop: 20, padding: 8 }}>
               <HomeSubTitle title={"JUST FOR YOU"} />
             </View>
           </View>

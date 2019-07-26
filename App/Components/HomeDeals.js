@@ -22,5 +22,9 @@ export default function HomeDeals(props) {
       </View>
     ));
   };
-  return <View style={styles.container}>{deals(info)}</View>;
+  return (
+    <View style={styles.outbox}>
+      <View style={styles.container}>{deals(info)}</View>
+    </View>
+  );
 }

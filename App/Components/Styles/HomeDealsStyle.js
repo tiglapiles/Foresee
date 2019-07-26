@@ -1,12 +1,15 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+  outbox: {
+    paddingLeft: 8,
+    paddingRight: 8
+  },
   container: {
-    // flex: 1
-    backgroundColor: "#fff",
     height: 200,
     flexDirection: "row",
     justifyContent: "space-around",
+    backgroundColor: "#fff",
     borderRadius: 5
   },
   item: {

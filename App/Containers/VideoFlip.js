@@ -126,6 +126,7 @@ class VideoFlip extends Component {
         onScrollAnimationEnd={this.scrollEnd}
         pagingEnabled={true}
         scrollToTop={true}
+        disableIntervalMomentum={true}
       >
         {this.slideItem(videos)}
         {this.renderFooter()}

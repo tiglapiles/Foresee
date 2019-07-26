@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import PropTypes from 'prop-types';
-import { Image } from "react-native";
-import { View, Text, Card, CardItem, Left, Right } from "native-base";
+import { Image, TouchableOpacity } from "react-native";
+import { View, Text } from "native-base";
 import styles from "./Styles/BusinessCardStyle";
 
 export default class BusinessCard extends Component {
@@ -21,28 +21,32 @@ export default class BusinessCard extends Component {
 
   render() {
     const { info } = this.props;
+    const text = `How to Ensure Your Next Marketing Compaign is a Success`;
 
     return (
       <View style={styles.container}>
-        <Card>
-          <CardItem
-            button
-            onPress={() => this.props.navigation.navigate("ProductDetail")}
-          >
-            <Left>
-              <Text>//Your text here</Text>
-            </Left>
-            <Right>
-              <Image
-                style={{ width: 60, height: 60 }}
-                source={{
-                  uri:
-                    "https://sc02.alicdn.com/kf/HTB1foTel7SWBuNjSszdq6zeSpXae/Wholesale-100-Cotton-Children-Blank-Round-Collar.jpg_300x300.jpg"
-                }}
-              />
-            </Right>
-          </CardItem>
-        </Card>
+        <TouchableOpacity
+          style={styles.box}
+          onPress={() => this.props.navigation.navigate("ProductDetail")}
+        >
+          <View style={styles.date}>
+            <View
+              style={{ backgroundColor: "lightgray", height: 50, width: 40 }}
+            />
+            <Text numberOfLines={3} style={styles.text}>
+              {text}
+            </Text>
+          </View>
+          <View style={styles.imgBox}>
+            <Image
+              style={styles.img}
+              source={{
+                uri:
+                  "https://sc02.alicdn.com/kf/HTB1foTel7SWBuNjSszdq6zeSpXae/Wholesale-100-Cotton-Children-Blank-Round-Collar.jpg_300x300.jpg"
+              }}
+            />
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }

@@ -14,6 +14,6 @@ export default StyleSheet.create({
   },
   list: {
     justifyContent: "space-between",
-    padding: 5
+    padding: 8
   }
 });
