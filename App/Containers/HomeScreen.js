@@ -44,10 +44,18 @@ class HomeScreen extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    const { homeProduct = [] } = this.props;
     if (this.state.upDisplay !== nextState.upDisplay) return true;
     if (this.state.footer !== nextState.footer) return true;
+    if (
+      !homeProduct[0] ||
+      homeProduct[0].name !== nextProps.homeProduct[0].name
+    )
+      return true;
     return false;
   }
+
+  componentWillUpdate(nextProps, nextState) {}
 
   renderSubItems = () => {
     const { homeProduct = [] } = this.props;
@@ -77,9 +85,9 @@ class HomeScreen extends Component {
     return homeProduct.map((o = {}, i) => (
       <View style={{ marginTop: 20 }} key={i}>
         <HomeSubTitle
-          color={o.color}
+          /* color={o.color} */
+          /* more={o.more} */
           title={o.name}
-          more={o.more}
           {...this.props}
         />
         {subComponent({ name: o.name, info: o.child })}
@@ -116,21 +124,30 @@ class HomeScreen extends Component {
   };
 
   render() {
-    const { home = {} } = this.props;
+    const { home = [] } = this.props;
 
     return (
       <View style={styles.container}>
-        <SearchBarTem {...this.props} />
+        <View
+          style={[
+            styles.bar,
+            {
+              backgroundColor: this.state.upDisplay ? "#f39c12" : "transparent"
+            }
+          ]}
+        >
+          <SearchBarTem {...this.props} />
+        </View>
 
         <HomeYou
-          ref={ref => ref && (this.homeRef = ref)}
           {...this.props}
+          ref={ref => ref && (this.homeRef = ref)}
           onScroll={this.scrollAction}
         >
           <View>
             <ImagesSwiper
               style={{ padding: 0 }}
-              imgList={convertToImgList(home.swiperData)}
+              imgList={convertToImgList([...home])}
             />
             <HomeMenu {...this.props} />
             <View style={{ padding: 5 }}>{this.renderSubItems()}</View>
@@ -141,12 +158,12 @@ class HomeScreen extends Component {
           </View>
         </HomeYou>
 
-        {this.state.upDisplay ? (
+        {this.state.upDisplay && (
           <TouchableOpacity style={styles.up} onPress={this.scrollToTop}>
             <Icon name="md-arrow-round-up" style={{ color: "#fff" }} />
           </TouchableOpacity>
-        ) : null}
-        {this.state.footer ? <BottomFooter {...this.props} /> : null}
+        )}
+        {this.state.footer && <BottomFooter {...this.props} />}
       </View>
     );
   }

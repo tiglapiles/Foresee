@@ -55,7 +55,7 @@ export const productListRequest = (state, { cid = 1, page = 1 }) =>
   state.merge({ cid, page });
 export const receiveProductList = (state, { list }) => state.merge({ list });
 // categories list
-export const requestCateList = (state, { type }) => state.merge({ type: type });
+export const requestCateList = (state, { type }) => state.merge({ type });
 export const receiveCateList = (state, { cate }) => state.replace({ cate });
 // shop home
 export const shopHomeRequest = (state, { url_name }) =>

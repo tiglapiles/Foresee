@@ -48,7 +48,11 @@ export default class HomeYou extends Component {
 
   renderFooter = () =>
     this.waitForResponse ? (
-      <ActivityIndicator style={{ margin: 10 }} size="large" color={"black"} />
+      <ActivityIndicator
+        style={{ margin: 10, backgroundColor: "#fff" }}
+        size="large"
+        color={"black"}
+      />
     ) : (
       <View style={{ height: 30 }} />
     );

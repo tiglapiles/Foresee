@@ -10,7 +10,7 @@ export default function BottomFooter(props) {
   const navigation = props.navigation;
   const active = props.navigation.state.routeName || "Home";
   return (
-    <Footer style={styles.footer}>
+    <Footer style={[styles.footer, { ...props.style }]}>
       <FooterTab>
         <Button
           onPress={() => navigation.navigate("Home")}

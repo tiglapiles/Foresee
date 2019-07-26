@@ -12,7 +12,6 @@ import {
   Button,
   Icon,
   Title,
-  Container,
   View,
   Footer
 } from "native-base";

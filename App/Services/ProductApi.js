@@ -10,7 +10,7 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
   });
 
   // api for another app
-  const getHome = () => api.get("Home/index.html");
+  const getHome = () => api.get("index/banner.html");
   const getHeadFoot = () => api.get("Home/headfoot.html");
   const getProductContent = id =>
     api.get("Product/ProductContent.html", { id });
@@ -28,7 +28,7 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
     api.get("index/video.html", { page, lang });
   const getProductTop = ({ lang }) =>
     api.get("index/video_category.html", { lang });
-  const getHomeBanner = () => api.get("index/banner.html");
+  // const getHomeBanner = () => api.get("index/banner.html");
 
   return {
     getHome,
@@ -42,8 +42,8 @@ const create = (baseURL = "http://ok.yjzw.net/api/") => {
     getHomeProduct,
     getProductCards,
     getProductVideosList,
-    getProductTop,
-    getHomeBanner
+    getProductTop
+    // getHomeBanner
   };
 };
 

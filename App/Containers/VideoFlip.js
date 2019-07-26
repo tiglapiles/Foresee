@@ -29,6 +29,7 @@ class VideoFlip extends Component {
       return true;
     });
     this.setState({ videos: this.props.videos });
+    this.getProductVideos();
   }
 
   static propTypes = {
