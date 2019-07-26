@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-import { ScrollView, Image, BackHandler, TouchableOpacity } from "react-native";
-import {
-  List,
-  ListItem,
-  Text,
-  View,
-  Content,
-  Icon,
-  Left,
-  Body
-} from "native-base";
+import { Image, TouchableOpacity } from "react-native";
+import { List, ListItem, Text, View, Icon } from "native-base";
 import styles from "./Styles/DrawerContentStyles";
 import { Images } from "../Themes";
+
 const itemIcon = {
   Home: "ios-home",
   Feeds: "ios-heart",
@@ -31,12 +23,8 @@ class DrawerContent extends Component {
       button
       onPress={() => this.props.navigation.navigate(item.routeName)}
     >
-      {/* <Left> */}
       <Icon name={itemIcon[item.routeName]} style={styles.icon} />
-      {/* <Body style={{ marginLeft: 30 }}> */}
       <Text style={styles.listText}>{item.routeName}</Text>
-      {/* </Body> */}
-      {/* </Left> */}
     </ListItem>
   );
 

@@ -20,10 +20,19 @@ export default StyleSheet.create({
     paddingRight: 5,
     // position: "absolute",
     // top: 150,
-    width: "100%"
+    width: "100%",
+    marginTop: -60
   },
   col: {
     justifyContent: "center",
     alignItems: "center"
+  },
+  count: {
+    fontSize: 25,
+    color: "#bdc3c7"
+  },
+  item: {
+    color: "#795548",
+    marginLeft: 10
   }
 });

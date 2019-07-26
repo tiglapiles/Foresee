@@ -41,13 +41,38 @@ class ForeseeScreen extends Component {
       <Col key={i}>
         <TouchableOpacity onPress={() => navigate(k.navigate)}>
           <View style={styles.col}>
-            <Text style={{ fontSize: 25 }}>{k.count}</Text>
+            <Text style={styles.count}>{k.count}</Text>
             <Text note>{k.name}</Text>
           </View>
         </TouchableOpacity>
       </Col>
     ));
   };
+
+  renderProgress = () => (
+    <Card>
+      <CardItem button onPress={() => this.props.navigation.navigate("Login")}>
+        <Body>
+          <Text style={{ marginBottom: 5 }}>
+            <Text style={{ fontSize: 25 }}>6</Text> Step (s) left to complete
+            your profile
+          </Text>
+        </Body>
+      </CardItem>
+      <CardItem button onPress={() => this.props.navigation.navigate("Login")}>
+        <Body>
+          <Text note>
+            Suppliers are more likely to reply if you profile is complete.
+          </Text>
+        </Body>
+      </CardItem>
+      <CardItem button onPress={() => this.props.navigation.navigate("Login")}>
+        <Body>
+          <Text>------ ------ ------ ------ ------ ------</Text>
+        </Body>
+      </CardItem>
+    </Card>
+  );
 
   render() {
     return (
@@ -73,38 +98,7 @@ class ForeseeScreen extends Component {
           </View>
 
           <View style={styles.info}>
-            <Card>
-              <CardItem
-                button
-                onPress={() => this.props.navigation.navigate("Login")}
-              >
-                <Body>
-                  <Text style={{ marginBottom: 5 }}>
-                    <Text style={{ fontSize: 25 }}>6</Text> Step (s) left to
-                    complete your profile
-                  </Text>
-                </Body>
-              </CardItem>
-              <CardItem
-                button
-                onPress={() => this.props.navigation.navigate("Login")}
-              >
-                <Body>
-                  <Text note>
-                    Suppliers are more likely to reply if you profile is
-                    complete.
-                  </Text>
-                </Body>
-              </CardItem>
-              <CardItem
-                button
-                onPress={() => this.props.navigation.navigate("Login")}
-              >
-                <Body>
-                  <Text>------ ------ ------ ------ ------ ------</Text>
-                </Body>
-              </CardItem>
-            </Card>
+            {this.renderProgress()}
             <Card>
               <CardItem>
                 <Grid>{this.renderPerson()}</Grid>
@@ -115,8 +109,8 @@ class ForeseeScreen extends Component {
               dataArray={this.getCardItems("manage")}
               renderRow={o => (
                 <CardItem button onPress={() => this.handleItem(o.navigate)}>
-                  <Icon name={o.icon} />
-                  <Text>{o.name}</Text>
+                  <Icon name={o.icon} style={styles.item} />
+                  <Text style={styles.item}>{o.name}</Text>
                   <Right />
                 </CardItem>
               )}
@@ -126,8 +120,8 @@ class ForeseeScreen extends Component {
               dataArray={this.getCardItems("pay")}
               renderRow={o => (
                 <CardItem button onPress={() => this.handleItem(o.navigate)}>
-                  <Icon name={o.icon} />
-                  <Text>{o.name}</Text>
+                  <Icon name={o.icon} style={styles.item} />
+                  <Text style={styles.item}>{o.name}</Text>
                   <Right />
                 </CardItem>
               )}
@@ -137,8 +131,8 @@ class ForeseeScreen extends Component {
               dataArray={this.getCardItems("set")}
               renderRow={o => (
                 <CardItem button onPress={() => this.handleItem(o.navigate)}>
-                  <Icon name={o.icon} />
-                  <Text>{o.name}</Text>
+                  <Icon name={o.icon} style={styles.item} />
+                  <Text style={styles.item}>{o.name}</Text>
                   <Right />
                 </CardItem>
               )}

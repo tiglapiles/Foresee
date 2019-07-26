@@ -43,16 +43,16 @@ class HomeScreen extends Component {
     });
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    const { homeProduct = [] } = this.props;
-    if (this.state.upDisplay !== nextState.upDisplay) return true;
-    if (this.state.footer !== nextState.footer) return true;
-    if (!homeProduct[0] || homeProduct[0].id !== nextProps.homeProduct[0].id)
-      return true;
-    return false;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   const { homeProduct = [] } = this.props;
+  //   if (this.state.upDisplay !== nextState.upDisplay) return true;
+  //   if (this.state.footer !== nextState.footer) return true;
+  //   if (!homeProduct[0] || homeProduct[0].id !== nextProps.homeProduct[0].id)
+  //     return true;
+  //   return false;
+  // }
 
-  componentWillUpdate(nextProps, nextState) {}
+  // componentWillUpdate(nextProps, nextState) {}
 
   renderSubItems = () => {
     const { homeProduct = [] } = this.props;
@@ -149,7 +149,7 @@ class HomeScreen extends Component {
             <HomeMenu {...this.props} />
             {/* <View style={{ padding: 0 }}>{}</View> */}
             {this.renderSubItems()}
-            <View style={{ marginTop: 20, padding: 8 }}>
+            <View style={{ marginTop: 20 }}>
               <HomeSubTitle title={"JUST FOR YOU"} />
             </View>
           </View>

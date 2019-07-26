@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 import { View, Text } from "native-base";
 
 export default function HomeSubTitle(props) {
-  const color = props.color || "white";
+  const color = props.color || "black";
   const more = props.more || false;
   const title = props.title || "Sub Title";
   const styles = StyleSheet.create({

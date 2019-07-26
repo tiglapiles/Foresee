@@ -7,11 +7,10 @@ export default {
   logo: {
     width: 80,
     height: 80,
-    borderWidth: 3,
-    borderColor: "#ddd",
     borderRadius: 40,
     resizeMode: "center",
-    marginBottom: 8
+    marginBottom: 8,
+    backgroundColor: "#ecf0f1"
   },
   logout: {
     color: "#fff"
@@ -36,9 +35,5 @@ export default {
   icon: {
     color: "#636e72",
     fontSize: 28
-  },
-  item: {
-    flexDirection: "row"
-    // alignItems: "center"
   }
 };
