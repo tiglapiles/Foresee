@@ -59,7 +59,14 @@ class FeedsScreen extends Component {
           </Right>
         </Header>
 
-        <Tabs page={indexPage} onChangeTab={this.changeTab} initialPage={1}>
+        <Tabs
+          bounces={false}
+          page={indexPage}
+          onChangeTab={this.changeTab}
+          initialPage={1}
+          scrollWithoutAnimation={true}
+          locked={true}
+        >
           <Tab heading="Following">
             <FeedsFollowing {...this.props} />
           </Tab>

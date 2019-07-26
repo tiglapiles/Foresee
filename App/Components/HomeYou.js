@@ -76,6 +76,7 @@ export default class HomeYou extends Component {
             {...this.props}
             ref={ref => (this.listRef = ref)}
             ListHeaderComponent={this.renderHeader}
+            ListHeaderComponentStyle={styles.header}
             columnWrapperStyle={styles.list}
             ItemSeparatorComponent={this.itemSeparator}
             renderItem={({ item, index, section }) => (

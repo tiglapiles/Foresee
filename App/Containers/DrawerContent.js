@@ -25,9 +25,24 @@ const itemIcon = {
 };
 
 class DrawerContent extends Component {
+  renderMenuItem = item => (
+    <ListItem
+      noBorder
+      button
+      onPress={() => this.props.navigation.navigate(item.routeName)}
+    >
+      {/* <Left> */}
+      <Icon name={itemIcon[item.routeName]} style={styles.icon} />
+      {/* <Body style={{ marginLeft: 30 }}> */}
+      <Text style={styles.listText}>{item.routeName}</Text>
+      {/* </Body> */}
+      {/* </Left> */}
+    </ListItem>
+  );
+
   render() {
-    const navigation = this.props.navigation;
     const items = this.props.items;
+
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -52,24 +67,13 @@ class DrawerContent extends Component {
             </Text>
           </View>
         </View>
-        <Content>
+        <View style={styles.list}>
           <List
+            bounces={false}
             dataArray={items}
-            renderRow={item => (
-              <ListItem
-                icon
-                onPress={() => navigation.navigate(item.routeName)}
-              >
-                <Left>
-                  <Icon name={itemIcon[item.routeName]} />
-                </Left>
-                <Body>
-                  <Text>{item.routeName}</Text>
-                </Body>
-              </ListItem>
-            )}
+            renderRow={this.renderMenuItem}
           />
-        </Content>
+        </View>
       </View>
     );
   }

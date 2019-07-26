@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import { BackHandler, TouchableOpacity } from "react-native";
+import { BackHandler, TouchableOpacity, ScrollView } from "react-native";
 import {
-  Content,
-  Container,
-  Header,
-  Left,
   Right,
   Body,
   Button,
   Text,
-  Title,
   Icon,
   Card,
   CardItem,
@@ -37,10 +32,31 @@ class ForeseeScreen extends Component {
 
   getCardItems = items => require("../Fixtures/foresee.json")[items];
 
+  renderPerson = () => {
+    const navigate = e => {
+      this.props.navigation.navigate(e);
+    };
+
+    return require("../Fixtures/person.json").map((k, i) => (
+      <Col key={i}>
+        <TouchableOpacity onPress={() => navigate(k.navigate)}>
+          <View style={styles.col}>
+            <Text style={{ fontSize: 25 }}>{k.count}</Text>
+            <Text note>{k.name}</Text>
+          </View>
+        </TouchableOpacity>
+      </Col>
+    ));
+  };
+
   render() {
     return (
-      <Container>
-        <Content>
+      <View style={styles.container}>
+        <ScrollView
+          contentContainerStyle={styles.content}
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.head}>
             <Button
               transparent
@@ -91,40 +107,7 @@ class ForeseeScreen extends Component {
             </Card>
             <Card>
               <CardItem>
-                <Grid>
-                  <Col>
-                    <TouchableOpacity
-                      onPress={() =>
-                        this.props.navigation.navigate("My Favorites")
-                      }
-                    >
-                      <View style={styles.col}>
-                        <Text style={{ fontSize: 25 }}>1</Text>
-                        <Text note>My Favorites</Text>
-                      </View>
-                    </TouchableOpacity>
-                  </Col>
-                  <Col>
-                    <TouchableOpacity
-                      onPress={() => this.props.navigation.navigate("Login")}
-                    >
-                      <View style={styles.col}>
-                        <Text style={{ fontSize: 25 }}>0</Text>
-                        <Text note>Shopping Cart</Text>
-                      </View>
-                    </TouchableOpacity>
-                  </Col>
-                  <Col>
-                    <TouchableOpacity
-                      onPress={() => this.props.navigation.navigate("History")}
-                    >
-                      <View style={styles.col}>
-                        <Text style={{ fontSize: 25 }}>4</Text>
-                        <Text note>Browsing History</Text>
-                      </View>
-                    </TouchableOpacity>
-                  </Col>
-                </Grid>
+                <Grid>{this.renderPerson()}</Grid>
               </CardItem>
             </Card>
             <Card
@@ -161,10 +144,10 @@ class ForeseeScreen extends Component {
               )}
             />
           </View>
-        </Content>
+        </ScrollView>
 
         <BottomFooter {...this.props} />
-      </Container>
+      </View>
     );
   }
 }

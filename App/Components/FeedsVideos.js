@@ -57,9 +57,13 @@ class FeedsVideos extends Component {
 
   renderFooter = () =>
     this.waitForResponse ? (
-      <ActivityIndicator style={{ margin: 10 }} size="large" color={"black"} />
+      <ActivityIndicator
+        style={{ margin: 10, height: 60 }}
+        size="large"
+        color={"black"}
+      />
     ) : (
-      <View style={{ height: 30 }} />
+      <View style={{ height: 60 }} />
     );
 
   render() {
@@ -70,13 +74,11 @@ class FeedsVideos extends Component {
         <FlatList
           ListHeaderComponent={() => <FeedsTopic info={info} {...this.props} />}
           columnWrapperStyle={{ justifyContent: "space-between", padding: 10 }}
-          /* ItemSeparatorComponent={highlighted => ( */
-          /*   <View style={[{ height: 2 }, highlighted && { marginLeft: 0 }]} /> */
-          /* )} */
           renderItem={({ item, index, section }) => (
             <FeedsVideoList item={item} {...this.props} />
           )}
           data={list}
+          bounces={false}
           keyExtractor={(item, index) => index}
           style={styles.list}
           contentContainerStyle={styles.list}
@@ -85,6 +87,7 @@ class FeedsVideos extends Component {
           onEndReachedThreshold={0.5}
           onEndReached={this.scrollEnd}
           ListFooterComponent={this.renderFooter}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     );

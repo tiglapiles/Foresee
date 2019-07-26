@@ -15,5 +15,6 @@ export default StyleSheet.create({
   list: {
     justifyContent: "space-between",
     padding: 8
-  }
+  },
+  header: {}
 });

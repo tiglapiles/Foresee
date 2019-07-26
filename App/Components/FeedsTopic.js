@@ -5,11 +5,13 @@ import styles from "./Styles/FeedsTopicStyle";
 const IMG = `https://sc01.alicdn.com/kf/HTB1bgyOXTjxK1Rjy0Fnq6yBaFXag.jpg_100x100.jpg`;
 class TopicItem extends Component {
   shouldComponentUpdate(nextProps) {
-    return this.props.item.img !== nextProps.item.img;
+    return this.props.item.id !== nextProps.item.id;
   }
+
   render() {
     const { item = {} } = this.props;
     const img = item.img ? item.img : IMG;
+
     return (
       <TouchableOpacity
         style={styles.item}
@@ -29,22 +31,33 @@ class TopicItem extends Component {
   }
 }
 
-export default function FeedsTopic(props) {
-  const { info = [] } = props;
-  return info.length === 0 ? null : (
-    <View style={styles.container}>
-      <Text style={styles.title}>Topic</Text>
-      <FlatList
-        ItemSeparatorComponent={({ highlighted }) => (
-          <View style={[highlighted && { marginLeft: 0 }]} />
-        )}
-        data={info}
-        horizontal={true}
-        keyExtractor={(item, index) => index}
-        renderItem={({ item, index, separator }) => (
-          <TopicItem item={item} {...props} />
-        )}
-      />
-    </View>
-  );
+export default class FeedsTopic extends Component {
+  shouldComponentUpdate(nextProps) {
+    return (
+      !this.props.info[0] || this.props.info[0].id !== nextProps.info[0].id
+    );
+  }
+
+  render() {
+    const { info = [] } = this.props;
+
+    return (
+      info.length !== 0 && (
+        <View style={styles.container}>
+          <Text style={styles.title}>Topic</Text>
+          <FlatList
+            ItemSeparatorComponent={({ highlighted }) => (
+              <View style={[highlighted && { marginLeft: 0 }]} />
+            )}
+            data={info}
+            horizontal={true}
+            keyExtractor={(item, index) => index}
+            renderItem={({ item, index, separator }) => (
+              <TopicItem item={item} {...this.props} />
+            )}
+          />
+        </View>
+      )
+    );
+  }
 }

@@ -19,14 +19,10 @@ export default class FeedsFollowing extends Component {
     this.getProductElements();
   }
 
-  handleUp = id => {
-    this.propsnavigation.navigate("VideoFlip", { id });
-  };
-
   async getProductElements() {
     const { page, list, count } = this.state;
     this.waitForResponse = true;
-    await timeout(500);
+    await timeout(1000);
     const response = require("../Fixtures/following.json");
     this.waitForResponse = false;
     // if (!response.ok) {
@@ -45,35 +41,36 @@ export default class FeedsFollowing extends Component {
     this.setState({});
   };
 
+  renderFooter = () =>
+    this.waitForResponse ? (
+      <ActivityIndicator
+        style={{ margin: 10, height: 60 }}
+        size="large"
+        color={"black"}
+      />
+    ) : (
+      <View style={{ height: 60 }} />
+    );
+
   render() {
     const { list } = this.state;
 
     return (
       <View style={styles.container}>
         <FlatList
-          /* columnWrapperStyle={{ justifyContent: "space-between", padding: 10 }} */
           renderItem={({ item, index, section }) => (
             <FeedsCard cardInfo={item} {...this.props} />
           )}
           data={list}
+          bounces={false}
           keyExtractor={(item, index) => index}
-          /* style={styles.list} */
           /* contentContainerStyle={styles.list} */
           numColumns={1}
           horizontal={false}
           onEndReachedThreshold={0.5}
           onEndReached={this.scrollEnd}
-          ListFooterComponent={() =>
-            this.waitForResponse ? (
-              <ActivityIndicator
-                style={{ margin: 10 }}
-                size="large"
-                color={"black"}
-              />
-            ) : (
-              <View style={{ height: 30 }} />
-            )
-          }
+          showsVerticalScrollIndicator={false}
+          ListFooterComponent={() => this.renderFooter()}
         />
       </View>
     );
