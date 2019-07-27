@@ -47,7 +47,7 @@ export default class ImagesSwiper extends Component {
     const { imgList = [] } = this.props;
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style]}>
         <Swiper
           loadMinimal
           loadMinimalSize={1}

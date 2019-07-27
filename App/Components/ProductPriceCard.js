@@ -29,28 +29,29 @@ export default class ProductPriceCard extends Component {
 
     return (
       <View style={styles.container}>
-        <Card>
-          {/* <CardItem header button onPress={() => alert("This is Card Header")}> */}
-          {/*   <Text>NativeBase</Text> */}
-          {/* </CardItem> */}
-          <CardItem bordered>
-            <Body>
-              <Text style={styles.name}>
-                {detail.name || "Product Detail Name"}
-              </Text>
-              <Text style={styles.price}>$4.30 - $5.20</Text>
-              <Text style={styles.name}>Min.Order: 1000 Piesces</Text>
-            </Body>
-          </CardItem>
-          <CardItem footer button onPress={() => alert("This is Card Footer")}>
-            <Left>
-              <Text style={styles.name}>Quick Quitation</Text>
-            </Left>
-            <Right>
-              <Icon name="ios-more" />
-            </Right>
-          </CardItem>
-        </Card>
+        <View style={{ height: 24 }} />
+        <CardItem>
+          <Body>
+            <Text numberOfLines={2} style={styles.name}>
+              {detail.name || "Product Detail Name"}
+            </Text>
+            <Text style={styles.price}>$4.30 - $5.20</Text>
+            <Text style={styles.name}>Min.Order: 1000 Piesces</Text>
+          </Body>
+        </CardItem>
+        <CardItem
+          style={styles.footer}
+          footer
+          button
+          onPress={() => alert("This is Card Footer")}
+        >
+          <Left>
+            <Text style={styles.name}>Quick Quitation</Text>
+          </Left>
+          <Right>
+            <Icon name="ios-more" />
+          </Right>
+        </CardItem>
       </View>
     );
   }

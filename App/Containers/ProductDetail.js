@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BackHandler, Image, ScrollView } from "react-native";
+import { BackHandler, ScrollView } from "react-native";
 import {
   Content,
   Text,
@@ -12,8 +12,7 @@ import {
   Button,
   Icon,
   Title,
-  View,
-  Footer
+  View
 } from "native-base";
 import { connect } from "react-redux";
 import HTMLView from "react-native-htmlview";
@@ -33,28 +32,53 @@ import styles from "./Styles/ProductDetailStyle";
 class ProductDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      indexTab: 0
+    };
   }
-  componentDidMount() {
+
+  componentWillMount() {
     const {
       navigation: {
         state: { params }
       }
     } = this.props;
     const id = params ? params.id : 1;
+    this.props.getContent(id);
+    this.props.getHome();
+  }
+
+  componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", () => {
       this.props.navigation.goBack();
       return true;
     });
-    this.props.getContent(id);
   }
 
+  scrollTab = (e, tab) => {
+    const { nativeEvent = {} } = e;
+    const { indexTab } = this.state;
+    const isScrollDown = ({ layoutMeasurement, contentOffset, contentSize }) =>
+      contentOffset.y > contentSize.height - 350;
+    const isScrollTop = ({ layoutMeasurement, contentOffset, contentSize }) =>
+      contentOffset.y <= -120;
+    console.log(nativeEvent);
+    if (isScrollDown(nativeEvent)) {
+      tab === "view" && indexTab == 0 && this.setState({ indexTab: 1 });
+
+      tab === "detail" && indexTab == 1 && this.setState({ indexTab: 2 });
+    }
+    if (isScrollTop(nativeEvent)) {
+      tab === "detail" && indexTab == 1 && this.setState({ indexTab: 0 });
+    }
+  };
+
   render() {
-    const { detail = {} } = this.props;
+    const { detail = {}, home = [] } = this.props;
 
     return (
       <View style={styles.container}>
-        <Header transparent hasTabs>
+        <Header hasTabs>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Icon name="arrow-back" />
@@ -70,27 +94,54 @@ class ProductDetail extends Component {
             >
               <Icon name="ios-heart" />
             </Button>
+            <Button transparent onPress={() => console.log("more")}>
+              <Icon name="md-more" />
+            </Button>
           </Right>
         </Header>
-        <Tabs>
+
+        <Tabs
+          /* scrollWithoutAnimation={true} */
+          locked={true}
+          style={{ backgroundColor: "transparent" }}
+          page={this.state.indexTab}
+          onChangeTab={e => this.setState({ indexTab: e.i })}
+        >
           <Tab
             heading="OVERVIEW"
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
+            style={{ backgroundColor: "transparent" }}
           >
-            <Content>
-              <ImageSwiper imgList={convertToImgList(detail.img)} />
-              <ProductPriceCard {...this.props} />
-              <SupplierProfileCard {...this.props} />
-              <DetailDrawer {...this.props} />
-            </Content>
+            <ImageSwiper
+              imgList={convertToImgList([...home])}
+              style={styles.swiper}
+            />
+
+            <ScrollView
+              contentContainerStyle={styles.overview}
+              showsVerticalScrollIndicator={false}
+              scrollEventThrottle={0.1}
+              onScroll={e => this.scrollTab(e, "view")}
+            >
+              <View style={styles.separator} />
+              <View style={{ backgroundColor: "#ecf0f1" }}>
+                <ProductPriceCard {...this.props} />
+                <SupplierProfileCard {...this.props} />
+                <DetailDrawer {...this.props} />
+              </View>
+            </ScrollView>
           </Tab>
           <Tab
             heading="DETAILS"
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
           >
-            <Content>
+            <Content
+              showsVerticalScrollIndicator={false}
+              scrollEventThrottle={0.1}
+              onScroll={e => this.scrollTab(e, "detail")}
+            >
               <HTMLView
                 value={
                   detail.description ||
@@ -105,37 +156,39 @@ class ProductDetail extends Component {
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
           >
-            <HomeYou {...this.props} />
+            <HomeYou {...this.props}>
+              <Text style={styles.recommend}>
+                Recommended From This Supplier
+              </Text>
+            </HomeYou>
           </Tab>
         </Tabs>
 
-        <Footer style={styles.footer}>
-          {/* <FooterTab> */}
+        <View style={styles.footer}>
           <View style={styles.footV}>
             <Button
-              small
+              warning
               style={styles.footButton}
               onPress={() => this.props.navigation.navigate("Login")}
             >
               <Text style={styles.buttonText}>START ORDER</Text>
             </Button>
             <Button
-              small
+              warning
               style={styles.footButton}
               onPress={() => this.props.navigation.navigate("Login")}
             >
               <Text style={styles.buttonText}>SEND INQUIRY</Text>
             </Button>
             <Button
-              small
+              warning
               style={styles.footButton}
               onPress={() => this.props.navigation.navigate("Login")}
             >
               <Text style={styles.buttonText}>CHAT NOW</Text>
             </Button>
-            {/* </FooterTab> */}
           </View>
-        </Footer>
+        </View>
       </View>
     );
   }
@@ -143,13 +196,15 @@ class ProductDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    detail: state.product.detail
+    detail: state.product.detail,
+    home: state.product.home
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getContent: id => dispatch(ProductActions.requestProductContent(id))
+    getContent: id => dispatch(ProductActions.requestProductContent(id)),
+    getHome: () => dispatch(ProductActions.requestHome())
   };
 };
 

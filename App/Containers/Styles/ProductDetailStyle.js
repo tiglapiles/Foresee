@@ -10,8 +10,24 @@ export default StyleSheet.create({
   tabTitle: {
     fontSize: 12
   },
+  swiper: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 340
+  },
+  overview: { backgroundColor: "transparent", paddingTop: 200 },
+  separator: {
+    height: 24,
+    backgroundColor: "transparent"
+  },
   footer: {
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    position: "relative",
+    bottom: 0,
+    height: 60
   },
   footV: {
     justifyContent: "space-around",
@@ -23,7 +39,7 @@ export default StyleSheet.create({
     padding: 10
   },
   footerButton: {
-    height: 15,
+    height: 25,
     width: "25%",
     backgroundColor: "#f39c12"
     // paddingBottom: 5,
@@ -36,5 +52,10 @@ export default StyleSheet.create({
   a: {
     fontWeight: "300",
     color: "#FF3366" // make links coloured pink
+  },
+  recommend: {
+    color: "#7f8c8d",
+    textAlign: "center",
+    padding: 10
   }
 });
