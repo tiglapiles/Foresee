@@ -23,13 +23,12 @@ export class ListRenderer extends React.Component {
       >
         <View
           ref={ref => (this.cardRef = ref)}
-          style={{
-            flex: 1,
-            margin: 3,
-            backgroundColor: "#fff",
-            padding: 5,
-            flexDirection: viewType === 2 ? "row" : "column"
-          }}
+          style={[
+            Styles.container,
+            {
+              flexDirection: viewType === 2 ? "row" : "column"
+            }
+          ]}
         >
           <View style={{ backgroundColor: "lightgray", flex: 0.5 }}>
             <ImageRenderer imageUrl={listObj.master_img} />

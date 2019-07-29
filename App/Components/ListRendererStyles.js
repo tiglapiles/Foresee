@@ -1,23 +1,29 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  textButtom: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
   container: {
     flex: 1,
-    margin: 3,
+    // margin: 3,
     backgroundColor: "#fff",
-    padding: 5
+    padding: 5,
     // flexDirection: "row"
+    // borderRadius: 4,
+    // width: "100%",
+    borderBottomWidth: 0.5,
+    borderBottomColor: "#d6d7da",
+    borderLeftWidth: 0.5,
+    borderLeftColor: "#d6d7da"
   },
   text: {
     flex: 0.5,
     flexDirection: "column",
     justifyContent: "space-between",
     padding: 5
+  },
+  textButtom: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   name: {
     fontSize: 15,

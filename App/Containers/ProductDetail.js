@@ -59,7 +59,7 @@ class ProductDetail extends Component {
     const { nativeEvent = {} } = e;
     const { indexTab } = this.state;
     const isScrollDown = ({ layoutMeasurement, contentOffset, contentSize }) =>
-      contentOffset.y > contentSize.height - 350;
+      contentOffset.y > contentSize.height - 250;
     const isScrollTop = ({ layoutMeasurement, contentOffset, contentSize }) =>
       contentOffset.y <= -120;
     console.log(nativeEvent);

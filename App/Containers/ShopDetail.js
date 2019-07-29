@@ -51,7 +51,7 @@ class ShopDetail extends Component {
   }
 
   render() {
-    const { shop = {} } = this.props;
+    const { shop = {}, home = [] } = this.props;
     const { shop_info = {} } = shop;
 
     return (
@@ -82,7 +82,7 @@ class ShopDetail extends Component {
           >
             <Content>
               <CompanyInfo {...this.props} shop_info={shop.shop_info} />
-              <ImageSwiper imgList={convertToImgList(shop.banner)} />
+              <ImageSwiper imgList={convertToImgList([...home])} />
               <HomeYou {...this.props} />
               <CompanyContract contract={shop.shop_info} />
             </Content>
@@ -163,7 +163,8 @@ class ShopDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    shop: state.product.shop
+    shop: state.product.shop,
+    home: state.product.home
   };
 };
 

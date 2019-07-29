@@ -143,7 +143,8 @@ class ProductListScreen extends Component {
         {this.state.count > 0 ? (
           <RecyclerListView
             style={{ flex: 1 }}
-            contentContainerStyle={{ margin: 3 }}
+            bounces={false}
+            contentContainerStyle={{ margin: "auto" }}
             onEndReached={this.handleListEnd}
             dataProvider={this.state.dataProvider}
             layoutProvider={this.state.layoutProvider}

@@ -32,8 +32,8 @@ class HomeScreen extends Component {
   }
 
   componentWillMount() {
-    this.props.getHome();
     this.props.getHomeProduct("en");
+    this.props.getHome();
   }
 
   componentDidMount() {

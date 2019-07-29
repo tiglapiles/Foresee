@@ -16,7 +16,7 @@ export default StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: 340
+    height: 235
   },
   overview: { backgroundColor: "transparent", paddingTop: 200 },
   separator: {

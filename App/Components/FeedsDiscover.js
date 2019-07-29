@@ -21,7 +21,9 @@ export default class FeedsDiscover extends Component {
     this.waitForResponse = false;
   }
 
-  componentWillMount() {
+  componentWillMount() {}
+
+  componentDidMount() {
     this.getProductElements();
     this.getTopicInfo();
   }
