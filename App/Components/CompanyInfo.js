@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import PropTypes from 'prop-types';
-import { View, Body, Thumbnail, Text, Card, CardItem } from "native-base";
+import { ImageBackground } from "react-native";
+import { View, Thumbnail, Text } from "native-base";
 import styles from "./Styles/CompanyInfoStyle";
 
 export default class CompanyInfo extends Component {
@@ -18,30 +19,37 @@ export default class CompanyInfo extends Component {
   render() {
     const { shop_info = {} } = this.props;
     return (
-      <Card style={styles.card}>
-        <CardItem>
-          <Body>
-            <Thumbnail
-              square
-              style={styles.icon}
-              source={{
-                uri:
-                  "http://ok.yjzw.net/uploads/images/1/Banner/IMG-2019062310298575.png"
-              }}
-            />
-          </Body>
-        </CardItem>
-        <CardItem>
-          <Body>
-            <Text style={styles.nameC}>{shop_info.remarks || "公司名称"}</Text>
-          </Body>
-        </CardItem>
-        <CardItem>
-          <Body>
-            <Text style={styles.nameE}>{shop_info.company || "Company"}</Text>
-          </Body>
-        </CardItem>
-      </Card>
+      <View style={[styles.container, this.props.style]}>
+        <ImageBackground
+          source={{
+            uri:
+              "https://s.alicdn.com/@img/tfs/TB1L4xJba67gK0jSZFHXXa9jVXa-990-400.jpg"
+          }}
+          style={styles.background}
+        >
+          <View style={styles.inner}>
+            <View style={{ marginTop: -38 }}>
+              <Thumbnail
+                square
+                style={styles.icon}
+                source={{
+                  uri:
+                    "https://i.alicdn.com/sc01/kf/HTB1j6F_pNSYBuNjSspjq6x73VXaB/2018-Jumpsuit-for-women-halter-neck-back.jpg_350x350q80.jpg"
+                }}
+              />
+            </View>
+            <View>
+              <Text style={styles.nameC} numberOfLines={2}>
+                {shop_info.remarks ||
+                  "Jiangmen Guanqiang Hardware Plastic Products Co., Ltd."}
+              </Text>
+            </View>
+            <View>
+              <Text style={styles.nameE}>{shop_info.company || "Company"}</Text>
+            </View>
+          </View>
+        </ImageBackground>
+      </View>
     );
   }
 }

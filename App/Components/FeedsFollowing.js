@@ -58,6 +58,7 @@ export default class FeedsFollowing extends Component {
     return (
       <View style={styles.container}>
         <FlatList
+          {...this.props}
           renderItem={({ item, index, section }) => (
             <FeedsCard cardInfo={item} {...this.props} />
           )}

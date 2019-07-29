@@ -32,7 +32,13 @@ import styles from "./Styles/ShopDetailStyle";
 class ShopDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      company: true
+    };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.company !== nextState.company;
   }
 
   componentDidMount() {
@@ -49,6 +55,15 @@ class ShopDetail extends Component {
       return true;
     });
   }
+
+  handleScroll = ({ layoutMeasurement, contentOffset, contentSize }) => {
+    if (contentOffset.y == 0) {
+      !this.state.company && this.setState({ company: true });
+    }
+    if (contentOffset.y > 20) {
+      this.state.company && this.setState({ company: false });
+    }
+  };
 
   render() {
     const { shop = {}, home = [] } = this.props;
@@ -69,7 +84,14 @@ class ShopDetail extends Component {
             <Icon name="ios-menu" />
           </Button>
         </Header>
-        <Tabs>
+
+        <CompanyInfo
+          style={{ display: this.state.company ? "flex" : "none" }}
+          {...this.props}
+          shop_info={shop.shop_info}
+        />
+
+        <Tabs locked={true}>
           <Tab
             textStyle={styles.tabTitle}
             activeTextStyle={styles.tabTitle}
@@ -80,8 +102,10 @@ class ShopDetail extends Component {
               </TabHeading>
             }
           >
-            <Content>
-              <CompanyInfo {...this.props} shop_info={shop.shop_info} />
+            <Content
+              scrollEventThrottle={1}
+              onScroll={e => this.handleScroll(e.nativeEvent)}
+            >
               <ImageSwiper imgList={convertToImgList([...home])} />
               <HomeYou {...this.props} />
               <CompanyContract contract={shop.shop_info} />
@@ -97,7 +121,10 @@ class ShopDetail extends Component {
               </TabHeading>
             }
           >
-            <Content>
+            <Content
+              scrollEventThrottle={1}
+              onScroll={e => this.handleScroll(e.nativeEvent)}
+            >
               <HomeYou {...this.props} />
             </Content>
           </Tab>
@@ -111,7 +138,10 @@ class ShopDetail extends Component {
               </TabHeading>
             }
           >
-            <Content>
+            <Content
+              scrollEventThrottle={1}
+              onScroll={e => this.handleScroll(e.nativeEvent)}
+            >
               <HTMLView
                 value={
                   `<p>${shop_info.title}</p>` +
@@ -134,21 +164,25 @@ class ShopDetail extends Component {
               </TabHeading>
             }
           >
-            <FeedsFollowing {...this.props} />
+            <FeedsFollowing
+              {...this.props}
+              scrollEventThrottle={1}
+              onScroll={e => this.handleScroll(e.nativeEvent)}
+            />
           </Tab>
         </Tabs>
 
         <Footer style={styles.footer}>
           <View style={styles.footV}>
             <Button
-              small
+              warning
               style={styles.footButton}
               onPress={() => this.props.navigation.navigate("Login")}
             >
               <Text style={styles.buttonText}>SEND INQUIRY</Text>
             </Button>
             <Button
-              small
+              warning
               style={styles.footButton}
               onPress={() => this.props.navigation.navigate("Login")}
             >

@@ -11,7 +11,8 @@ export default StyleSheet.create({
     fontSize: 12
   },
   footer: {
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    height: 60
   },
   footV: {
     justifyContent: "space-around",
