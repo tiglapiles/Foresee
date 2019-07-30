@@ -10,6 +10,9 @@ import CurrencyScreen from "../Containers/CurrencyScreen.js";
 import HelpScreen from "../Containers/HelpScreen.js";
 import ScanScreen from "../Containers/ScanScreen.js";
 import SettingsScreen from "../Containers/SettingsScreen.js";
+// import ProductCategory from "../Containers/ProductCategoryScreen.js";
+// import FeedsNavigation from "../Navigation/FeedsNavigation.js";
+// import RecycleTestComponent from "../Containers/RecyclerListView.js";
 
 import styles from "./Styles/NavigationStyles";
 
@@ -24,6 +27,8 @@ const NavigationDrawer = DrawerNavigator(
     "Currency Converter": { screen: CurrencyScreen },
     "Help Center": { screen: HelpScreen },
     Settings: { screen: SettingsScreen }
+    // ProductCategory: { screen: ProductCategory }
+    // RecycleTestComponent: { screen: RecycleTestComponent }
   },
   {
     initialRouteName: "Home",

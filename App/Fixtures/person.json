@@ -1,0 +1,20 @@
+[
+  {
+    "index": 1,
+    "name": "My Favorites",
+    "count": 3,
+    "navigate": "My Favorites"
+  },
+  {
+    "index": 2,
+    "name": "Shopping Cart",
+    "count": 0,
+    "navigate": "Login"
+  },
+  {
+    "index": 3,
+    "name": "Browsing History",
+    "count": 6,
+    "navigate": "History"
+  }
+]

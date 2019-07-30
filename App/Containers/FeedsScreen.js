@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import { BackHandler } from "react-native";
+import { BackHandler, TouchableOpacity } from "react-native";
 import {
-  Content,
-  Container,
   Header,
   Left,
   Right,
   Body,
-  Button,
-  Text,
   Title,
   Icon,
   View,
@@ -20,10 +16,10 @@ import BottomFooter from "../Components/BottomFooter.js";
 import FeedsFollowing from "../Components/FeedsFollowing.js";
 import FeedsDiscover from "../Components/FeedsDiscover.js";
 import FeedsVideos from "../Components/FeedsVideos.js";
+// import FeedNavRedux from "../Navigation/FeedsNavigation.js";
 // import ProductList from "../Containers/ProductList.js";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-
 // Styles
 import styles from "./Styles/FeedsScreenStyle";
 
@@ -42,40 +38,48 @@ class FeedsScreen extends Component {
   }
 
   changeTab = e => {
-    console.log(e.i);
+    // console.log(e.i);
+    // this.setState({ indexPage: e.i });
   };
 
   render() {
+    const { indexPage } = this.state;
+
     return (
-      <Container>
+      <View style={styles.container}>
         <Header hasTabs>
           <Left />
           <Body>
             <Title>Feeds</Title>
           </Body>
           <Right>
-            <Icon name="heart" />
+            <TouchableOpacity onPress={() => this.setState({ indexPage: 0 })}>
+              <Icon name="heart" />
+            </TouchableOpacity>
           </Right>
         </Header>
 
-        <Tabs onChangeTab={this.changeTab} initialPage={1}>
+        <Tabs
+          bounces={false}
+          page={indexPage}
+          onChangeTab={this.changeTab}
+          initialPage={1}
+          scrollWithoutAnimation={true}
+          locked={true}
+        >
           <Tab heading="Following">
-            <FeedsFollowing />
+            <FeedsFollowing {...this.props} />
           </Tab>
           <Tab heading="Discover">
-            <FeedsDiscover />
+            <FeedsDiscover {...this.props} />
           </Tab>
           <Tab heading="Videos">
-            <FeedsVideos />
+            <FeedsVideos {...this.props} />
           </Tab>
         </Tabs>
-        {/* <Content padder> */}
-        {/*   <View style={{ height: 100, backgroundColor: "#ddd" }} /> */}
-        {/*   <Text>FeedsScreen Content</Text> */}
-        {/* </Content> */}
 
         <BottomFooter {...this.props} />
-      </Container>
+      </View>
     );
   }
 }

@@ -21,8 +21,15 @@ import {
   Item,
   Input,
   Label,
-  Icon
+  Icon,
+  Header,
+  Left,
+  Body,
+  Title,
+  Right
 } from "native-base";
+var { FBLogin, FBLoginManager } = require("react-native-facebook-login");
+import LinkedInModal from "react-native-linkedin";
 
 class LoginScreen extends React.Component {
   static propTypes = {
@@ -48,15 +55,15 @@ class LoginScreen extends React.Component {
 
   componentWillReceiveProps(newProps) {
     this.forceUpdate();
-    // Did the login attempt complete?
+    //   Did the login attempt complete?
     if (this.isAttempting && !newProps.fetching) {
       this.props.navigation.goBack();
     }
   }
 
   componentWillMount() {
-    // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
-    // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
+    //   Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
+    //   TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
     this.keyboardDidShowListener = Keyboard.addListener(
       "keyboardDidShow",
       this.keyboardDidShow
@@ -73,7 +80,7 @@ class LoginScreen extends React.Component {
   }
 
   keyboardDidShow = e => {
-    // Animation types easeInEaseOut/linear/spring
+    //   Animation types easeInEaseOut/linear/spring
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     let newSize = Metrics.screenHeight - e.endCoordinates.height;
     this.setState({
@@ -83,7 +90,7 @@ class LoginScreen extends React.Component {
   };
 
   keyboardDidHide = e => {
-    // Animation types easeInEaseOut/linear/spring
+    //   Animation types easeInEaseOut/linear/spring
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     this.setState({
       visibleHeight: Metrics.screenHeight,
@@ -92,11 +99,11 @@ class LoginScreen extends React.Component {
   };
 
   handlePressLogin = () => {
-    // const { username, password } = this.state
-    // this.isAttempting = true
-    // attempt a login - a saga is listening to pick it up from here.
-    // this.props.attemptLogin(username, password);
-    this.props.navigation.navigate("LaunchScreen");
+    //   const { username, password } = this.state
+    //   this.isAttempting = true
+    //   attempt a login - a saga is listening to pick it up from here.
+    //   this.props.attemptLogin(username, password);
+    this.props.navigation.navigate("Home");
   };
 
   handleChangeUsername = text => {
@@ -115,67 +122,130 @@ class LoginScreen extends React.Component {
       ? Styles.textInput
       : Styles.textInputReadonly;
     return (
-      <ScrollView
-        contentContainerStyle={{ justifyContent: "center" }}
-        style={[Styles.container, { height: this.state.visibleHeight }]}
-        keyboardShouldPersistTaps="always"
-      >
-        <Image
-          source={Images.logo}
-          style={[Styles.topLogo, this.state.topLogo]}
-        />
-        <View style={Styles.form}>
-          <Form>
-            <Item stackedLabel>
-              <Label>Username</Label>
-              <Input
-                ref="username"
-                value={username}
-                editable={editable}
-                keyboardType="default"
-                returnKeyType="next"
-                autoCapitalize="none"
-                autoCorrect={false}
-                onChangeText={this.handleChangeUsername}
-                underlineColorAndroid="transparent"
-                onSubmitEditing={() => this.password._root.focus()}
-              />
-            </Item>
-            <Item stackedLabel>
-              <Label>Password</Label>
-              <Input
-                ref={ref => (this.password = ref)}
-                value={password}
-                editable={editable}
-                keyboardType="default"
-                returnKeyType="go"
-                autoCapitalize="none"
-                autoCorrect={false}
-                secureTextEntry
-                onChangeText={this.handleChangePassword}
-                underlineColorAndroid="transparent"
-                onSubmitEditing={this.handlePressLogin}
-              />
-            </Item>
-          </Form>
-          <View style={[Styles.loginRow]}>
-            <Button
-              style={{ flex: 1, justifyContent: "center" }}
-              full
-              onPress={this.handlePressLogin}
-            >
-              <NBText>Sign In</NBText>
+      <View style={{ flex: 1 }}>
+        <Header>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="ios-close" />
             </Button>
-            <Button
-              style={{ flex: 1, justifyContent: "center" }}
-              full
-              onPress={() => this.props.navigation.goBack()}
+          </Left>
+          <Body>
+            <Title>Sign In</Title>
+          </Body>
+          <Right>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Help Center")}
             >
-              <NBText>Cancel</NBText>
-            </Button>
+              <Icon name="ios-help-circle" />
+            </TouchableOpacity>
+          </Right>
+        </Header>
+
+        <ScrollView
+          contentContainerStyle={{ justifyContent: "center" }}
+          style={[Styles.container, { height: this.state.visibleHeight }]}
+          keyboardShouldPersistTaps="always"
+        >
+          <Image
+            source={Images.logo}
+            style={[Styles.topLogo, this.state.topLogo]}
+          />
+          <View style={Styles.form}>
+            <Form>
+              <Item stackedLabel>
+                <Label>Username</Label>
+                <Input
+                  ref="username"
+                  value={username}
+                  editable={editable}
+                  keyboardType="default"
+                  returnKeyType="next"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  onChangeText={this.handleChangeUsername}
+                  underlineColorAndroid="transparent"
+                  onSubmitEditing={() => this.password._root.focus()}
+                />
+              </Item>
+              <Item stackedLabel>
+                <Label>Password</Label>
+                <Input
+                  ref={ref => (this.password = ref)}
+                  value={password}
+                  editable={editable}
+                  keyboardType="default"
+                  returnKeyType="go"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  secureTextEntry
+                  onChangeText={this.handleChangePassword}
+                  underlineColorAndroid="transparent"
+                  onSubmitEditing={this.handlePressLogin}
+                />
+              </Item>
+            </Form>
+            <View style={[Styles.loginRow]}>
+              <Button
+                style={{ flex: 1, justifyContent: "center" }}
+                full
+                onPress={this.handlePressLogin}
+              >
+                <NBText>Sign In</NBText>
+              </Button>
+            </View>
+            <Text
+              style={Styles.forgot}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              Forgot password?
+            </Text>
+            <Text
+              style={Styles.register}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              Don't hava an account?
+              <Text style={{ color: "#e67e22" }}>Register</Text>
+            </Text>
+          </View>
+        </ScrollView>
+
+        <View style={Styles.loginOther}>
+          <Text style={Styles.signInWith}>Or sign in with</Text>
+          <View
+            style={{
+              justifyContent: "space-around",
+              flexDirection: "row",
+              alignItems: "center"
+            }}
+          >
+            <Icon
+              name="logo-google"
+              style={{ fontSize: 38, color: "#e67e22" }}
+            />
+            <FBLogin
+              style={{ height: 30, width: 30, overflow: "hidden" }}
+              size="large"
+            />
+            <LinkedInModal
+              clientID="[ Your client id from https://www.linkedin.com/developer/apps ]"
+              /* clientSecret="[ Your client secret from https://www.linkedin.com/developer/apps ]" */
+              redirectUri="[ Your redirect uri set into https://www.linkedin.com/developer/apps ]"
+              onSuccess={token => console.log(token)}
+              linkText={""}
+              renderButton={() => (
+                <Icon
+                  name="logo-linkedin"
+                  style={{ fontSize: 38, color: "#2980b9" }}
+                />
+              )}
+            />
+            <Icon
+              name="logo-twitter"
+              style={{ fontSize: 38, color: "#74b9ff" }}
+            />
           </View>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }

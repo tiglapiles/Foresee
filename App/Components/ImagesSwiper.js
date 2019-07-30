@@ -27,17 +27,14 @@ export default class ImagesSwiper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgList: [
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg",
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg",
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg",
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg",
-        "https://sc01.alicdn.com/kf/HLB1fG5qTmzqK1RjSZFHq6z3CpXaQ/summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_350x350.jpg"
-      ],
+      imgList: ["banner.png", "banner2.png"],
       loadQueue: [0, 0, 0, 0]
     };
     this.loadHandle = this.loadHandle.bind(this);
   }
+
+  componentDidMount() {}
+
   loadHandle(i) {
     let loadQueue = this.state.loadQueue;
     loadQueue[i] = 1;
@@ -47,8 +44,10 @@ export default class ImagesSwiper extends Component {
   }
 
   render() {
+    const { imgList = [] } = this.props;
+
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style]}>
         <Swiper
           loadMinimal
           loadMinimalSize={1}
@@ -56,7 +55,7 @@ export default class ImagesSwiper extends Component {
           autoplay={true}
           loop={true}
         >
-          {this.state.imgList.map((item, i) => (
+          {imgList.map((item, i) => (
             <Slide
               loadHandle={this.loadHandle}
               loaded={!!this.state.loadQueue[i]}

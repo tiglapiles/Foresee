@@ -1,0 +1,44 @@
+[
+  {
+    "name": "products",
+    "color": "#f1c40f",
+    "title": "selected products",
+    "more": false
+  },
+  {
+    "name": "markets",
+    "color": "#2980b9",
+    "title": "industry markets",
+    "more": true
+  },
+  {
+    "name": "deals",
+    "color": "#d35400",
+    "title": "weekly deals",
+    "more": false
+  },
+  {
+    "name": "brand",
+    "color": "#8e44ad",
+    "title": "brand zone",
+    "more": false
+  },
+  {
+    "name": "business",
+    "color": "#3498db",
+    "title": "business insights",
+    "more": false
+  },
+  {
+    "name": "trade",
+    "color": "#e74c3c",
+    "title": "trade shows",
+    "more": true
+  },
+  {
+    "name": "you",
+    "color": "#2ecc71",
+    "title": "just for you",
+    "more": false
+  }
+]

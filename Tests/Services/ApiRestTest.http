@@ -1,0 +1,15 @@
+# 首页接口
+get http://ok.yjzw.net/api/index/index.html?lang=cn
+
+# 主页底部产品
+get http://ok.yjzw.net/api/index/product.html?page=1&&lang=cn
+
+# 首页接口
+ # 首页接口222
+GET http://ok.yjzw.net/api/index/index.html?lang=en
+
+# 主页底部产品
+GET http://ok.yjzw.net/api/index/product.html?page=1&&lang=cn
+
+# 首页接口
+GET http://ok.yjzw.net/api/Home/index.html

@@ -6,7 +6,9 @@ export default StyleSheet.create({
     height: 200,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    paddingLeft: 8,
+    paddingRight: 8
   },
   item: {
     width: "49.5%",
@@ -20,7 +22,8 @@ export default StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    marginTop: 10
+    marginTop: 10,
+    backgroundColor: "lightgray"
   },
   title: {
     fontSize: 13,

@@ -5,7 +5,8 @@ export default StyleSheet.create({
     // flex: 1
     flexDirection: "row",
     justifyContent: "flex-start",
-    height: 180
+    height: 180,
+    paddingLeft: 10
   },
   boxs: {
     width: 320,
@@ -14,7 +15,8 @@ export default StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 5
+    marginRight: 10,
+    overflow: "hidden"
   },
   title: {
     fontWeight: "bold",
@@ -28,7 +30,9 @@ export default StyleSheet.create({
     justifyContent: "space-between"
   },
   img: {
-    width: 80,
-    height: 90
+    // width: 80,
+    // height: 90
+    width: "100%",
+    height: "100%"
   }
 });

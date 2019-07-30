@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import { BackHandler } from "react-native";
+import { BackHandler, TouchableOpacity, ScrollView } from "react-native";
 import {
-  Content,
-  Container,
-  Header,
-  Left,
   Right,
   Body,
   Button,
   Text,
-  Title,
   Icon,
   Card,
   CardItem,
@@ -33,10 +28,60 @@ class ForeseeScreen extends Component {
     });
   }
 
+  handleItem = name => this.props.navigation.navigate(name);
+
+  getCardItems = items => require("../Fixtures/foresee.json")[items];
+
+  renderPerson = () => {
+    const navigate = e => {
+      this.props.navigation.navigate(e);
+    };
+
+    return require("../Fixtures/person.json").map((k, i) => (
+      <Col key={i}>
+        <TouchableOpacity onPress={() => navigate(k.navigate)}>
+          <View style={styles.col}>
+            <Text style={styles.count}>{k.count}</Text>
+            <Text note>{k.name}</Text>
+          </View>
+        </TouchableOpacity>
+      </Col>
+    ));
+  };
+
+  renderProgress = () => (
+    <Card>
+      <CardItem button onPress={() => this.props.navigation.navigate("Login")}>
+        <Body>
+          <Text style={{ marginBottom: 5 }}>
+            <Text style={{ fontSize: 25 }}>6</Text> Step (s) left to complete
+            your profile
+          </Text>
+        </Body>
+      </CardItem>
+      <CardItem button onPress={() => this.props.navigation.navigate("Login")}>
+        <Body>
+          <Text note>
+            Suppliers are more likely to reply if you profile is complete.
+          </Text>
+        </Body>
+      </CardItem>
+      <CardItem button onPress={() => this.props.navigation.navigate("Login")}>
+        <Body>
+          <Text>------ ------ ------ ------ ------ ------</Text>
+        </Body>
+      </CardItem>
+    </Card>
+  );
+
   render() {
     return (
-      <Container>
-        <Content>
+      <View style={styles.container}>
+        <ScrollView
+          contentContainerStyle={styles.content}
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.head}>
             <Button
               transparent
@@ -44,120 +89,59 @@ class ForeseeScreen extends Component {
             >
               <Icon name="menu" style={{ color: "#fff" }} />
             </Button>
-            <Text style={{ fontSize: 30, color: "#fff", marginLeft: 30 }}>
+            <Text
+              style={{ fontSize: 30, color: "#fff", marginLeft: 30 }}
+              onPress={() => this.props.navigation.navigate("Personal")}
+            >
               Tiglath Pileser
             </Text>
           </View>
 
           <View style={styles.info}>
+            {this.renderProgress()}
             <Card>
               <CardItem>
-                <Body>
-                  <Text style={{ marginBottom: 5 }}>
-                    <Text style={{ fontSize: 25 }}>6</Text> Step (s) left to
-                    complete your profile
-                  </Text>
-                </Body>
-              </CardItem>
-              <CardItem>
-                <Body>
-                  <Text note>
-                    Suppliers are more likely to reply if you profile is
-                    complete.
-                  </Text>
-                </Body>
-              </CardItem>
-              <CardItem>
-                <Body>
-                  <Text>------ ------ ------ ------ ------ ------</Text>
-                </Body>
+                <Grid>{this.renderPerson()}</Grid>
               </CardItem>
             </Card>
-            <Card>
-              <CardItem>
-                <Grid>
-                  <Col>
-                    <View style={styles.col}>
-                      <Text style={{ fontSize: 25 }}>1</Text>
-                      <Text note>My Favorites</Text>
-                    </View>
-                  </Col>
-                  <Col>
-                    <View style={styles.col}>
-                      <Text style={{ fontSize: 25 }}>0</Text>
-                      <Text note>Shopping Cart</Text>
-                    </View>
-                  </Col>
-                  <Col>
-                    <View style={styles.col}>
-                      <Text style={{ fontSize: 25 }}>4</Text>
-                      <Text note>Browsing History</Text>
-                    </View>
-                  </Col>
-                </Grid>
-              </CardItem>
-            </Card>
-            <Card>
-              <CardItem>
-                <Icon name="ios-document" />
-                <Text>Manage Order</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-quote" />
-                <Text>Request for Quotation</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-mail" />
-                <Text>Inquiries</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-flash" />
-                <Text>Manage Quotes</Text>
-                <Right />
-              </CardItem>
-            </Card>
-            <Card>
-              <CardItem>
-                <Icon name="ios-cash" />
-                <Text>My Coupons</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="logo-bitcoin" />
-                <Text>Pay Later</Text>
-                <Right />
-              </CardItem>
-            </Card>
-            <Card>
-              <CardItem>
-                <Icon name="ios-pin" />
-                <Text>Shipping Address</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-cloud" />
-                <Text>AliClound Drive</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-help-circle" />
-                <Text>Help Centera</Text>
-                <Right />
-              </CardItem>
-              <CardItem>
-                <Icon name="ios-settings" />
-                <Text>Settings</Text>
-                <Right />
-              </CardItem>
-            </Card>
+            <Card
+              style={{ flexDirection: "column" }}
+              dataArray={this.getCardItems("manage")}
+              renderRow={o => (
+                <CardItem button onPress={() => this.handleItem(o.navigate)}>
+                  <Icon name={o.icon} style={styles.item} />
+                  <Text style={styles.item}>{o.name}</Text>
+                  <Right />
+                </CardItem>
+              )}
+            />
+            <Card
+              style={{ flexDirection: "column" }}
+              dataArray={this.getCardItems("pay")}
+              renderRow={o => (
+                <CardItem button onPress={() => this.handleItem(o.navigate)}>
+                  <Icon name={o.icon} style={styles.item} />
+                  <Text style={styles.item}>{o.name}</Text>
+                  <Right />
+                </CardItem>
+              )}
+            />
+            <Card
+              style={{ flexDirection: "column" }}
+              dataArray={this.getCardItems("set")}
+              renderRow={o => (
+                <CardItem button onPress={() => this.handleItem(o.navigate)}>
+                  <Icon name={o.icon} style={styles.item} />
+                  <Text style={styles.item}>{o.name}</Text>
+                  <Right />
+                </CardItem>
+              )}
+            />
           </View>
-        </Content>
+        </ScrollView>
 
         <BottomFooter {...this.props} />
-      </Container>
+      </View>
     );
   }
 }

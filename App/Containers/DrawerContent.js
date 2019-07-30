@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-import { ScrollView, Image, BackHandler } from "react-native";
-import {
-  List,
-  ListItem,
-  Text,
-  View,
-  Content,
-  Icon,
-  Left,
-  Body
-} from "native-base";
+import { Image, TouchableOpacity } from "react-native";
+import { List, ListItem, Text, View, Icon } from "native-base";
 import styles from "./Styles/DrawerContentStyles";
 import { Images } from "../Themes";
+
 const itemIcon = {
   Home: "ios-home",
   Feeds: "ios-heart",
@@ -25,33 +17,51 @@ const itemIcon = {
 };
 
 class DrawerContent extends Component {
+  renderMenuItem = item => (
+    <ListItem
+      noBorder
+      button
+      onPress={() => this.props.navigation.navigate(item.routeName)}
+    >
+      <Icon name={itemIcon[item.routeName]} style={styles.icon} />
+      <Text style={styles.listText}>{item.routeName}</Text>
+    </ListItem>
+  );
+
   render() {
-    const navigation = this.props.navigation;
     const items = this.props.items;
+
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={Images.account} style={styles.logo} />
-          <Text style={styles.logout}>Sign In | Register</Text>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("My Foresee")}
+          >
+            <Image source={Images.account} style={styles.logo} />
+          </TouchableOpacity>
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={styles.logout}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              Sign In
+            </Text>
+            <Text style={styles.logout}> | </Text>
+            <Text
+              style={styles.logout}
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              Register
+            </Text>
+          </View>
         </View>
-        <Content>
+        <View style={styles.list}>
           <List
+            bounces={false}
             dataArray={items}
-            renderRow={item => (
-              <ListItem
-                icon
-                onPress={() => navigation.navigate(item.routeName)}
-              >
-                <Left>
-                  <Icon name={itemIcon[item.routeName]} />
-                </Left>
-                <Body>
-                  <Text>{item.routeName}</Text>
-                </Body>
-              </ListItem>
-            )}
+            renderRow={this.renderMenuItem}
           />
-        </Content>
+        </View>
       </View>
     );
   }

@@ -64,14 +64,6 @@ class SettingsScreen extends Component {
             </ListItem>
           </List>
         </Content>
-
-        <Footer>
-          <FooterTab>
-            <Button active full>
-              <Text>Footer</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
       </Container>
     );
   }

@@ -1,83 +1,108 @@
-import React from "react";
-import { FlatList, Image } from "react-native";
-import { View, Text, Content } from "native-base";
+import React, { Component } from "react";
+import { FlatList, ActivityIndicator, View } from "react-native";
+import { connect } from "react-redux";
 import styles from "./Styles/FeedsDiscoverStyle";
+import ProductApi from "../Services/ProductApi.js";
 import FeedsTopic from "../Components/FeedsTopic";
 import FeedsVideoList from "../Components/FeedsVideoList.js";
 
-export default function FeedsDiscover(props) {
-  const list = [
-    {
-      url:
-        "https://sc02.alicdn.com/kf/HLB1FuxWQHvpK1RjSZPiq6zmwXXah/AS-399B-Personality-Kids-Boy-Clothes-Set.jpg_300x300.jpg",
-      title: "view more",
-      thumb:
-        "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      name: "shen zhen",
-      view: 12
-    },
-    {
-      url:
-        "https://sc02.alicdn.com/kf/HLB1FuxWQHvpK1RjSZPiq6zmwXXah/AS-399B-Personality-Kids-Boy-Clothes-Set.jpg_300x300.jpg",
-      title: "that is enogh",
-      thumb:
-        "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      name: "guang dong",
-      view: 20
-    },
-    {
-      url:
-        "https://sc02.alicdn.com/kf/HLB1FuxWQHvpK1RjSZPiq6zmwXXah/AS-399B-Personality-Kids-Boy-Clothes-Set.jpg_300x300.jpg",
-      title: "ionicons icons is awsons",
-      thumb:
-        "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      name: "i",
-      view: 33333
-    },
-    {
-      url:
-        "https://sc02.alicdn.com/kf/HLB1FuxWQHvpK1RjSZPiq6zmwXXah/AS-399B-Personality-Kids-Boy-Clothes-Set.jpg_300x300.jpg",
-      title: "ionicons icons is awsons",
-      thumb:
-        "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      name: "react-native-vector-icon",
-      view: 33333
-    },
-    {
-      url:
-        "https://sc02.alicdn.com/kf/HLB1FuxWQHvpK1RjSZPiq6zmwXXah/AS-399B-Personality-Kids-Boy-Clothes-Set.jpg_300x300.jpg",
-      title: "products for sale",
-      thumb:
-        "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      name: "unit state",
-      view: 55555
-    },
-    {
-      url:
-        "https://sc02.alicdn.com/kf/HLB1FuxWQHvpK1RjSZPiq6zmwXXah/AS-399B-Personality-Kids-Boy-Clothes-Set.jpg_300x300.jpg",
-      title: "on sale last day for sale",
-      thumb:
-        "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      name: "company",
-      view: 6
+const API = ProductApi.create();
+
+class FeedsVideos extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lang: "en",
+      list: [],
+      page: 1,
+      conunt: 0,
+      info: []
+    };
+    this.waitForResponse = false;
+  }
+
+  componentWillMount() {
+    this.getProductElements();
+    this.getTopicInfo();
+  }
+
+  async getTopicInfo() {
+    const { lang } = this.state;
+    const response = await API.getProductTop({ lang });
+    if (response.ok) {
+      this.setState({ info: response.data.data });
     }
-  ];
-  return (
-    <Content style={styles.container}>
-      <FeedsTopic />
-      <View>
+  }
+
+  async getProductElements() {
+    const { page, list, count, lang } = this.state;
+    this.waitForResponse = true;
+    const response = await API.getProductVideosList({ page, lang });
+    this.waitForResponse = false;
+    if (!response.ok) {
+      return;
+    }
+    const resList = response.data.data.data;
+    this.setState({
+      list: list.concat(resList),
+      page: page + 1,
+      count: count + 6
+    });
+  }
+
+  scrollEnd = ({ distanceFromEnd }) => {
+    this.getProductElements();
+    this.setState({});
+  };
+
+  renderFooter = () =>
+    this.waitForResponse ? (
+      <ActivityIndicator
+        style={{ margin: 10, height: 60 }}
+        size="large"
+        color={"black"}
+      />
+    ) : (
+      <View style={{ height: 60 }} />
+    );
+
+  render() {
+    const { list, info } = this.state;
+
+    return (
+      <View style={styles.container}>
         <FlatList
+          ListHeaderComponent={() => <FeedsTopic info={info} {...this.props} />}
+          columnWrapperStyle={{ justifyContent: "space-between", padding: 10 }}
           renderItem={({ item, index, section }) => (
-            <FeedsVideoList item={item} />
+            <FeedsVideoList item={item} {...this.props} />
           )}
           data={list}
+          bounces={false}
           keyExtractor={(item, index) => index}
           style={styles.list}
           contentContainerStyle={styles.list}
           numColumns={2}
           horizontal={false}
+          onEndReachedThreshold={0.5}
+          onEndReached={this.scrollEnd}
+          ListFooterComponent={this.renderFooter}
+          showsVerticalScrollIndicator={false}
         />
       </View>
-    </Content>
-  );
+    );
+  }
 }
+
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FeedsVideos);

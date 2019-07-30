@@ -1,6 +1,6 @@
 // leave off @2x/@3x
 const images = {
-  logo: require("../Images/logo.png"),
+  logo: require("../Images/logo1.png"),
   logoDark: require("../Images/ignitenbdark.png"),
   clearLogo: require("../Images/top_logo.png"),
   launch: require("../Images/launch-icon.png"),
@@ -8,7 +8,7 @@ const images = {
   ignite: require("../Images/ignite_logo.png"),
   igniteClear: require("../Images/ignite-logo-transparent.png"),
   tileBg: require("../Images/tile_bg.png"),
-  background: require("../Images/BG.png"),
+  background: require("../Images/launch.jpg"),
   buttonBackground: require("../Images/button-bg.png"),
   api: require("../Images/Icons/icon-api-testing.png"),
   components: require("../Images/Icons/icon-components.png"),
@@ -22,7 +22,8 @@ const images = {
   backButton: require("../Images/Icons/back-button.png"),
   closeButton: require("../Images/Icons/close-button.png"),
   account: require("../Images/Icons/account-filling.png"),
-  swiperLoading: require("../Images/Home/loading.gif")
+  swiperLoading: require("../Images/Home/loading.gif"),
+  playButton: require("../Images/Icons/btn-play.png")
 };
 
 export default images;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // import PropTypes from 'prop-types';
+import { TouchableOpacity } from "react-native";
 import { View, Text, Icon, Thumbnail } from "native-base";
 import styles from "./Styles/HomeMenuStyle";
 
@@ -15,30 +16,38 @@ export default class HomeMenu extends Component {
   //   someSetting: false
   // }
 
+  category = e => this.props.navigation.navigate(e);
+
   render() {
-    const uri = [
-      "https://sc01.alicdn.com/kf/HLB1AVBSTmzqK1RjSZPcq6zTepXaT/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      "https://sc01.alicdn.com/kf/HLB1sUeqTbvpK1RjSZFqq6AXUVXaF/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      "https://sc02.alicdn.com/kf/HLB119SvTkPoK1RjSZKbq6x1IXXaY/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg",
-      "https://sc02.alicdn.com/kf/HLB119SvTkPoK1RjSZKbq6x1IXXaY/Summer-Boy-Suit-Hoodie-Kid-Custom-Set.jpg_50x50.jpg"
-    ];
+    const uri = ["1.png", "2.png", "3.png", "4.png"];
 
     return (
       <View style={styles.container}>
         <View style={styles.item}>
-          <Thumbnail source={{ uri: uri[0] }} />
+          <TouchableOpacity onPress={() => this.category("ProductCategory")}>
+            <Thumbnail source={{ uri: uri[0] }} />
+          </TouchableOpacity>
           <Text style={styles.title}>All Categories</Text>
         </View>
+
         <View style={styles.item}>
-          <Thumbnail source={{ uri: uri[0] }} />
+          <TouchableOpacity
+            onPress={() => this.category("RequestForQuotation")}
+          >
+            <Thumbnail source={{ uri: uri[1] }} />
+          </TouchableOpacity>
           <Text style={styles.title}>Request for Quotation</Text>
         </View>
         <View style={styles.item}>
-          <Thumbnail source={{ uri: uri[2] }} />
+          <TouchableOpacity onPress={() => this.category("ShippingAddress")}>
+            <Thumbnail source={{ uri: uri[2] }} />
+          </TouchableOpacity>
           <Text style={styles.title}>Ready to Ship</Text>
         </View>
         <View style={styles.item}>
-          <Thumbnail source={{ uri: uri[3] }} />
+          <TouchableOpacity onPress={() => this.category("Help Center")}>
+            <Thumbnail source={{ uri: uri[3] }} />
+          </TouchableOpacity>
           <Text style={styles.title}>New User Zone</Text>
         </View>
       </View>
