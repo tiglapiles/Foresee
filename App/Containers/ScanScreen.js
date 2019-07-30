@@ -21,7 +21,7 @@ import {
   FooterTab
 } from "native-base";
 import { connect } from "react-redux";
-import QRCodeScanner from "react-native-qrcode-scanner";
+// import QRCodeScanner from "react-native-qrcode-scanner";
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
@@ -56,7 +56,7 @@ class ScanScreen extends Component {
         </Header>
 
         <Content>
-          <QRCodeScanner
+          {/*<QRCodeScanner
             onRead={this.onSuccess}
             topContent={
               <Text style={styles.centerText}>
@@ -70,7 +70,7 @@ class ScanScreen extends Component {
                 <Text style={styles.buttonText}>Scan QR Code!</Text>
               </TouchableOpacity>
             }
-          />
+          />*/}
         </Content>
       </Container>
     );
