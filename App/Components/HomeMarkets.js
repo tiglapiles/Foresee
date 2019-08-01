@@ -30,7 +30,11 @@ export default function HomeMarkets(props) {
     ));
   };
   return (
-    <ScrollView horizontal contentContainerStyle={styles.container}>
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.container}
+    >
       {markets(info)}
     </ScrollView>
   );
