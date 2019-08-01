@@ -45,18 +45,18 @@ class MessengerScreen extends Component {
   messengeList = () => {
     const list = [
       {
-        url: "5.png",
+        url: "../Images/Message/notification.png",
         title: "Notification",
         note: "Hi Tiglath, view the most popular pr...",
         date: "Yesterday"
       },
       {
-        url: "6.png",
+        url: "../Images/Message/contact.png",
         title: "New Contacts",
         note: "New Connections and Requests"
       },
       {
-        url: "7.png",
+        url: "../Images/Message/inquiries.png",
         title: "Inquiries",
         note: "No Content"
       }
@@ -74,7 +74,7 @@ class MessengerScreen extends Component {
             <Left>
               <Thumbnail
                 style={{ backgroundColor: "#e67e22" }}
-                source={{ uri: k.url }}
+                source={require(k.url)}
               />
             </Left>
             <Body>
@@ -113,6 +113,7 @@ class MessengerScreen extends Component {
             </TouchableOpacity>
           </Right>
         </Header>
+
         <Tabs tabBarUnderlineStyle={{ backgroundColor: "#fff" }}>
           <Tab
             style={{ backgroundColor: "#f5f6fa" }}
@@ -139,7 +140,9 @@ class MessengerScreen extends Component {
                     <TouchableOpacity
                       onPress={() => this.handleTouch("TradeManager")}
                     >
-                      <Thumbnail source={{ uri: "8.png" }} />
+                      <Thumbnail
+                        source={require("../Images/Message/alibaba.png")}
+                      />
                     </TouchableOpacity>
                     <Text>TradeManager</Text>
                   </View>
@@ -149,7 +152,9 @@ class MessengerScreen extends Component {
                     <TouchableOpacity
                       onPress={() => this.handleTouch("Connections")}
                     >
-                      <Thumbnail source={{ uri: "9.png" }} />
+                      <Thumbnail
+                        source={require("../Images/Message/connect.png")}
+                      />
                     </TouchableOpacity>
                     <Text>Connections</Text>
                   </View>
@@ -157,7 +162,9 @@ class MessengerScreen extends Component {
                 <Col>
                   <View style={styles.mItem}>
                     <TouchableOpacity onPress={() => this.handleTouch("Tags")}>
-                      <Thumbnail source={{ uri: "10.png" }} />
+                      <Thumbnail
+                        source={require("../Images/Message/tags.png")}
+                      />
                     </TouchableOpacity>
                     <Text>Tags</Text>
                   </View>
@@ -169,7 +176,7 @@ class MessengerScreen extends Component {
                 onPress={() => this.handleTouch("New Contacts")}
               >
                 <Thumbnail
-                  source={{ uri: "11.png" }}
+                  source={require("../Images/Message/contact.png")}
                   style={{ marginRight: 10, marginLeft: 10 }}
                 />
               </TouchableOpacity>

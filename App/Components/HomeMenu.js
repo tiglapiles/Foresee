@@ -19,13 +19,11 @@ export default class HomeMenu extends Component {
   category = e => this.props.navigation.navigate(e);
 
   render() {
-    const uri = ["1.png", "2.png", "3.png", "4.png"];
-
     return (
       <View style={styles.container}>
         <View style={styles.item}>
           <TouchableOpacity onPress={() => this.category("ProductCategory")}>
-            <Thumbnail source={{ uri: uri[0] }} />
+            <Thumbnail source={require("../Images/Home/1.png")} />
           </TouchableOpacity>
           <Text style={styles.title}>All Categories</Text>
         </View>
@@ -34,19 +32,19 @@ export default class HomeMenu extends Component {
           <TouchableOpacity
             onPress={() => this.category("RequestForQuotation")}
           >
-            <Thumbnail source={{ uri: uri[1] }} />
+            <Thumbnail source={require("../Images/Home/2.png")} />
           </TouchableOpacity>
           <Text style={styles.title}>Request for Quotation</Text>
         </View>
         <View style={styles.item}>
           <TouchableOpacity onPress={() => this.category("ShippingAddress")}>
-            <Thumbnail source={{ uri: uri[2] }} />
+            <Thumbnail source={require("../Images/Home/3.png")} />
           </TouchableOpacity>
           <Text style={styles.title}>Ready to Ship</Text>
         </View>
         <View style={styles.item}>
           <TouchableOpacity onPress={() => this.category("Help Center")}>
-            <Thumbnail source={{ uri: uri[3] }} />
+            <Thumbnail source={require("../Images/Home/4.png")} />
           </TouchableOpacity>
           <Text style={styles.title}>New User Zone</Text>
         </View>
