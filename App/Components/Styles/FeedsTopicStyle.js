@@ -27,7 +27,8 @@ export default StyleSheet.create({
     borderRadius: 5,
     overflow: "hidden",
     marginRight: 8,
-    backgroundColor: "#f39c12"
+    backgroundColor: "#f39c12",
+    zIndex: 5
   },
   hash: {
     color: "#fff",

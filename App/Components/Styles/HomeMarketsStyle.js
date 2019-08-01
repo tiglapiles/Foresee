@@ -16,7 +16,8 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginRight: 10,
-    overflow: "hidden"
+    overflow: "hidden",
+    zIndex: 5
   },
   title: {
     fontWeight: "bold",
