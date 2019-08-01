@@ -50,6 +50,7 @@ export default class FeedsTopic extends Component {
               <View style={[highlighted && { marginLeft: 0 }]} />
             )}
             data={info}
+            showsHorizontalScrollIndicator={false}
             horizontal={true}
             keyExtractor={(item, index) => index}
             renderItem={({ item, index, separator }) => (
