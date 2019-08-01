@@ -12,7 +12,8 @@ export default StyleSheet.create({
     shadowRadius: 2,
     shadowColor: "gray",
     shadowOpacity: 1.0,
-    borderRadius: 5
+    borderRadius: 5,
+    zIndex: 5
   },
   imgContainer: {
     flex: 0.6,
