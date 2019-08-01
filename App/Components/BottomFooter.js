@@ -17,7 +17,10 @@ export default function BottomFooter(props) {
           vertical
           active={buttonsActive(active, "Home")}
         >
-          <Image source={{ uri: "home.png" }} style={styles.image} />
+          <Image
+            source={require("../Images/Footer/home.png")}
+            style={styles.image}
+          />
           <Text style={styles.title}>Home</Text>
         </Button>
         <Button
@@ -25,7 +28,10 @@ export default function BottomFooter(props) {
           vertical
           active={buttonsActive(active, "Feeds")}
         >
-          <Image source={{ uri: "feeds.png" }} style={styles.image} />
+          <Image
+            source={require("../Images/Footer/feeds.png")}
+            style={styles.image}
+          />
           <Text style={styles.title}>Feeds</Text>
         </Button>
         <Button
@@ -33,7 +39,10 @@ export default function BottomFooter(props) {
           vertical
           active={buttonsActive(active, "Messenger")}
         >
-          <Image source={{ uri: "message.png" }} style={styles.image} />
+          <Image
+            source={require("../Images/Footer/message.png")}
+            style={styles.image}
+          />
           <Text style={styles.title}>Messenger</Text>
         </Button>
         <Button
@@ -41,7 +50,10 @@ export default function BottomFooter(props) {
           vertical
           active={buttonsActive(active, "My Foresee")}
         >
-          <Image source={{ uri: "mine.png" }} style={styles.image} />
+          <Image
+            source={require("../Images/Footer/mine.png")}
+            style={styles.image}
+          />
           <Text style={styles.title}>My Foresee</Text>
         </Button>
       </FooterTab>
