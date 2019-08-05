@@ -14,7 +14,8 @@ export default StyleSheet.create({
     borderRadius: 5,
     overflow: "hidden",
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
+    zIndex: 5
   },
   text: {
     fontSize: 18
